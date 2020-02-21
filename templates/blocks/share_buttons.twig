@@ -1,0 +1,26 @@
+<div class="share-buttons">
+	<!-- Facebook -->
+	<a href="https://www.facebook.com/sharer/sharer.php?u={{ social.link }}"
+		 onclick="dataLayer.push({'event' : 'uaevent', 'eventCategory' : 'Social Share', 'eventAction': 'Facebook', 'eventLabel': '{{ social.link }}'});"
+		 target="_blank" class="share-btn facebook">
+		{{ 'facebook-f'|svgicon }}
+		<span class="sr-only">{{ __( 'Share on', 'planet4-master-theme' ) }} Facebook</span>
+	</a>
+	<!-- Twitter -->
+	<a href="https://twitter.com/share?url={{ social.link }}&text={{ social.title|raw }}{% if social.description %} - {{ social.description|striptags }}{% endif %} via @{{ social_accounts.twitter }}&related={{ social_accounts.twitter }}"
+		 onclick="dataLayer.push({'event' : 'uaevent', 'eventCategory' : 'Social Share', 'eventAction': 'Twitter', 'eventLabel': '{{ social.link }}'});"
+		 target="_blank" class="share-btn twitter">
+		{{ 'twitter'|svgicon }}
+		<span class="sr-only">{{ __( 'Share on', 'planet4-master-theme' ) }} Twitter</span>
+	</a>
+	<!-- Line -->
+
+	<a href="http://line.me/R/msg/text/{{ social.link|url_encode }}%0D%0A{{ social.title|url_encode }}{% if social.description %}%0D%0A{{ social.description|striptags|url_encode }}{% endif %}"
+	   onclick="dataLayer.push({'event' : 'uaevent', 'eventCategory' : 'Social Share', 'eventAction': 'Line', 'eventLabel': '{{ social.link }}'});"
+	   target="_blank" class="share-btn line">
+		<img src="{{ theme.link }}/images/symbol/line_a.svg" class="icon" style="vertical-align: baseline;">
+		<span class="sr-only">{{ __( 'Share via', 'planet4-master-theme' ) }} Line</span>
+	</a>
+
+
+</div>

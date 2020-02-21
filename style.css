@@ -13,3 +13,178 @@ Text Domain: planet4-child-theme-japan
 */
 
 @import 'css/typography.css';
+
+.navbar-dropdown .active .nav-link, .navbar-dropdown .nav-link:focus, .navbar-dropdown .nav-link:hover {
+  border-color: #6c0;
+  color: #323842
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: block
+}
+
+.dropdown-toggle:after {
+  transform: rotate(90deg);
+  transition: .3s
+}
+
+.dropdown-toggle:hover:after {
+  transform: rotate(0);
+  transition: .3s
+}
+
+.dropdown-menu {
+  border: 1px solid #6c0
+}
+
+.navbar-dropdown .btn-donate {
+  padding: 2px 11px 2px 15px;
+  margin: 0
+}
+
+@media (max-width: 991px) {
+  .navbar-dropdown .nav-link {
+    padding: 0 15px
+  }
+
+  .nav-link::before {
+    width: 0
+  }
+
+  .navbar-dropdown .btn-donate {
+    padding: 2px 11px 2px 15px
+  }
+
+  #dropdownDonateMenu, #dropdownMenuButton {
+    width: 100%;
+    padding: 0 10px
+  }
+
+  #dropdownDonateMenu li a, #dropdownMenuButton li a {
+    padding: 8px 0 0;
+    margin: 14px 0;
+    line-height: 1rem
+  }
+
+  #dropdownDonateMenu.btn, #dropdownMenuButton.btn {
+    white-space: normal
+  }
+
+  #dropdownDonateMenu .dropdown-item, #dropdownMenuButton .dropdown-item {
+    white-space: unset
+  }
+
+  #dropdownDonateMenu .dropdown-menu, #dropdownMenuButton .dropdown-menu {
+    border: none;
+    background-color: #fff
+  }
+}
+
+.dropdown-item:hover {
+  color: #323842;
+  border-bottom: 2px solid #6c0
+}
+
+.dropdown-item {
+  text-transform: none;
+  font-size: .85rem;
+  padding: 0 .8rem;
+  line-height: 2.2rem;
+  color: #5c6978
+}
+
+#donate-button-wrapper {
+  padding-left: 0
+}
+
+.btn-navbar-toggle, .country-dropdown-toggle, .nav-item, .nav-link, .navbar-search-toggle, .site-logo {
+  font-weight: 500;
+  font-size: 1rem
+}
+
+.btn-navbar-toggle:active, .btn-navbar-toggle:focus, .btn-navbar-toggle:hover {
+  color: #fff;
+  background-color: #fff
+}
+
+.btn-navbar-toggle, .btn-navbar-toggle:hover, .navbar-search-toggle {
+  color: #000;
+  background-color: #fff
+}
+
+.nav-link {
+  font-size: 1rem;
+  text-transform: none
+}
+
+.top-navigation .btn-donate {
+  background-color: #f36d3a;
+  color: #fff;
+  box-shadow: none;
+  text-transform: none;
+  padding: 2px 11px 2px 15px;
+  min-width: auto;
+  text-transform: none
+}
+
+.top-navigation a {
+  color: #5c6978
+}
+
+@media (max-width: 991px) {
+  .navbar-dropdown {
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #fff
+  }
+
+  .site-logo {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #eaeaea
+  }
+
+  .top-navigation .btn-donate {
+    padding: 5px 11px 2px 15px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .navbar-dropdown {
+    width: 100%
+  }
+
+  .top-navigation .btn-donate {
+    padding: 5px 11px 2px 15px;
+  }
+}
+
+.navbar-dropdown::before {
+  width: 0
+}
+
+.dropdown-toggle :after {
+  content: none
+}
+
+.share-buttons .line {
+  background: #00B800 none repeat scroll 0 0;
+}
+
+a.line a img {
+  background: #000000;
+}
+
+a.line:hover img {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  -ms-filter: "alpha(opacity=80)";
+}
+
+/*# sourceMappingURL=style.css.map */
