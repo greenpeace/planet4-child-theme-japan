@@ -50,6 +50,10 @@ Text Domain: planet4-child-theme-japan
     padding: 2px 11px 2px 15px
   }
 
+  .top-navigation a {
+    color: #5c6978
+  }
+
   #dropdownDonateMenu, #dropdownMenuButton {
     width: 100%;
     padding: 0 10px
