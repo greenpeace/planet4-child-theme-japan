@@ -14,11 +14,6 @@ Text Domain: planet4-child-theme-japan
 
 @import 'css/typography.css';
 
-.navbar-dropdown .active .nav-link, .navbar-dropdown .nav-link:focus, .navbar-dropdown .nav-link:hover {
-  border-color: #6c0;
-  color: #323842
-}
-
 .dropdown:hover > .dropdown-menu {
   display: block
 }
@@ -80,12 +75,12 @@ Text Domain: planet4-child-theme-japan
   }
 }
 
-.dropdown-item:hover {
+.top-navigation .dropdown-item:hover {
   color: #323842;
   border-bottom: 2px solid #6c0
 }
 
-.dropdown-item {
+.top-navigation .dropdown-item{
   text-transform: none;
   font-size: .85rem;
   padding: 0 .8rem;
