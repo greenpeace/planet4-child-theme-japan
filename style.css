@@ -127,10 +127,6 @@ Text Domain: planet4-child-theme-japan
   text-transform: none
 }
 
-.top-navigation a {
-  color: #5c6978
-}
-
 @media (max-width: 991px) {
   .navbar-dropdown {
     box-sizing: border-box;
