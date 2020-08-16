@@ -1,0 +1,15 @@
+@mixin carousel-control($direction) {
+  .carousel-control {
+    &-#{$direction} {
+      .carousel-control-#{$direction}-icon {
+        background-repeat: no-repeat !important;
+        @content;
+      }
+    }
+  }
+}
+
+.carousel-header_full-width-classic {
+  @include carousel-control('prev');
+  @include carousel-control('next');
+}
