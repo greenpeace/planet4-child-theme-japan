@@ -113,3 +113,32 @@
     }
   }
 }
+
+.navbar-notifications {
+  position: fixed;
+  top: 3.75rem;
+  z-index: 5;
+  width: 100%;
+  background-color: $hover-red;
+  color: $white;
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: $white;
+    text-decoration: underline;
+  }
+
+  .javascript-not-enabled-notification,
+  .old-ie-browser-notification {
+    p {
+      padding: $sm;
+    }
+  }
+
+  @media (max-width: 767px) {
+    top: 3.375rem;
+  }
+}
