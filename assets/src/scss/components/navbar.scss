@@ -94,6 +94,7 @@
   @media (max-width: 991px) {
     #donate-button-wrapper {
       padding: 0;
+      height: auto;
     }
 
     #dropdownMenuButton {
@@ -103,13 +104,32 @@
 
     .btn-donate {
       width: 100%;
+      margin: auto;
       &::after {
         display: none;
       }
     }
 
     #dropdownDonateMenu {
-      display: none;
+      box-shadow: none;
+      opacity: 1;
+      width: 100%;
+      height: auto;
+      background-color: transparent;
+      pointer-events: auto;
+      transform: scale(1, 1);
+      .dropdown-item {
+        margin: 0.5em 0;
+        padding: 0 40px 0 50px;
+        color: $white;
+        font-size: 1rem;
+        line-height: 2.8125rem;
+        &:hover,
+        &:focus {
+          color: var(--nav-link-hover-color, #86eee7);
+          background-color: transparent;
+        }
+      }
     }
   }
 }
