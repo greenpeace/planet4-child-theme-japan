@@ -1,6 +1,6 @@
 @mixin donateMenuOpen() {
   #dropdownDonateMenu {
-    width: 100%;
+    width: calc(100% + 60px);
     height: auto;
     opacity: 1;
     pointer-events: auto;
@@ -14,11 +14,13 @@
   #donate-button-wrapper {
     display: flex;
     height: 100%;
+    padding: 0;
   }
 
   #dropdownMenuButton {
     display: flex;
     align-items: center;
+    padding: 0;
     &:hover,
     &:focus,
     &:focus-within {
@@ -62,7 +64,7 @@
     list-style: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: -30px;
     padding: 0;
     background-color: $white;
     font-size: 1rem;
@@ -91,9 +93,12 @@
     }
   }
 
+  .nav-link {
+    white-space: nowrap;
+  }
+
   @media (max-width: 991px) {
     #donate-button-wrapper {
-      padding: 0;
       height: auto;
     }
 
