@@ -1,0 +1,9 @@
+.share-buttons .line {
+  background-color: #00b800;
+  background-repeat: no-repeat;
+  &:hover {
+    img {
+      opacity: 0.8;
+    }
+  }
+}
