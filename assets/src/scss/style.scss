@@ -18,17 +18,5 @@ Text Domain: planet4-child-theme-japan
 
 @import './components/navbar.scss';
 @import './components/carousel.scss';
-
-.share-buttons .line {
-  background: #00b800 none repeat scroll 0 0;
-}
-
-a.line a img {
-  background: #000000;
-}
-
-a.line:hover img {
-  opacity: 0.8;
-  filter: alpha(opacity=80);
-  -ms-filter: 'alpha(opacity=80)';
-}
+@import './components/share-buttons.scss';
+@import './components/post.scss';
