@@ -1,0 +1,207 @@
+@mixin donateMenuOpen() {
+  #dropdownDonateMenu {
+    width: calc(100% + 60px);
+    height: auto;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1, 1);
+    transition: opacity 0.3s ease-in-out, transform 0.1s ease-in-out;
+    transform-origin: center top;
+  }
+}
+
+.top-navigation {
+  #donate-button-wrapper {
+    display: flex;
+    height: 100%;
+    padding: 0;
+  }
+
+  #dropdownMenuButton {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    &:hover,
+    &:focus,
+    &:focus-within {
+      .btn-donate {
+        background-color: $hover-orange;
+        &::after {
+          transform: rotate(0deg);
+        }
+      }
+      @include donateMenuOpen();
+    }
+  }
+
+  .btn-donate {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $blood-orange;
+    color: $white;
+
+    &::after {
+      right: 0.8rem;
+      content: '';
+      display: flex;
+      width: 0;
+      height: 0;
+      border-top: 0.3em solid;
+      border-right: 0.3em solid transparent;
+      border-bottom: 0;
+      border-left: 0.3em solid transparent;
+      position: absolute;
+      top: 50%;
+      margin-top: -0.15em;
+      transform: rotate(90deg);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  #dropdownDonateMenu {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: -30px;
+    padding: 0;
+    background-color: $white;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    transform: scale(1, 0);
+
+    .dropdown-item {
+      display: flex;
+      padding: 0.4rem 0.8rem;
+      color: $slate-grey;
+      font-size: 0.85rem;
+      line-height: 2.2rem;
+      text-decoration: none;
+      text-transform: none;
+      white-space: nowrap;
+      outline: none;
+      &:hover,
+      &:focus {
+        color: $anthracite;
+        background-color: $warm-light-grey;
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    #donate-button-wrapper {
+      height: auto;
+    }
+
+    #dropdownMenuButton {
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .btn-donate {
+      width: 100%;
+      margin: auto;
+      &::after {
+        display: none;
+      }
+    }
+
+    #dropdownDonateMenu {
+      box-shadow: none;
+      opacity: 1;
+      width: 100%;
+      height: auto;
+      background-color: transparent;
+      pointer-events: auto;
+      transform: scale(1, 1);
+      .dropdown-item {
+        margin: 0.5em 0;
+        padding: 0 40px 0 50px;
+        color: $white;
+        font-size: 1rem;
+        line-height: 2.8125rem;
+        &:hover,
+        &:focus {
+          color: var(--nav-link-hover-color, #86eee7);
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  .btn-navbar-toggle {
+    appearance: none;
+    box-shadow: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: none;
+    &:hover,
+    &:focus {
+      .navbar-menu-icon__bar {
+        background-color: var(--nav-link-hover-color, #86eee7);
+      }
+    }
+  }
+
+  .navbar-menu-icon {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: space-around;
+    width: 24px;
+    height: 28px;
+    &__bar {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: $white;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .btn-navbar-toggle {
+      display: none;
+    }
+  }
+
+  .nav-link {
+    white-space: nowrap;
+  }
+}
+
+.navbar-notifications {
+  position: fixed;
+  top: 3.75rem;
+  z-index: 5;
+  width: 100%;
+  background-color: $hover-red;
+  color: $white;
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: $white;
+    text-decoration: underline;
+  }
+
+  .javascript-not-enabled-notification,
+  .old-ie-browser-notification {
+    p {
+      padding: $sm;
+    }
+  }
+
+  @media (max-width: 767px) {
+    top: 3.375rem;
+  }
+}

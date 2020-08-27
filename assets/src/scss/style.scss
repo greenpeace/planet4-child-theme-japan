@@ -1,0 +1,24 @@
+/*!
+Theme Name: Greenpeace Planet 4 Child Theme for GP Japan
+Theme URI: https://github.com/greenpeace/planet4-child-theme-japan
+Description: Exemplary child theme for the Planet 4 Wordpress project
+Author: Greenpeace International
+Author URI: https://github.com/greenpeace
+Template: planet4-master-theme
+Version: 0.4
+License: GNU General Public License v3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Tags: light, accessibility-ready
+Text Domain: planet4-child-theme-japan
+*/
+
+@import './base/typography.scss';
+@import './base/variables.scss';
+@import './base/mixins.scss';
+
+@import './components/navbar.scss';
+@import './components/carousel.scss';
+@import './components/share-buttons.scss';
+@import './components/post.scss';
+
+@import './blocks/wp-embed.scss';

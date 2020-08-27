@@ -1,0 +1,22 @@
+.single-post {
+  .page-header {
+    .page-header-title {
+      font-size: 1.875rem;
+    }
+    @media (min-width: 768px) {
+      .page-header-title {
+        font-size: 3rem;
+      }
+    }
+    @media (min-width: 1200px) {
+      .page-header-title {
+        font-size: 2.625rem;
+      }
+    }
+  }
+  .author-block {
+    .author-block-info {
+      background-color: #efefef;
+    }
+  }
+}

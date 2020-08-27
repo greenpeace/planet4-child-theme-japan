@@ -1,0 +1,12 @@
+.wp-block-embed-wordpress {
+  blockquote {
+    font-style: normal;
+    font-size: $font-size-sm;
+    line-height: 1.6rem;
+
+    @include x-large-and-up {
+      font-size: $font-size-md;
+      line-height: 1.75rem;
+    }
+  }
+}

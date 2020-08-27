@@ -2,6 +2,7 @@
   <nav id="header" class="top-navigation navbar">
     <a class="site-logo" href="{{ data_nav_bar.home_url }}">
 		{% include 'blocks/site_logo.twig' %}
+      <h2 class="screen-reader-text">グリーンピース</h2>
 	</a>
 	  {% set toggle_label = __( 'Toggle navigation menu', 'planet4-master-theme' ) %}
 	  {% set search_label = __( 'Search', 'planet4-master-theme' ) %}
@@ -10,9 +11,14 @@
         data-toggle="open"
         data-target="#navbar-dropdown"
         aria-expanded="false"
-		aria-label="{{ toggle_label }}"
+				aria-label="{{ toggle_label }}"
     >
-      <span>{{ __( 'Menu', 'planet4-master-theme' ) }}</span>
+      <span class="screen-reader-text">{{ __( 'Menu', 'planet4-master-theme' ) }}</span>
+			<span class="navbar-menu-icon">
+				<span class="navbar-menu-icon__bar"></span>
+				<span class="navbar-menu-icon__bar"></span>
+				<span class="navbar-menu-icon__bar"></span>
+			</span>
     </button>
     <ul id="navbar-dropdown" class="navbar-dropdown list-unstyled">
       <li class="nav-item" id="country-select">
@@ -48,11 +54,10 @@
 		<li class="nav-item">
 			<ul id="donate-button-wrapper">
 				<li class="btn dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-					<a class="btn btn-donate dropdown-toggle" href="{{ donatelink }}">{{ donatetext }}</a>
+					<a class="btn btn-donate dropdown-toggle {{ enhanced_donate_btn_class }}" href="{{ donatelink }}">{{ donatetext }}</a>
 					<ul class="dropdown-menu" id="dropdownDonateMenu" aria-labelledby="dropdownMenuButton">
-
 						{% for item in donation_navbar_menu.get_items %}
-							<li><a class="dropdown-item" href="{{ item.get_link }}" target="_blank">{{ item.title }}</a></li>
+							<li><a class="dropdown-item" href="{{ item.get_link }}">{{ item.title }}</a></li>
 						{% endfor %}
 					</ul>
 				</li>
@@ -78,17 +83,15 @@
 		</button>
     </form>
   </nav>
-	<div class="gpnl__notifications">
-	<noscript class="javascript-not-enabled-notification">
-		<p>
-			Je browser ondersteunt geen Javascript. Delen van deze website zullen niet goed werken.<br>
-			Zet Javascript aan in je huidige browser of gebruik een browser die Javascript ondersteunt.
-		</p>
-	</noscript>
+	<div class="navbar-notifications">
+		<noscript class="javascript-not-enabled-notification">
+			<p>
+				現在お使いのブラウザでは、Javascriptがサポートされていないため、このウェブサイトの機能の一部が正常に動作しません。ブラウザの設定からJavascriptを有効にしてください。
+			</p>
+		</noscript>
 		<div class="old-ie-browser-notification" style="display: none;">
 			<p>Je gebruikt een versie van Internet Explorer die niet meer ondersteund wordt.
-			<a href="https://browser-update.org/" rel="nofollow noreferrer" target="_blank">Upgrade je browser</a> om deze website te gebruiken.</p></div>
+			<a href="https://browser-update.org/" rel="nofollow noreferrer" target="_blank">Upgrade je browser</a> om deze website te gebruiken.</p>
+		</div>
 	</div>
 {% endblock %}
-
-
