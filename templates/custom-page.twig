@@ -22,6 +22,8 @@
 		{% endfor %}
 	{% endif %}
 
+	{% block custom_page_header %}
+	{% endblock %}
 
 	{{ wp_head }}
 
@@ -32,8 +34,6 @@
 	{% endif %}
 
 
-	{% block custom_page_header %}
-	{% endblock %}
 </head>
 
 <body class="{{ body_class }} {{ custom_body_classes|default("") }}" data-nro="{{ site.link }}" data-post-type="{{ fn( 'get_post_type' ) }}">
