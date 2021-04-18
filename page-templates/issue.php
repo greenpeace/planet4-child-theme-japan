@@ -25,6 +25,7 @@ $context        = Timber::get_context();
 $post           = new Post(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 $page_meta_data = get_post_meta( $post->ID );
 $page_meta_data = array_map( 'reset', $page_meta_data );
+$slug						= get_post_field('post_name', get_post());
 
 // Set Navigation Issues links.
 $post->set_issues_links();
@@ -44,8 +45,9 @@ if ( is_array( $page_tags ) && $page_tags ) {
 }
 
 $context['post']                = $post;
-$context['custom_body_classes'] = 'white-bg';
+$context['custom_body_classes'] = 'white-bg ' . $slug;
 $context['page_category']       = 'Issue Page';
+$context['current_issue']       = $slug;
 
 Context::set_header( $context, $page_meta_data, $post->title );
 Context::set_background_image( $context );
@@ -56,5 +58,5 @@ if ( post_password_required( $post->ID ) ) {
 
 	Timber::render( 'single-page.twig', $context );
 } else {
-	Timber::render( [ 'evergreen.twig' ], $context );
+	Timber::render( [ 'issue-page.twig' ], $context );
 }
