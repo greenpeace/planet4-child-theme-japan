@@ -86,10 +86,13 @@
     ]
   },
   "E": {
-    "HEADING": "2020 年会計報告",
+    "HEADING": "2020 年次報告書",
     "SUB_HEADING": "政府や企業からの財政支援は受けない、独立・中立の立場から環境問題の解決を目指すグリーンピースの活動は、この報告書に掲載された成果を含めてすべて、地球の未来をまもりたいと願う個人の皆さまのご支援のみに支えられています。",
     "DESCRIPTION": "誰もが安心して暮らせる緑豊かで平和な社会を、一緒に実現するためにこれからも、グリーンピースと一緒に行動してください。",
-    "BUTTON": "年次報告書をみる",
+    "BUTTON": "報告書をみる",
+    "LINK_HREF": "https://www.greenpeace.org/static/planet4-japan-stateless/2021/06/3987e15b-2020-annual-report-jp.pdf",
+    "LINK_TEXT_0": "英語版の報告書",
+    "LINK_HREF_0": "https://www.greenpeace.org/static/planet4-japan-stateless/2021/06/252b960f-2020-annual-report-en.pdf",
     "LINK_TEXT_1": "会計報告書はこちら",
     "LINK_HREF_1": "https://www.greenpeace.org/japan/aboutus/publication/2021/03/26/50692/",
     "LINK_TEXT_2": "団体情報はこちら",
@@ -104,7 +107,7 @@
         "TITLE": "継続寄付",
         "DESCRIPTION": "毎月の継続的なご支援",
         "BUTTON": "今すぐ寄付する",
-        "LINK_HREF": "https://www.greenpeace.or.jp/kifu_input.php"
+        "LINK_HREF": "https://www.greenpeace.or.jp/donate/general/regular/kifut_input.php"
       },
       {
         "TAB": "今回限り<br/>の寄付",
