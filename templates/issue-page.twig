@@ -8,72 +8,6 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="generator" content="Gatsby 3.3.1" />
-    <script type="module">
-      const e =
-        'undefined' != typeof HTMLImageElement &&
-        'loading' in HTMLImageElement.prototype
-      e &&
-        document.body.addEventListener(
-          'load',
-          function (e) {
-            if (void 0 === e.target.dataset.mainImage) return
-            if (void 0 === e.target.dataset.gatsbyImageSsr) return
-            const t = e.target
-            let a = null,
-              n = t
-            for (; null === a && n; )
-              void 0 !== n.parentNode.dataset.gatsbyImageWrapper &&
-                (a = n.parentNode),
-                (n = n.parentNode)
-            const o = a.querySelector('[data-placeholder-image]'),
-              r = new Image()
-            ;(r.src = t.currentSrc),
-              r
-                .decode()
-                .catch(() => {})
-                .then(() => {
-                  ;(t.style.opacity = 1),
-                    o &&
-                      ((o.style.opacity = 0),
-                      (o.style.transition = 'opacity 500ms linear'))
-                })
-          },
-          !0
-        )
-    </script>
-    <title data-react-helmet="true"></title>
-    <meta data-rh="true" name="robots" content="index,follow" />
-    <meta data-rh="true" name="googlebot" content="index,follow" />
-    <link
-      as="script"
-      rel="preload"
-      href="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-issue-page/webpack-runtime-3a8c928305966797fbfd.js"
-    />
-    <link
-      as="script"
-      rel="preload"
-      href="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-issue-page/framework-e9c18342c6355973406a.js"
-    />
-    <link
-      as="script"
-      rel="preload"
-      href="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-issue-page/app-97f8be0e7024cb0ee40f.js"
-    />
-    <link
-      as="fetch"
-      rel="preload"
-			href="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-issue-page/page-data/japan/explore/{{current_issue}}/page-data.json"
-      crossorigin="anonymous"
-    />
-    <link
-      as="fetch"
-      rel="preload"
-      href="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-issue-page/page-data/app-data.json"
-      crossorigin="anonymous"
-    />
-
-	{% include 'blocks/issue/' ~ current_issue ~ '_head.twig' %}
-
     <style data-styled="" data-styled-version="5.3.0">
        {
         /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
@@ -835,6 +769,72 @@
         }
       </style></noscript
     >
+    <script type="module">
+      const e =
+        'undefined' != typeof HTMLImageElement &&
+        'loading' in HTMLImageElement.prototype
+      e &&
+        document.body.addEventListener(
+          'load',
+          function (e) {
+            if (void 0 === e.target.dataset.mainImage) return
+            if (void 0 === e.target.dataset.gatsbyImageSsr) return
+            const t = e.target
+            let a = null,
+              n = t
+            for (; null === a && n; )
+              void 0 !== n.parentNode.dataset.gatsbyImageWrapper &&
+                (a = n.parentNode),
+                (n = n.parentNode)
+            const o = a.querySelector('[data-placeholder-image]'),
+              r = new Image()
+            ;(r.src = t.currentSrc),
+              r
+                .decode()
+                .catch(() => {})
+                .then(() => {
+                  ;(t.style.opacity = 1),
+                    o &&
+                      ((o.style.opacity = 0),
+                      (o.style.transition = 'opacity 500ms linear'))
+                })
+          },
+          !0
+        )
+    </script>
+    <title data-react-helmet="true"></title>
+    <meta data-rh="true" name="robots" content="index,follow" />
+    <meta data-rh="true" name="googlebot" content="index,follow" />
+    <link
+      as="script"
+      rel="preload"
+      href="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-issue-page/webpack-runtime-3a8c928305966797fbfd.js"
+    />
+    <link
+      as="script"
+      rel="preload"
+      href="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-issue-page/framework-e9c18342c6355973406a.js"
+    />
+    <link
+      as="script"
+      rel="preload"
+      href="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-issue-page/app-97f8be0e7024cb0ee40f.js"
+    />
+    <link
+      as="fetch"
+      rel="preload"
+			href="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-issue-page/page-data/japan/explore/{{current_issue}}/page-data.json"
+      crossorigin="anonymous"
+    />
+    <link
+      as="fetch"
+      rel="preload"
+      href="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-issue-page/page-data/app-data.json"
+      crossorigin="anonymous"
+    />
+
+	{% include 'blocks/issue/' ~ current_issue ~ '_head.twig' %}
+
 {% endblock %}
 
 {% block custom_page_content %}
@@ -845,6 +845,9 @@
 		{{ post.content|raw }}
 	</div>
 
+	<script id="gatsby-script-loader">
+		/*<![CDATA[*/ window.pagePath = '/japan/explore/{{current_issue}}' /*]]>*/
+	</script>
 	<script id="gatsby-chunk-mapping">
 		/*<![CDATA[*/ window.___chunkMapping = {
 			polyfill: ['/polyfill-d77a8b248f0682f90caf.js'],
