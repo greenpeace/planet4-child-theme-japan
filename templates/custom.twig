@@ -63,21 +63,10 @@
 	{% else %}
 		{% include 'navigation-bar.twig' with data_nav_bar %}
 	{% endif %}
-	{% include 'sidebar.twig' with data_nav_bar %}
-
-	{% if not post.password_required %}
-		{% include 'blocks/header.twig' %}
-	{% endif %}
 
 	{% block content %}
 			{{ post.content|raw }}
 	{% endblock %}
-
-	{% if sidebar %}
-		<aside class="layout-sidebar">
-			{{sidebar}}
-		</aside>
-	{% endif %}
 
 	{% block footer %}
 		{% include 'footer.twig' with { 'nav_type' : custom_styles.nav_type } %}
