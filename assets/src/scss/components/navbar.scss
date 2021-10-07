@@ -11,6 +11,10 @@
 }
 
 .top-navigation {
+  .site-logo img {
+    display: inline;
+  }
+
   #donate-button-wrapper {
     display: flex;
     height: 100%;
