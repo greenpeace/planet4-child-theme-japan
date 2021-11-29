@@ -3,6 +3,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    .icon {
+      top: auto;
+    }
   }
   .line {
     background-color: #00b800;
