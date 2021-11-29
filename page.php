@@ -69,6 +69,12 @@ $context['page_category']       = $data_layer['page_category'];
 $context['post_tags']           = implode( ', ', $post->tags() );
 $context['custom_body_classes'] = 'brown-bg ';
 
+$share_buttons_data              = new stdClass();
+$share_buttons_data->title       = get_post_meta(get_the_ID(), 'p4_og_title', true);
+$share_buttons_data->description = get_post_meta(get_the_ID(), 'p4_og_description', true);
+$share_buttons_data->link        = get_permalink();
+$context['share_buttons_data']   = $share_buttons_data;
+
 if ( is_page() && $post->post_parent ) {
 	$context['is_sub_page'] = true;
 }
