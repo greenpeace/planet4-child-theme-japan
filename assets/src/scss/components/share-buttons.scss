@@ -1,9 +1,26 @@
-.share-buttons .line {
-  background-color: #00b800;
-  background-repeat: no-repeat;
-  &:hover {
-    img {
-      opacity: 0.8;
+.share-buttons {
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon {
+      top: auto;
     }
+  }
+  .line {
+    background-color: #00b800;
+    background-repeat: no-repeat;
+    &:hover {
+      img {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.post-content {
+  .share-buttons {
+    margin-top: 24px;
   }
 }

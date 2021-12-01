@@ -49,9 +49,19 @@ $context['custom_body_classes'] = 'white-bg ' . $slug;
 $context['page_category']       = 'Issue Page';
 $context['current_issue']       = $slug;
 
+$share_buttons_data              = new stdClass();
+$share_buttons_data->title       = get_post_meta(get_the_ID(), 'p4_og_title', true);
+$share_buttons_data->description = get_post_meta(get_the_ID(), 'p4_og_description', true);
+$share_buttons_data->link        = get_permalink();
+$context['share_buttons_data']   = $share_buttons_data;
+
 Context::set_header( $context, $page_meta_data, $post->title );
 Context::set_background_image( $context );
 Context::set_og_meta_fields( $context, $post );
+
+if ( is_page() && $post->post_parent ) {
+	$context['is_sub_page'] = true;
+}
 
 if ( post_password_required( $post->ID ) ) {
 	$context['login_url'] = wp_login_url();

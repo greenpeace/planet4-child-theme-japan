@@ -1,7 +1,11 @@
 <?php
 /**
- * Template Name: Custom Page
- * The template for displaying evergreen pages.
+ * The template for displaying all pages.
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site will use a
+ * different template.
  *
  * To generate specific templates for your pages you can use:
  * /mytheme/views/page-mypage.twig
@@ -15,6 +19,12 @@
  * @package  WordPress
  * @subpackage  Timber
  * @since    Timber 0.1
+ */
+
+/**
+ * Category : Issue
+ * Tag      : Campaign
+ * Post     : Action
  */
 
 use P4\MasterTheme\Context;
@@ -43,12 +53,21 @@ if ( is_array( $page_tags ) && $page_tags ) {
 	$context['campaigns'] = $tags;
 }
 
+// Set GTM Data Layer values.
+$post->set_data_layer();
+$data_layer = $post->get_data_layer();
+
+Context::set_header( $context, $page_meta_data, $post->title );
+Context::set_background_image( $context );
+Context::set_og_meta_fields( $context, $post );
+Context::set_campaign_datalayer( $context, $page_meta_data );
+Context::set_utm_params( $context, $post );
+
 $context['post']                = $post;
-$context['custom_body_classes'] = 'white-bg';
-$context['page_category']       = 'Custom Page';
 $context['social_accounts']     = $post->get_social_accounts( $context['footer_social_menu'] );
-$context['custom_page_js']       = get_post_meta( get_the_ID(), 'p4jp_custom_page_js', true );
-$context['custom_page_css']      = get_post_meta( get_the_ID(), 'p4jp_custom_page_css', true );
+$context['page_category']       = $data_layer['page_category'];
+$context['post_tags']           = implode( ', ', $post->tags() );
+$context['custom_body_classes'] = 'brown-bg ';
 
 $share_buttons_data              = new stdClass();
 $share_buttons_data->title       = get_post_meta(get_the_ID(), 'p4_og_title', true);
@@ -56,18 +75,22 @@ $share_buttons_data->description = get_post_meta(get_the_ID(), 'p4_og_descriptio
 $share_buttons_data->link        = get_permalink();
 $context['share_buttons_data']   = $share_buttons_data;
 
-Context::set_header( $context, $page_meta_data, $post->title );
-Context::set_background_image( $context );
-Context::set_og_meta_fields( $context, $post );
-
 if ( is_page() && $post->post_parent ) {
 	$context['is_sub_page'] = true;
 }
 
 if ( post_password_required( $post->ID ) ) {
+
+	// Password protected form validation.
+	$context['is_password_valid'] = $post->is_password_valid();
+
+	// Hide the page title from links to the extra feeds.
+	remove_action( 'wp_head', 'feed_links_extra', 3 );
+
 	$context['login_url'] = wp_login_url();
 
 	Timber::render( 'single-page.twig', $context );
 } else {
-	Timber::render( [ 'custom.twig' ], $context );
+	Timber::render( [ 'page-' . $post->post_name . '.twig', 'page.twig' ], $context );
 }
+
