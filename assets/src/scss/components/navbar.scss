@@ -15,6 +15,14 @@
     display: inline;
   }
 
+  .nav-search-form {
+    .nav-search-btn {
+      svg {
+        display: inline-block;
+      }
+    }
+  }
+
   #donate-button-wrapper {
     display: flex;
     height: 100%;
