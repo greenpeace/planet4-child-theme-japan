@@ -1,0 +1,129 @@
+{
+  "SEO": {
+    "TITLE": "グリーンピース・ジャパン 年次報告書 2021年",
+    "DESCRIPTION": "グリーンピースの活動を支えてくださった多くの皆さんに、心より感謝申し上げます。2021年1月から12月までのグリーンピース・ジャパンの活動・成果報告です。"
+  },
+  "A": {
+    "HEADING": "グリーンピース・ジャパン<br/>年次報告書 2021年"
+  },
+  "B": {
+    "HEADING": "1年間の活動報告",
+    "SUB_HEADING": "2021年1月から12月までのグリーンピース・ジャパンの活動・成果報告です。",
+    "SLIDES": [
+      {
+        "TITLE": "【Climate & Energy】",
+        "DESCRIPTION": "気候危機を止める",
+        "LINK_HREF": "https://www.greenpeace.org/japan/nature/story/2022/03/21/55864/",
+        "IMG_URL": "/static/Climate_Web_size_with_credit_line.jpeg"
+      },
+      {
+        "TITLE": "【Good Life】",
+        "DESCRIPTION": "よりサステナブルな循環型の社会へ",
+        "LINK_HREF": "https://www.greenpeace.org/japan/sustainable/story/2022/03/21/55869/",
+        "IMG_URL": "/static/Goodlife_top_Web_size_with_credit_line.jpeg"
+      },
+      {
+        "TITLE": "【Global キャンペーン】",
+        "DESCRIPTION": "世界のグリーンピースと力を合わせて",
+        "LINK_HREF": "https://www.greenpeace.org/japan/nature/story/2022/03/21/55873/",
+        "IMG_URL": "/static/Global_top_Web_size_with_credit_line.jpeg"
+      },
+      {
+        "TITLE": "【GP50th anniversary】",
+        "DESCRIPTION": "誕生から50年を迎えて",
+        "LINK_HREF": "https://www.greenpeace.org/japan/aboutus/story/2022/03/21/55878/",
+        "IMG_URL": "/static/50yr_top_Web_size_with_credit_line.jpeg"
+      }
+    ]
+  },
+  "C": {
+    "HEADING": "グリーンピースの活動を支えてくださった多くの皆さんに、心より感謝申し上げます。",
+    "SUB_HEADING": "数字で見る2021年：",
+    "STATISTICS": [
+      {
+        "TITLE": "寄付サポーター数",
+        "COUNT": "8369人"
+      },
+      {
+        "TITLE": "イベント参加者数",
+        "COUNT": "約6000人*"
+      },
+      {
+        "TITLE": "新規ボランティア登録者数",
+        "COUNT": "295人"
+      },
+      {
+        "TITLE": "ウェブサイト総閲覧回数",
+        "COUNT": "2418625回"
+      },
+      {
+        "TITLE": "メディアで紹介された件数",
+        "COUNT": "3327件"
+      }
+    ],
+    "NOTE": "*通常のイベントの他、学校での講義、企業研修、記者向け勉強会、ライブ配信などを含みます。"
+  },
+  "D": {
+    "HEADING": "地球の恵みを、100年先の子どもたちに届ける。",
+    "SLIDES": [
+      {
+        "TITLE": "2021年を振り返って",
+        "DESCRIPTION": "グリーンピース・ジャパン事務局長",
+        "LINK_HREF": "https://www.greenpeace.org/japan/aboutus/story/2022/03/21/55882/",
+        "IMG_URL": "/static/Sam_Annesley_Web_size_with_credit_line.jpeg"
+      },
+      {
+        "TITLE": "アンバサダー、そして地球の未来のために<br/>多様な人々と一緒に",
+        "DESCRIPTION": "未来の世代に地球の美しさを受け渡していくために、解決策を広く発信し、次世代に地球の美しさをつむぐ仲間を増やします。",
+        "LINK_HREF": "https://www.greenpeace.org/japan/connect/story/2022/03/21/55885/",
+        "IMG_URL": "/static/Section_A_Web_size_with_credit_line.jpeg"
+      },
+      {
+        "TITLE": "ボランティア＆インターン",
+        "DESCRIPTION": "いろんな方と一緒に環境問題について学び、それぞれのアイデアや個性を活かして、様々な活動を行なっています。",
+        "LINK_HREF": "https://www.greenpeace.org/japan/connect/story/2022/03/21/55891/",
+        "IMG_URL": "/static/volunteer_Top.jpeg"
+      }
+    ]
+  },
+  "E": {
+    "HEADING": "2021 年次報告書",
+    "SUB_HEADING": "政府や企業からの財政支援は受けない、独立・中立の立場から環境問題の解決を目指すグリーンピースの活動は、この報告書に掲載された成果を含めてすべて、地球の未来をまもりたいと願う個人の皆さまのご支援のみに支えられています。（ただいま準備中）",
+    "DESCRIPTION": "誰もが安心して暮らせる緑豊かで平和な社会を、一緒に実現するためにこれからも、グリーンピースと一緒に行動してください。",
+    "BUTTON": "報告書をみる",
+    "LINK_HREF": "https://www.greenpeace.org/static/planet4-japan-stateless/2021/06/3987e15b-2020-annual-report-jp.pdf",
+    "LINK_TEXT_0": "英語版の報告書",
+    "LINK_HREF_0": "https://www.greenpeace.org/static/planet4-japan-stateless/2021/06/252b960f-2020-annual-report-en.pdf",
+    "LINK_TEXT_1": "会計報告書はこちら",
+    "LINK_HREF_1": "https://www.greenpeace.org/japan/aboutus/story/2022/03/21/55899/",
+    "LINK_TEXT_2": "団体情報はこちら",
+    "LINK_HREF_2": "https://www.greenpeace.org/japan/about-us-2/info-access/"
+  },
+  "F": {
+    "HEADING": "グリーンピースをご寄付でご支援ください。",
+    "SUB_HEADING": "グリーンピースの活動はすべて、個人のご寄付のみに支えられています。あらゆる命と未来をまもるため、ぜひサポーターのひとりに加わっていただけませんか。あなたのご寄付が、世界中で起こっている環境破壊を解決に導きます。",
+    "DONATION_WIDGET": [
+      {
+        "TAB": "継続寄付",
+        "TITLE": "継続寄付",
+        "DESCRIPTION": "毎月の継続的なご支援",
+        "BUTTON": "今すぐ寄付する",
+        "LINK_HREF": "https://www.greenpeace.or.jp/donate/general/regular/kifut_input.php"
+      },
+      {
+        "TAB": "今回限り<br/>の寄付",
+        "TITLE": "今回限りの寄付",
+        "DESCRIPTION": "まずは一回限りという方",
+        "BUTTON": "今すぐ寄付する",
+        "LINK_HREF": "https://www.greenpeace.or.jp/donate/general/single_ver3.2/kifut2_input.php"
+      },
+      {
+        "TAB": "遺言、相続財産<br/>からのご寄付",
+        "TITLE": "遺言、相続財産からのご寄付",
+        "DESCRIPTION": "あなたが築き上げてこられたものを、将来世代のために",
+        "BUTTON": "詳しくはこちら",
+        "LINK_HREF": "http://act-greenpeace.jp/donate/legacy/"
+      }
+    ]
+  }
+}
