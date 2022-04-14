@@ -98,8 +98,10 @@
 						{{ fn('do_blocks', post.take_action_boxout )|raw }}
 					{% endif %}
 				</article>
-				<h3>この記事をSNSでシェアしてください</h3>
-				{% include "blocks/share_buttons.twig" with {social:post.share_meta, utm_medium: 'share'} %}
+				<div class="share-module">
+					<h3>この記事をSNSでシェアしてください</h3>
+					{% include "blocks/share_buttons.twig" with {social:post.share_meta, utm_medium: 'share'} %}
+				</div>
 			</div>
 		</div>
 		<!-- Post Page Block End -->
