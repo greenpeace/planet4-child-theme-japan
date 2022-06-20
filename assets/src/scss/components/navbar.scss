@@ -4,3 +4,13 @@
     max-width: 256px;
   }
 }
+
+.navbar {
+  .site-logo {
+    display: inline-flex;
+    align-items: center;
+    img {
+      display: block;
+    }
+  }
+}
