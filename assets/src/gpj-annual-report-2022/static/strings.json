@@ -85,10 +85,10 @@
     "SUB_HEADING": "政府や企業からの財政支援を受けない、独立・中立の立場から環境問題の解決を目指すグリーンピースの活動は、この報告書に掲載された成果を含めてすべて、地球の未来をまもりたいと願う個人の皆さまのご支援のみに支えられています。",
     "DESCRIPTION": "誰もが安心して暮らせる緑豊かで平和な社会を、一緒に実現するためにこれからも、グリーンピースと一緒に行動してください。",
     "BUTTON": "報告書をみる",
-    "LINK_HREF": "https://www.greenpeace.org/static/planet4-japan-stateless/2022/06/cdcd6d6e-gpar2021_jp.pdf",
+    "LINK_HREF": "javascript:void(0)",
     "LINK_TEXT_0": "英語版の報告書",
     "LINK_HREF_0": "https://www.greenpeace.org/static/planet4-japan-stateless/2022/06/98f5e03e-gpar2021_en.pdf",
-    "LINK_TEXT_1": "会計報告(準備中)",
+    "LINK_TEXT_1": "会計報告",
     "LINK_HREF_1": "https://www.greenpeace.org/japan/aboutus/annual-report/2023/03/31/61488/",
     "LINK_TEXT_2": "団体情報はこちら",
     "LINK_HREF_2": "https://www.greenpeace.org/japan/about-us-2/info-access/"
@@ -98,18 +98,11 @@
     "SUB_HEADING": "グリーンピースの活動はすべて、個人のご寄付のみに支えられています。あらゆる命と未来をまもるため、ぜひサポーターのひとりに加わっていただけませんか。あなたのご寄付が、世界中で起こっている環境破壊を解決に導きます。",
     "DONATION_WIDGET": [
       {
-        "TAB": "継続寄付",
-        "TITLE": "継続寄付",
-        "DESCRIPTION": "毎月の継続的なご支援",
+        "TAB": "ご寄付",
+        "TITLE": "",
+        "DESCRIPTION": "あなたのご寄付は、独立した立場での環境 破壊の専門的な調査、調査による科学的根 拠にもとづく独自の環境保護活動を可能にし、問題を戦略的かつ効率的に解決に導くた めに必要不可欠な力になります。",
         "BUTTON": "今すぐ寄付する",
-        "LINK_HREF": "https://www.greenpeace.or.jp/donate/general/single_ver3.2/kifut2_input.php"
-      },
-      {
-        "TAB": "今回限り<br/>の寄付",
-        "TITLE": "今回限りの寄付",
-        "DESCRIPTION": "まずは一回限りという方",
-        "BUTTON": "今すぐ寄付する",
-        "LINK_HREF": "https://www.greenpeace.or.jp/donate/general/single_ver3.2/kifut2_input.php"
+        "LINK_HREF": "https://www.greenpeace.or.jp/donate/general/generic/kifut_input.php?en_txn9=7486&en_txn8=FR-Web&en_txn7=FR-General&utm_content=Brand&utm_campaign=General%20Greenpeace&utm_source=GPwebsite&utm_medium=banner&utm_term=2023_AnnualReport_gpwebsite_donate"
       },
       {
         "TAB": "遺言、相続財産<br/>からのご寄付",
