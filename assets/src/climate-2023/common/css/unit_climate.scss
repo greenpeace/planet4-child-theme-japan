@@ -1216,7 +1216,7 @@ h2{
             // transform: translateX(50%);
             right: 40px;
             z-index: 990999;
-            background:url(images/climate_arrow_orange_right.svg) center 50% no-repeat;
+            background:url(../../images/climate_arrow_orange_right.svg) center 50% no-repeat;
             background-size: contain;
             @include v.mq(sp) {
                 display: none;
@@ -1232,7 +1232,7 @@ h2{
             // transform: translateX(50%);
             left:40px;
             z-index: 9999999;
-            background: url(images/climate_arrow_orange_left.png) center 50% no-repeat;
+            background: url(../../images/climate_arrow_orange_left.png) center 50% no-repeat;
             background-size: contain;
             @include v.mq(sp) {
                 display: none;
@@ -1327,6 +1327,7 @@ h2{
             @include v.mq(sp) {
                 // font-size: 1.05rem;
                 font-size: 4vw;
+                line-height: 1.8;
             }
         }
         a.cta_btn{
@@ -1355,50 +1356,206 @@ h2{
 /*####################*/
 /*07　blockを使った気候変動に関する最新情報カルーセル*/
 /*####################*/
+//PC
 #related_post_carousel{
-    a{
-        &:hover{
-            opacity: 0.7;
+    @extend .nosp;
+    margin: 0 auto;
+    padding: 0 20px;
+    section{
+        position: relative;
+        //投稿１件
+        .post-column{
+            .content-covers-block-wrap{//clearfix用？
+                .content-covers-block-info{//実質的な投稿box
+                    .content-covers-block-image{
+                        //画像
+                    }
+                    //.content-covers-block-image
+                    .content-covers-block-information{//テキスト情報wrap
+                        display: grid;
+                        grid-template-columns: 1fr;
+                        h5{
+                            //title
+                            order:1;
+                            text-decoration: none;
+                            font-size: 1.2rem;
+                            font-weight: bold;
+                            color: #000;
+                            margin-bottom: 5px;
+                            @include v.mq(sp) {
+                               //
+                            }
+                        }
+                        .publication-date{//日付
+                            order:3;
+                        }
+                        //.publication-date
+                        .post-excerpt{//リード、excerpt
+                            order:2;
+                            line-height: 1.4;
+                        }
+                        //.post-excerpt
+                    }
+                    //.content-covers-block-information
+                }
+                //.content-covers-block-info
+            }
+            //.content-covers-block-wrap
         }
-        h5{
-            //title
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #000;
-            margin-bottom: 25px;
-            @include v.mq(sp) {
-                font-size: 1.05rem;
-                margin-bottom: 20px;
+        //.post-column　投稿１件
+        //ボタン改造
+        button{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            appearance: none;
+            .visually-hidden{
+                display: none;
+            }
+            &.carousel-control-prev{
+                position: absolute;
+                display: block;
+                width: 38px;
+                height: 38px;
+                top: 160px;
+                transform: translateY(-50%);
+                // right: calc(50% + 190px);
+                // transform: translateX(50%);
+                left:40px;
+                z-index: 9999999;
+                span.carousel-control-prev-icon{
+                    cursor: pointer;
+                    display: block;
+                    width: 38px;
+                    height: 38px;
+                    background: url(../../images/climate_arrow_orange_left.png) center 50% no-repeat;
+                    background-size: contain;
+                }
+                @include v.mq(sp) {
+                    left: 0;
+                }
+            }
+            &.carousel-control-next{
+                position: absolute;
+                display: block;
+                width: 38px;
+                height: 38px;
+                top: 160px;
+                transform: translateY(-50%);
+                // right: calc(50% + 190px);
+                // transform: translateX(50%);
+                right:40px;
+                z-index: 9999999;
+                span.carousel-control-next-icon{
+                    cursor: pointer;
+                    display: block;
+                    width: 38px;
+                    height: 38px;
+                    background: url(../../images/climate_arrow_orange_right.png) center 50% no-repeat;
+                    background-size: contain;
+                }
+                @include v.mq(sp) {
+                    top: 0;
+                    bottom:0px;
+                    transform: translateY(50%);
+                    right: calc(50% + 50px);
+                    transform: translateX(50%);
+                }
             }
         }
     }
-    .cat_and_tag{
-        color: #198700;
-        @include v.mq(sp) {
-            font-size: 1rem;
-        }
-        a{
-            text-decoration: none;
-            color: #198700;
-        }
-    }
-    .auther{
-        @include v.mq(sp) {
-            display: inline-block;
-        }
-    }
-    .publication-date{
-        @include v.mq(sp) {
-            display: inline-block;
-            &::before{
-                content: "・";
+}
+// スマホ時はリストブロックに切り替える
+#related_post_articles{
+    @extend .nopc;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    section{
+        //記事１件
+        article{
+            //画像
+            .article-list-item-image{
+
+            }
+            //body
+            .article-list-item-body{
+                display: grid;
+                grid-template-columns: 1fr;
+                //カテゴリとタグ
+                .article-list-item-tags{
+                    order:2;
+                    margin-bottom: 0;
+                    padding: 0;
+                    .tag-item,.tag{
+                        color: #198700;
+                        font-size: 1rem;
+                        font-weight: bold;
+                        line-height: 1.2;
+                        @include v.mq(sp) {
+                            font-size: 1rem;
+                        }
+                        a{
+                            text-decoration: none;
+                            color: #198700;
+                        }
+                    }
+                }
+                //article-list-item-tags
+                //記事タイトル
+                header{
+                    order:1;
+                    h4.article-list-item-headline{
+                        text-decoration: none;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        color: #000;
+                        margin-bottom: 15px;
+                        padding: 0;
+                        @include v.mq(sp) {
+                            font-size: 1.05rem;
+                            margin-bottom: 0.4em;
+                        }
+                    }
+
+                }
+                //header
+                //記事見出、excerpt
+                .article-list-item-content{
+                    //SP用のパーツなので、省略する
+                    display: none;
+                    // font-size: 1.05rem;
+                    // line-height: 1.7;
+                    // margin-bottom: 20px;
+
+                }
+                //article-list-item-content
+                //auther,日付など
+                .article-list-item-meta{
+                    order:3;
+                    padding: 0;
+                    line-height: 1.2;
+                    .article-list-item-author{
+                        @include v.mq(sp) {
+                            display: inline-block;
+                        }
+                    }
+                    .article-list-item-date{
+
+                    }
+                    .article-list-item-bullet{
+                        //なかぐろ・
+                    }
+                }
+            }
+            a{
+                &:hover{
+                    opacity: 0.7;
+                }
             }
         }
-    }
-    .post-excerpt{
-        font-size: 1.05rem;
-        line-height: 1.7;
-        margin-bottom: 20px;
+        
     }
 }

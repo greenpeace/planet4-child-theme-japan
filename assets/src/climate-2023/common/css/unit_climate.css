@@ -56,12 +56,33 @@
   }
 }
 
+/*####################*/
+/*汎用部品*/
+/*####################*/
 .ofi, #actiongreenpeace .campaign_wrap .climate_campaign .campaign .campaign_img img {
   -o-object-fit: cover;
   object-fit: cover; /* 他のブラウザ用(＝通常の指定) */
   -o-object-position: 50% 50%;
   object-position: 50% 50%; /* 他のブラウザ用(＝通常の指定) */
   font-family: "object-fit: cover; object-position: 50% 50%;";
+}
+
+.nosp, #related_post_carousel {
+  display: block;
+}
+@media screen and (max-width: 768px) {
+  .nosp, #related_post_carousel {
+    display: none;
+  }
+}
+
+.nopc, #related_post_articles {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .nopc, #related_post_articles {
+    display: block;
+  }
 }
 
 /* CSS Document */
@@ -1372,7 +1393,7 @@ h2.cir_orange.num_07::before {
   top: 20%;
   right: 40px;
   z-index: 990999;
-  background: url(images/climate_arrow_orange_right.svg) center 50% no-repeat;
+  background: url(../../images/climate_arrow_orange_right.svg) center 50% no-repeat;
   background-size: contain;
 }
 @media screen and (max-width: 768px) {
@@ -1388,7 +1409,7 @@ h2.cir_orange.num_07::before {
   top: 20%;
   left: 40px;
   z-index: 9999999;
-  background: url(images/climate_arrow_orange_left.png) center 50% no-repeat;
+  background: url(../../images/climate_arrow_orange_left.png) center 50% no-repeat;
   background-size: contain;
 }
 @media screen and (max-width: 768px) {
@@ -1493,6 +1514,7 @@ h2.cir_orange.num_07::before {
 @media screen and (max-width: 768px) {
   #cta_mailmagazine .cta_content p.cta_msg {
     font-size: 4vw;
+    line-height: 1.8;
   }
 }
 #cta_mailmagazine .cta_content a.cta_btn {
@@ -1524,49 +1546,155 @@ h2.cir_orange.num_07::before {
 /*####################*/
 /*07　blockを使った気候変動に関する最新情報カルーセル*/
 /*####################*/
-#related_post_carousel a:hover {
-  opacity: 0.7;
+#related_post_carousel {
+  margin: 0 auto;
+  padding: 0 20px;
 }
-#related_post_carousel a h5 {
+#related_post_carousel section {
+  position: relative;
+}
+#related_post_carousel section .post-column .content-covers-block-wrap .content-covers-block-info .content-covers-block-information {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+#related_post_carousel section .post-column .content-covers-block-wrap .content-covers-block-info .content-covers-block-information h5 {
+  order: 1;
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
   color: #000;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
+}
+#related_post_carousel section .post-column .content-covers-block-wrap .content-covers-block-info .content-covers-block-information .publication-date {
+  order: 3;
+}
+#related_post_carousel section .post-column .content-covers-block-wrap .content-covers-block-info .content-covers-block-information .post-excerpt {
+  order: 2;
+  line-height: 1.4;
+}
+#related_post_carousel section button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+#related_post_carousel section button .visually-hidden {
+  display: none;
+}
+#related_post_carousel section button.carousel-control-prev {
+  position: absolute;
+  display: block;
+  width: 38px;
+  height: 38px;
+  top: 160px;
+  transform: translateY(-50%);
+  left: 40px;
+  z-index: 9999999;
+}
+#related_post_carousel section button.carousel-control-prev span.carousel-control-prev-icon {
+  cursor: pointer;
+  display: block;
+  width: 38px;
+  height: 38px;
+  background: url(../../images/climate_arrow_orange_left.png) center 50% no-repeat;
+  background-size: contain;
 }
 @media screen and (max-width: 768px) {
-  #related_post_carousel a h5 {
-    font-size: 1.05rem;
-    margin-bottom: 20px;
+  #related_post_carousel section button.carousel-control-prev {
+    left: 0;
   }
 }
-#related_post_carousel .cat_and_tag {
-  color: #198700;
+#related_post_carousel section button.carousel-control-next {
+  position: absolute;
+  display: block;
+  width: 38px;
+  height: 38px;
+  top: 160px;
+  transform: translateY(-50%);
+  right: 40px;
+  z-index: 9999999;
+}
+#related_post_carousel section button.carousel-control-next span.carousel-control-next-icon {
+  cursor: pointer;
+  display: block;
+  width: 38px;
+  height: 38px;
+  background: url(../../images/climate_arrow_orange_right.png) center 50% no-repeat;
+  background-size: contain;
 }
 @media screen and (max-width: 768px) {
-  #related_post_carousel .cat_and_tag {
+  #related_post_carousel section button.carousel-control-next {
+    top: 0;
+    bottom: 0px;
+    transform: translateY(50%);
+    right: calc(50% + 50px);
+    transform: translateX(50%);
+  }
+}
+
+#related_post_articles {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+#related_post_articles section article .article-list-item-body {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+#related_post_articles section article .article-list-item-body .article-list-item-tags {
+  order: 2;
+  margin-bottom: 0;
+  padding: 0;
+}
+#related_post_articles section article .article-list-item-body .article-list-item-tags .tag-item, #related_post_articles section article .article-list-item-body .article-list-item-tags .tag {
+  color: #198700;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+@media screen and (max-width: 768px) {
+  #related_post_articles section article .article-list-item-body .article-list-item-tags .tag-item, #related_post_articles section article .article-list-item-body .article-list-item-tags .tag {
     font-size: 1rem;
   }
 }
-#related_post_carousel .cat_and_tag a {
+#related_post_articles section article .article-list-item-body .article-list-item-tags .tag-item a, #related_post_articles section article .article-list-item-body .article-list-item-tags .tag a {
   text-decoration: none;
   color: #198700;
 }
+#related_post_articles section article .article-list-item-body header {
+  order: 1;
+}
+#related_post_articles section article .article-list-item-body header h4.article-list-item-headline {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 15px;
+  padding: 0;
+}
 @media screen and (max-width: 768px) {
-  #related_post_carousel .auther {
+  #related_post_articles section article .article-list-item-body header h4.article-list-item-headline {
+    font-size: 1.05rem;
+    margin-bottom: 0.4em;
+  }
+}
+#related_post_articles section article .article-list-item-body .article-list-item-content {
+  display: none;
+}
+#related_post_articles section article .article-list-item-body .article-list-item-meta {
+  order: 3;
+  padding: 0;
+  line-height: 1.2;
+}
+@media screen and (max-width: 768px) {
+  #related_post_articles section article .article-list-item-body .article-list-item-meta .article-list-item-author {
     display: inline-block;
   }
 }
-@media screen and (max-width: 768px) {
-  #related_post_carousel .publication-date {
-    display: inline-block;
-  }
-  #related_post_carousel .publication-date::before {
-    content: "・";
-  }
-}
-#related_post_carousel .post-excerpt {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin-bottom: 20px;
+#related_post_articles section article a:hover {
+  opacity: 0.7;
 }
