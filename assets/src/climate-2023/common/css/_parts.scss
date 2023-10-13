@@ -1,0 +1,537 @@
+@charset "UTF-8";
+@import "valiables";
+/* #################### */
+/* _parts.scss */
+/* 修正時は_parts.scssを修正してコンパイルしてください */
+/* #################### */
+/* CSS Document */
+/*汎用クラス*/
+/*##############################################*/
+//画像キャプションつけてメディアを挿入した場合の
+//サイズ指定をキャンセル
+
+strong{
+    font-weight: bold;
+}
+// 取り消し線
+.torikeshi{
+    text-decoration:line-through;
+}
+.red_txt{
+    color: #f00;
+}
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+.textcenter{
+    text-align: center;
+}
+.textright{
+    text-align: right;
+}
+.center{
+    text-align: center;
+    margin: 0 auto;
+}
+img.center_img{
+    display: block;
+    margin: 0 auto 2em;
+}
+.img_cap_box{
+    text-align: center;
+    margin: 0 auto;
+    img{
+        margin: 0 auto 0.3em;
+    }
+    p{
+        font-size: 0.8em;
+        &.copy{
+            text-align: right;
+        }
+    }
+}
+.border_box{
+    border:solid 1px $color-border;
+    margin: 1em auto;
+    padding: 1em;
+
+}
+hr.sikiri,hr.shikiri {
+    border: solid #6e6e71;
+    border-width: 1px 0 0 0;
+    margin: 0 0 5px;
+    height: 1px;
+    /* for IE6 */
+    clear: both;
+    /* for IE6 */
+}
+hr.sikiri_wide,hr.shikiri_wide {
+    border: solid #6e6e71;
+    border-width: 1px 0 0 0;
+    margin: 2em 0;
+    height: 1px;
+    /* for IE6 */
+    clear: both;
+    /* for IE6 */
+}
+
+hr.sikiri_gray,hr.shikiri_gray {
+    border: solid #e6e6e6;
+    border-width: 1px 0 0 0;
+    margin: 0 0 5px;
+    height: 1px;
+    /* for IE6 */
+    clear: both;
+    /* for IE6 */
+}
+
+hr.sikiri_dashed,hr.shikiri_dashed {
+    border: dashed #ccc;
+    border-width: 1px 0 0 0;
+    margin: 0 0 5px;
+    height: 1px;
+    /* for IE6 */
+    clear: both;
+    /* for IE6 */
+}
+
+hr.sikiri_dotted,hr.shikiri_dotted {
+    border: dotted #666;
+    border-width: 1px 0 0 0;
+    margin: 40px 0 40px;
+    height: 1px;
+    /* for IE6 */
+    clear: both;
+    /* for IE6 */
+}
+hr.sikiri_ornament,hr.shikiri_ornament{
+    clear: both;
+    border: none;
+    border-width: 0;
+    width: 100%;
+    height: 10px;
+    margin: 2em auto;
+    background: url(../../images/shikiri_ornament.png) center 50% no-repeat;
+    background-size: 200px 5px;
+}
+
+.nodisp {
+    position: absolute;
+    left: -9999px;
+}
+
+/*文字サイズ関連*/
+ 
+
+
+.r3 {
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    zoom: 1;
+    position: relative;
+}
+.r6 {
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    zoom: 1;
+    position: relative;
+}
+.r10 {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    zoom: 1;
+    position: relative;
+}
+.r15 {
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    zoom: 1;
+    position: relative;
+}
+.r20 {
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    zoom: 1;
+    position: relative;
+}
+
+/*無印リスト*/
+ul.normal {
+    list-style: none;
+    margin: 1em 0 1em 0.5em;
+    li {
+        margin: 0 0 0.5em 0;
+    }
+}
+/*黒丸リスト*/
+ul.list_disc {
+    list-style: disc;
+    margin: 1em 0 1em 1em;
+    &.narrow{
+        li {
+            margin: 0 0 0 0;
+        }
+    }
+    li {
+        margin: 0 0 0.5em 0;
+    }
+}
+
+/*四角リスト*/
+ul.list_square {
+    list-style: square;
+    margin: 1em 0 1em 1.5em;
+    li {
+        margin: 0 0 0.5em 0;
+    }
+}
+
+/*数字リスト*/
+ul.list_decimal{
+    list-style: decimal;
+    margin: 1em 0 1em 1.5em;
+    li {
+        margin: 0 0 0.5em 0;
+    }
+}
+/*日付見出しリスト汎用1　yyyy年m月d日想定*/
+
+dl.list_date {
+    overflow: hidden;
+    dt {
+        clear: left;
+        float: left;
+        margin: 0 0 0.5em 0em;
+    }
+    dd {
+        margin: 0 0 0.5em 9em;
+    }
+}
+/*日付見出しリスト汎用2　yyyy/mm/dd想定*/
+
+dl.list_date_narrow {
+    dt {
+        clear: left;
+        float: left;
+        color: #000;
+        margin: 0 0 0.5em 0;
+        padding: 0.5em 0;
+    }
+    dd {
+        margin: 0 0 0.5em 7em;
+        padding: 0.5em 0;
+        a{
+            text-decoration: none;
+            color: #000;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+// 数字にカッコ付きリスト
+ol.list_parentheses {
+    padding: 0 0 0 1em;
+    margin: 0;
+
+    li {
+        list-style-type: none;
+        list-style-position: inside;
+        counter-increment: cnt;
+
+        &:before {
+            display: marker;
+            content: "("counter(cnt) ") ";
+        }
+    }
+}
+
+
+/*table 背景*/
+td.tbl_glay,
+th.tbl_glay{
+        background-color: $color-graybg;
+}
+/*※つきリスト*/
+dl.list_asta{
+    dt {
+        clear: left;
+        float: left;
+        width:1.5em;
+        margin: 0 0 0.2em 0;
+        padding: 0;
+    }
+    dd {
+        margin: 0 0 0.2em 1.5em;
+        padding: 0;
+    }
+
+} 
+/*普通のdl*/
+dl.normal{
+    dt {
+        font-weight: bold;
+    }
+    dd {
+        font-weight: normal;
+        margin: 0 0 0.2em 1em;
+        padding: 0;
+        &:last-child{
+            margin: 0 0 1em 1em;
+        }
+    }
+
+} 
+/*汎用テーブル線なし*/
+table.normal_tbl {
+    border-collapse: collapse;
+    margin: 0 0 30px 0;
+    tr {}
+    th {
+        padding: 0.35em 0.6em 0.35em 0;
+        vertical-align: top;
+        white-space: nowrap;
+    }
+    td {
+        padding: 0.35em 0.6em;
+        vertical-align: top;
+    }
+}
+
+
+/*汎用テーブル線あり*/
+table.line_tbl{
+    width: auto;
+    margin: 20px 0;
+    border-collapse: collapse;
+    tr{
+        border-top: solid 1px $color-border;
+        border-left: solid 1px $color-border;
+        th{
+            background-color: $color-graybg;
+            border-right: solid 1px #fff;
+            border-bottom: solid 1px #fff;
+            padding: 10px 15px;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: bold;
+            &:last-child{
+                border-right: none;
+                border-bottom: solid 1px $color-border;
+            }
+        }
+        td{
+            background-color: #fff;
+            border-right: solid 1px $color-border;
+            border-bottom: solid 1px $color-border;
+            padding: 10px 15px;
+            vertical-align: middle;
+        }
+    }
+    
+}
+/*タブレット時に横カラムが全て縦並びになる*/
+table.pad_v{
+    @include mq(pad) {
+        th,td{
+            width:100%;
+            display: block;
+        }
+    }
+}
+/*SP時に横カラムが全て縦並びになる*/
+table.sp_v{
+    @include mq(sp) {
+        th,td{
+            width:100%;
+            display: block;
+        }
+    }
+}
+
+table.nothwrap{
+    tr{
+        th{
+            white-space: nowrap;
+        }
+    }
+}
+
+/*cssのみで動作するtab*/
+/*tabの全体枠*/
+.tab {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 2em auto;
+    background: #efefef;
+    border: 1px solid #ccc; }
+  
+  /*inputを非表示にする*/
+  .input {
+    position: absolute;
+    opacity: 0;
+}
+  
+  /*tabボタン部分*/
+  .tab_label {
+    width: auto;
+    padding: 10px 15px;
+    background: #e5e5e5;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: #7f7f7f;
+    margin-bottom: 0;
+    // transition: background 0.1s, color 0.1s;
+    transition: all 0.1s;
+    &:hover {
+        background: #d8d8d8;
+    }
+    &:active {
+        background: #ccc;
+    }
+    @include mq(sp) {
+        width: 100%;
+        
+    }
+}
+
+  
+  .input:checked + .tab_label {
+    background: #fff;
+    color: #000;
+    border: solid 1px $color-border;
+}
+
+  /*tabの本文エリア*/
+  .tab_panel {
+    display: none;
+    padding: 20px 30px 30px;
+    background: #fff;
+    order: 99;
+    h3{
+        font-size: 16px;
+    }
+    h4{
+        font-size: 14px;
+    }
+    h5{
+        font-size: 14px;
+        font-weight: normal;
+    }
+    @include mq(sp) {
+    }
+}
+//　cssのみでタブを実現。左右カラムをmatchHeightで揃えるので、jsにてタブを動作させるよう変更。
+//   .input:checked + .tab_label + .tab_panel {
+//     display: block; }
+
+/*アイコン付きリンク*/
+// FontAwesome icon
+.link_print{
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f02f";
+        margin: 0 0.2em 0 0;
+    }
+  }
+  .link_pdf{
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f1c1";
+        margin: 0 0.2em 0 0;
+    }
+  }
+  .link_download{
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f019";
+        margin: 0 0.2em 0 0;
+    }
+  }
+  .link_list{
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f03a";
+        margin: 0 0.2em 0 0;
+    }
+  }
+  .link_mail{
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f0e0";
+        margin: 0 0.2em 0 0;
+    }
+  }
+  .link_sound{
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f1c7";
+        margin: 0 0.2em 0 0;
+    }
+  }
+  .link_movie{
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f008";
+        margin: 0 0.2em 0 0;
+    }
+  }
+  .link_youtube{
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f16a";
+        margin: 0 0.2em 0 0;
+    }
+  }
+  .link_web{
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f08e";
+        margin: 0 0.2em 0 0;
+    }
+  }
+  .link_map{
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f041";
+        margin: 0 0.2em 0 0;
+    }
+  }
+  
+  .link_arrow_bottom{
+    @extend .r6;
+    display: inline-block;
+    border: solid 1px #ccc;
+    margin: 1em 0 2em;
+    padding: 0.5em;
+  
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f107";
+        margin: 0 0.2em 0 0;
+    }
+  }
+  .link_arrow_up{
+    @extend .r6;
+    display: inline-block;
+    border: solid 1px #ccc;
+    margin: 1em 0 2em;
+    padding: 0.5em;
+  
+    &:before{
+        font-family: "FontAwesome";
+        content: "\f106";
+        margin: 0 0.2em 0 0;
+    }
+  }

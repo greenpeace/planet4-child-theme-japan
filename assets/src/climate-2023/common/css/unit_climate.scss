@@ -1,0 +1,1404 @@
+@charset "utf-8";
+/* CSS Document */
+@use "valiables" as v;
+.dummy_parts{
+    width: 100vw;
+    height: auto;
+}
+.dummuy_header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 51px;
+    background-color: #fff;
+    z-index: 9999;
+    text-align: center;
+    
+    img{
+        width: 1200px;
+        height: 51px;
+        object-fit: cover;
+        margin: 0 auto;
+        @include v.mq(sp) {
+            width: 282px;
+            height: 50px;
+        }
+    }
+    @include v.mq(sp) {
+        height: 50px;
+    }
+}
+.dummuy_padding{
+    height: 51px;
+    @include v.mq(sp) {
+        height: 50px;
+    }
+}
+/*####################*/
+/*common parts*/
+/*####################*/
+h2{
+    &.cir_orange{
+        position: relative;
+        display: inline-block;
+        padding: 0 0 0 100px;
+        font-size: 2.3rem;
+        line-height: 1.2;
+        font-weight: bold;
+        @include v.mq(sp) {
+            padding: 0 0 0 60px;
+            font-size: 1.3rem;
+        }
+        
+
+        &::before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 86px;
+            height: 86px;
+            @include v.mq(sp) {
+                width: 54px;
+                height: 54px;
+            }
+        }
+        &.num_01{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_01.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 0 25px;
+            color: #FF8100;
+        }
+        &.num_02{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_02.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 0 40px;
+            color: #E96D00;
+        }
+        &.num_03{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_03.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 0 40px;
+            color: #fff;
+        }
+        &.num_04{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_04.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 0 40px;
+            color: #E96D00;
+        }
+        &.num_05{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_05.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 0 40px;
+            color: #E96D00;
+        }
+        &.num_06{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_06.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 0 40px;
+            color: #E96D00;
+        }
+        &.num_07{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_07.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 0 40px;
+            color: #E96D00;
+        }
+    }
+}
+
+/*####################*/
+/*top_banner*/
+/*####################*/
+#top_banner{
+    margin: 0 auto;
+    background:url(../../images/climate_bg_topslider.jpg) bottom no-repeat #E5E8EC;
+    figure{
+        position: relative;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin: 0;
+        // width: 100%;
+        // height: 54.4%;
+        // overflow: hidden;
+        .slider {
+            position: relative;
+            width: 100vw;
+            height: 54.4vw;
+            margin-inline: auto;
+            overflow: hidden; /* 画像がはみ出ないようにする */
+            background-color: #fff;
+            @include v.mq(sp) {
+                width: 100vw;
+                height: 154vw;
+            }
+            picture{
+                width: 100vw;
+                height: 54.4vw;
+                margin-inline: auto;
+                overflow: hidden;
+                @include v.mq(sp) {
+                    width: auto;
+                    height: 154vw;
+                }
+                .slide_img {
+                    width: 100%;
+                    @include v.mq(sp) {
+                        width: auto;
+                        height: 154vw;
+                    }
+                }
+            }
+            img.caption{
+                position: absolute;
+                bottom: 50px;
+                right:6.5%;
+                @include v.mq(sp) {
+                    bottom: 18vw;
+                    right:50%;
+                    transform: translateX(50%) scale(0.7) ;
+                }
+            }
+            .copyright{
+                font-size: 0.8rem;
+                color: #fff;
+                line-height: 1;
+                position: absolute;
+                bottom: 10px;
+                left:20px;
+                padding: 3px 10px;
+                background-color: rgba(0,0,0,0.4);
+                border-radius: 20px;
+                @include v.mq(sp) {
+                    font-size: 0.7rem;
+                }
+            }
+          }
+        //slider
+          @keyframes zoomUp {
+            0% {
+              transform: scale(1);
+            }
+            100% {
+              transform: scale(1.15); /* 拡大率 */
+            }
+          }
+          .add-animation {
+            picture{
+                .slide_img {
+                    animation: zoomUp 10s linear 0s normal both;
+                }
+            }
+            // animation: zoomUp 10s linear 0s normal both;
+          }
+          //タイトル・コピー・ボタン
+          .title_wrap{
+            position: absolute;
+            max-width: 1280px;
+            left:0;
+            right: 0;
+            top:50%;
+            transform: translateY(-50%);
+            margin: 0 auto;
+            padding: 0 20px;
+            @include v.mq(sp) {
+                text-align: center;
+                padding: 0 0;
+            }
+            h1{
+                margin: 0 0 30px;
+                width: 571px;
+                @include v.mq(sp) {
+                    width: 66.7vw;
+                    margin: 0 auto 20px;
+                }
+                img{
+                    width:100%
+                }
+            }
+            .lead{
+                margin: 0 0 30px;
+                font-size: 1.6rem;
+                font-weight: bold;
+                color: #fff;
+                @include v.mq(sp) {
+                    font-size: 1.05rem;
+                }
+            }
+            a.cta_btn{
+                display: inline-block;
+                font-size: 1.68rem;
+                font-weight: bold;
+                color: #000;
+                background-color: #FFE200;
+                border:none;
+                padding:8px 64px;
+                border-radius: 8px;
+                @include v.mq(sp) {
+                    font-size: 1.2rem;
+                    padding: 10px 60px;
+                    border-radius: 6px;
+                }
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+
+          }
+            //title_wrap
+          .scroll_up_btn{
+            position: relative;
+            text-align: center;
+            transform: translateY(-50%);
+            @include v.mq(sp) {
+                display: none;
+            }
+            img.cir_btn{
+                cursor: pointer;
+            }
+          }
+
+    }
+    // figure
+}
+// #top_banner
+/*####################*/
+/*01 climatelife*/
+/*####################*/
+#climatelife{
+    background:url(../../images/climate_bg_climatelife.jpg) top center #E5E8EC;
+    background-size: cover;
+    padding: 120px 0 70px;
+    @include v.mq(sp) {
+        padding: 25px 0 35px;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        display: grid;
+        grid-template-columns: calc(48% - 30px) calc(52% - 30px);
+        gap: 60px;
+        margin: 0 auto;
+        @include v.mq(sp) {
+            display: block;
+        }
+        .topic_lead{
+            font-size: 1.2rem;
+            @include v.mq(sp) {
+                font-size: 1.1rem;
+                margin-bottom: 55px;
+            }
+
+        }
+        .topic_items{
+            display: grid;
+            grid-auto-flow: row;
+            gap:60px;
+            .items{
+                display: grid;
+                grid-template-columns: 150px 1fr;
+                grid-template-rows:auto 1fr;
+                @include v.mq(sp) {
+                    grid-template-columns: 67px 1fr;
+                    gap:10px
+                }
+                img.top_icon{
+                    grid-row: 1 / 3;
+                    grid-column: 1 / 2;
+                    align-self: center;
+                    justify-self: center;
+                    width: 128px;
+                    height: 128px;
+                    @include v.mq(sp) {
+                        grid-row: 1 / 2;
+                        grid-column: 1 / 2;
+                        align-self:start;
+                        justify-self:center;
+                        width: 67px;
+                        height: 67px;
+                        
+                    }
+                }
+                h3{
+                    grid-row: 1 / 2;
+                    grid-column: 2 / 3;
+                    font-size:1.6rem;
+                    margin-bottom: 0.1em;
+                    @include v.mq(sp) {
+                        align-self:center;
+                        font-size:1.3rem;
+                    }
+                }
+                .honbun{
+                    grid-row: 2 / 3;
+                    grid-column: 2 / 3;
+                    @include v.mq(sp) {
+                        grid-row: 2 / 3;
+                        grid-column: 1 / 3;
+                        font-size:1.1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+// #climatelife
+/*####################*/
+/*02 fact*/
+/*####################*/
+#fact{
+    background: url(../../images/climate_bg_fact.jpg)center top no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 120px 0 160px;
+    @include v.mq(sp) {
+        padding: 25px 0 55px;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        font-size: 1.2rem;
+        color: #fff;
+        margin-bottom: 70px;
+        @include v.mq(sp) {
+            font-size: 1.05rem;
+            margin-bottom: 65px;
+        }
+
+    }
+    // slider
+    .fact_slider{
+        .slide{
+            position: relative;
+            picture{
+                source{
+                    @include v.mq(sp) {
+                        width: 80vw;
+                    }
+                }
+                img{
+                    @include v.mq(sp) {
+                        width: 80vw;
+                    }
+                }
+            }
+            .copyright{
+                position: absolute;
+                bottom: 10px;
+                left:20px;
+                font-size: 0.8rem;
+                color: #fff;
+                line-height: 1;
+                padding: 3px 10px;
+                background-color: rgba(0,0,0,0.4);
+                border-radius: 20px;
+                @include v.mq(sp) {
+                    bottom: 5px;
+                    left:10px;
+                    font-size: 0.7rem;
+                }
+            }
+        }
+    }
+}
+// #fact
+/*####################*/
+/*03 cause*/
+/*####################*/
+#cause{
+    background: url(../../images/climate_bg_cause.png)center top no-repeat #FAAA00;
+    background-size: cover;
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0;
+    padding: 120px 0 160px;
+    @include v.mq(sp) {
+        background: url(../../images/climate_bg_cause.png)center top no-repeat #FAAA00;
+        background-size: contain;
+        padding: 30px 0 40px;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        h2{
+            margin-bottom: 80px;
+            @include v.mq(sp) {
+                margin-bottom: 40px;
+            }
+        }
+        .topic_block_wrap{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap:30px;
+            @include v.mq(sp) {
+                display: block;
+            }
+            .topic_items{
+                display: grid;
+                grid-auto-flow: row;
+                // gap:30px;
+                .items{
+                    padding-bottom: 30px;
+                    @include v.mq(sp) {
+                        padding-bottom: 50px;
+                    }
+                    h3{
+                        font-size:1.6rem;
+                        margin-bottom: 0.1em;
+                        @include v.mq(sp) {
+                            font-size:1.2rem;
+                        }
+                    }
+                    .honbun{
+                        @include v.mq(sp) {
+                            font-size:1.05rem;
+                        }
+                    }
+                }
+                // items
+            }
+            // topic_items
+            .topic_img{
+                img{
+                    width: 100%;
+                }
+            }
+        }
+        // topic_block_wrap
+    }
+    // topic_wrap
+}
+// cause
+/*####################*/
+/*CTA zero emission/
+/*####################*/
+#cta_zeroemission{
+    background-color: #fff;
+    padding: 90px 0;
+    @include v.mq(sp) {
+        padding: 75px 0 60px;
+    }
+    .cta_wrap{
+        @extend .main_w;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap:50px;
+        align-items: center;
+        @include v.mq(sp) {
+            display: block;
+        }
+        .cta_img{
+            @include v.mq(sp) {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            img{
+                width: 100%;
+                max-width: 518px;
+            }
+        }
+        .cta_content{
+            @include v.mq(sp) {
+                text-align: center;
+            }
+            .cta_msg{
+                margin-bottom: 30px;
+                font-size: 1.8rem;
+                font-weight: bold;
+                line-height: 1.4;
+                @include v.mq(pad) {
+                    font-size: 2.4vw;
+                }
+                @include v.mq(sp) {
+                    // font-size: 1.2rem;
+                    font-size: 4.5vw;
+                }
+            }
+            a.cta_btn{
+                background-color: #66CC00;
+                border-radius: 8px;
+                color: #000;
+                font-size: 1.6rem;
+                font-weight: bold;
+                text-decoration: none;
+                padding: 8px 64px;
+                @include v.mq(pad) {
+                    font-size: 2.5vw;
+                    padding: 10px 5.5vw;
+                }
+                @include v.mq(sp) {
+                    display: block;
+                    width: 80vw;
+                    font-size: 1.6rem;
+                    padding: 10px 10px;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
+// #cta_zeroemission
+/*####################*/
+/*04 future*/
+/*####################*/
+#future{
+    padding: 90px 0 130px;
+    background-image: linear-gradient(0deg, rgba(102, 214, 255, 1), rgba(230, 250, 255, 1));
+    @include v.mq(sp) {
+        padding: 35px 0 45px;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        //見出し部分
+        h2{
+            margin-bottom: 0px;
+        }
+        &.midashi{
+            margin-bottom: 60px;
+            @include v.mq(sp) {
+                margin-bottom: 15px;
+            }
+        }
+    }
+    .photo_wrap{
+        @extend .wide_w;
+        display: grid;
+        grid-template-columns: calc(56.8% - 9px) calc(43.2% - 9px);
+        grid-template-rows: max-content max-content max-content;
+        gap:18px;
+        margin-bottom: 60px;
+        @include v.mq(sp) {
+            grid-template-columns: 1fr;
+            grid-template-rows: max-content max-content max-content max-content;
+            gap:0;
+            margin-bottom: 80px;
+        }
+        .photo_box{
+            position: relative;
+            @include v.mq(sp) {
+                width: 100%;
+                height: 38vw;
+                overflow: hidden;
+            }
+            .copyright{
+                position: absolute;
+                bottom: 5px;
+                left:10px;
+                font-size: 0.8rem;
+                line-height: 1;
+                color: #fff;
+                line-height: 1;
+                padding: 3px 10px;
+                background-color: rgba(0,0,0,0.4);
+                border-radius: 20px;
+                @include v.mq(sp) {
+                    font-size: 0.7rem;
+                }
+            }
+            img{
+                // @extend .ofi;
+                width: 100%;
+                
+            }
+            &.box1{
+                grid-row: 1 / 3;
+                grid-column: 1 / 2;
+                @include v.mq(sp) {
+                    grid-row: 1 / 2;
+                    grid-column: 1 / 2;
+                }
+
+            }
+            &.box2{
+                grid-row: 1 / 2;
+                grid-column: 2 / 3;
+                @include v.mq(sp) {
+                    grid-row: 2 / 3;
+                    grid-column: 1 / 2;
+                }
+
+            }
+            &.box3{
+                grid-row: 3 / 4;
+                grid-column: 1 / 2;
+                @include v.mq(sp) {
+                    grid-row: 3 / 4;
+                    grid-column: 1 / 2;
+                }
+
+            }
+            &.box4{
+                // grid-row-start: 2;
+                // grid-column-start: 2;
+                grid-row: 2 / 4;
+                grid-column: 2 / 3;
+                @include v.mq(sp) {
+                    grid-row: 5 / 6;
+                    grid-column: 1 / 2;
+                    img{
+                        margin-top: -30px;
+                    }
+                }
+
+            }
+        }
+    }
+    // .photo_wrap
+    h3.midashi_green_kakomi{
+        display:block;
+        background-color: #66CC00;
+        color:#fff;
+        font-size: 2.1rem;
+        font-weight: bold;
+        text-align: center;
+        width: fit-content;
+        margin: 0 auto 70px;
+        padding: 15px 30px;
+        border-radius: 4rem;
+        @include v.mq(sp) {
+            font-size: 4vw;
+            margin: 0 auto 15px;
+        }
+    }
+    // .midashi_green_kakomi
+    .card_wrap{
+        @extend .main_w;
+        display: flex;
+        // justify-content: space-between;
+        justify-content: center;
+        gap:40px;
+        @include v.mq(sp) {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap:15px;
+        }
+        picture{
+            width: 336px;
+            @include v.mq(sp) {
+                width: 100%;
+            }
+            img,source{
+                width: 100%;
+            }
+
+        }
+    }
+
+}
+// #future
+/*####################*/
+/*05 actionlife*/
+/*####################*/
+#actionlife{
+    background:url(../../images/climate_bg_actionlife.jpg) top center no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 75px 0 100px;
+    @include v.mq(sp) {
+        padding: 30px 0 60px;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        h2{
+            margin-bottom: 80px;
+            @include v.mq(sp) {
+                margin-bottom: 20px;
+            }
+        }
+        .item_wrap{
+
+            .item{
+                margin-top: -90px;
+                @include v.mq(sp) {
+                    margin-top: 35px;
+                }
+                &:first-child{
+                    margin-top: 0;
+                }
+                &.left{
+                    display: grid;
+                    grid-template-columns: 276px 1fr;
+                    @include v.mq(sp) {
+                        display: block;
+                        text-align: center;
+                    }
+                    .cir_img{
+                        img.actionlife_icon{
+                            width: 276px;
+                            height: 276px;
+                            @include v.mq(sp) {
+                                width: 160px;
+                                height: 160px;
+                                margin-bottom: 10px;
+                            }
+                        }
+                        .copyright{
+                            text-align: center;
+                            font-size: 0.7rem;
+                            color: #61C3C3;
+                            line-height: 1;
+                            // padding: 3px 10px;
+                            // background-color: rgba(0,0,0,0.4);
+                            // border-radius: 20px;
+                            @include v.mq(sp) {
+                                display: none;
+                            }
+                        }
+                    }
+                    //cir_img
+                    .chatting {
+                        width: 100%;
+                        text-align: left;
+                        align-self: center;
+                        justify-self: center;
+                        @include v.mq(sp) {
+                            margin-top: -45px;
+                            text-align: center;
+                        }
+                        .copyright{
+                            display: none;
+                            @include v.mq(sp) {
+                                display: block;
+                                text-align: center;
+                                font-size: 0.7rem;
+                                line-height: 1;
+                                color: #61C3C3;
+                            }
+                        }
+                      }
+                      .says {
+                        display: inline-block;
+                        position: relative; 
+                        margin: 0 0 0 -40px;
+                        padding: 10px 20px;
+                        width:  fit-content;
+                        font-size: 1.6rem;
+                        font-weight: bold;
+                        color: #fff;
+                        border-radius: 8px;
+                        background: #66CC00;
+                        @include v.mq(sp) {
+                            margin: 0 0 0 0;
+                            padding: 10px 15px;
+                            font-size: 1.1rem;
+                        }
+                      }
+                      
+                      .says:after {
+                        content: "";
+                        display: inline-block;
+                        position: absolute;
+                        top: 50%; 
+                        left: -45px;
+                        border: 15px solid transparent;
+                        border-right: 40px solid #66CC00;
+                        transform: rotate(-22deg);
+                        @include v.mq(sp) {
+                            top: -35px; 
+                            left: calc(50% - 90px);
+                            border: 15px solid transparent;
+                            border-right: 40px solid #66CC00;
+                            transform: rotate(110deg);
+                        }
+                      }
+                      .says p {
+                        margin: 0;
+                        padding: 0;
+                      }
+                }
+                //left
+                &.right{
+                    display: grid;
+                    grid-template-columns:  1fr 276px;
+                    @include v.mq(sp) {
+                        display: block;
+                        text-align: center;
+                    }
+                    .cir_img{
+                        order:2;
+                        img.actionlife_icon{
+                            width: 276px;
+                            height: 276px;
+                            @include v.mq(sp) {
+                                width: 160px;
+                                height: 160px;
+                                margin-bottom: 10px;
+                            }
+                        }
+                        .copyright{
+                            text-align: center;
+                            font-size: 0.7rem;
+                            color: #61C3C3;
+                            line-height: 1;
+                            // padding: 3px 10px;
+                            // background-color: rgba(0,0,0,0.4);
+                            // border-radius: 20px;
+                            @include v.mq(sp) {
+                                display: none;
+                            }
+                        }
+                    }
+                    //cir_img
+                    .chatting {
+                        order:1;
+                        width: 100%;
+                        text-align: right;
+                        align-self: center;
+                        justify-self: center;
+                        @include v.mq(sp) {
+                            margin-top: -45px;
+                            text-align: center;
+                        }
+                        .copyright{
+                            display: none;
+                            @include v.mq(sp) {
+                                display: block;
+                                text-align: center;
+                                font-size: 0.7rem;
+                                line-height: 1;
+                                color: #61C3C3;
+                            }
+                        }
+                      }
+                      .says {
+                        display: inline-block;
+                        position: relative; 
+                        margin: 0 -42px 0 0;
+                        padding: 10px 20px;
+                        width:  fit-content;
+                        font-size: 1.6rem;
+                        font-weight: bold;
+                        text-align: left;
+                        color: #fff;
+                        border-radius: 8px;
+                        background: #66CC00;
+                        @include v.mq(sp) {
+                            margin: 0 0 0 0;
+                            padding: 10px 15px;
+                            font-size: 1.1rem;
+                        }
+                      }
+                      
+                      .says:after {
+                        content: "";
+                        display: inline-block;
+                        position: absolute;
+                        top: 50%; 
+                        right: -45px;
+                        border: 15px solid transparent;
+                        border-left: 40px solid #66CC00;
+                        transform: rotate(22deg);
+                        @include v.mq(sp) {
+                            // top: -35px; 
+                            // right: calc(50% + 10px);
+                            // border: 20px solid transparent;
+                            // border-right: 50px solid #66CC00;
+                            // transform: rotate(110deg);
+                            top: -28px;
+                            right: auto;
+                            left: calc(50% - 90px);
+                            border: 15px solid transparent;
+                            border-left:0;
+                            border-right: 40px solid #66CC00;
+                            transform: rotate(110deg);
+                        }
+                      }
+                      .says p {
+                        margin: 0;
+                        padding: 0;
+                      }
+                }
+                //left
+
+            }
+            
+        }
+    }
+}
+// #actionlife
+/*####################*/
+/*06 actiongreenpeace*/
+/*####################*/
+#actiongreenpeace{
+    background-color: #fff;
+    margin: 0;
+    padding: 90px 0 70px;
+    @include v.mq(sp) {
+        padding: 30px 0 35px;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        h2{
+            margin-bottom: 60px;
+        }
+        .intoroduce_wrap{
+            display: grid;
+            grid-template-columns: 510px 1fr;
+            gap:35px;
+            margin-bottom: 120px;
+            @include v.mq(sp) {
+                grid-template-columns: 1fr;
+                gap:20px;
+                margin-bottom: 60px;
+            }
+            .intoroduce_img_box{
+                position: relative;
+                @include v.mq(sp) {
+                    width: 65vw;
+                    margin: 0 auto;
+                }
+                img{
+                    width: 100%;
+                }
+                .copyright{
+                    position: absolute;
+                    bottom: 10px;
+                    left:20px;
+                    text-align: center;
+                    font-size: 0.7rem;
+                    color: #fff;
+                    line-height: 1;
+                    padding: 3px 10px;
+                    background-color: rgba(0,0,0,0.4);
+                    border-radius: 20px;
+                    @include v.mq(sp) {
+                        font-size: 0.6rem;
+                    }
+                }
+            }
+            .intoroduce_txt_box{
+                font-size: 1.3rem;
+                @include v.mq(sp) {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+    // topic_wrap
+    .campaign_wrap{
+        @extend .full_w;
+        .climate_campaign{
+            padding: 80px 0 150px;
+            background: url(../../images/climate_bg_actiongreenpeace.svg) top center no-repeat;
+            background-size: contain;
+            @include v.mq(pad) {
+                padding: 80px 20px 150px;
+                background: url(../../images/climate_bg_actiongreenpeace.svg) top center no-repeat;
+                background-size: cover;
+            }
+            @include v.mq(sp) {
+                padding: 40px 20px 75px;
+                background: url(../../images/climate_bg_actiongreenpeace.svg) top center no-repeat;
+                background-size: cover;
+            }
+            h3{
+                text-align: center;
+                font-size: 1.7rem;
+                font-weight: bold;
+                margin-bottom: 50px;
+                @include v.mq(sp) {
+                    font-size: 1.2rem;
+                    margin-bottom: 20px;
+                }
+            }
+            .campaign{
+                display: grid;
+                grid-template-columns: 42% 1fr;
+                background-color: #F5F5F5;
+                margin-bottom: 20px;
+                border-radius: 12px;
+                @include v.mq(sp) {
+                    grid-template-columns: 1fr;
+                    padding: 20px 20px 40px;
+                }
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                .campaign_img{
+                    position: relative;
+                    @include v.mq(sp) {
+                        width: 61vw;
+                        margin: 0 auto 20px;
+                    }
+                    img{
+                        @extend .ofi;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 12px 0 0 12px;
+                        @include v.mq(sp) {
+                            border-radius: 12px 12px;
+                        }
+                    }
+                    .copyright{
+                        position: absolute;
+                        bottom: 10px;
+                        left:20px;
+                        font-size: 0.7rem;
+                        color: #fff;
+                        line-height: 1;
+                        padding: 3px 10px;
+                        background-color: rgba(0,0,0,0.4);
+                        border-radius: 20px;
+                        @include v.mq(sp) {
+                            font-size: 0.6rem;
+                        }
+                    }
+                    
+                }
+                .campaign_text{
+                    padding: 50px 45px;
+                    @include v.mq(sp) {
+                        padding: 0 0;
+                    }
+                    h4{
+                        font-size: 1.9rem;
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                        @include v.mq(sp) {
+                            font-size: 1.1rem;
+                            text-align: center;
+                        }
+                    }
+                    p{
+                        font-size: 1.05rem;
+                        line-height: 1.7;
+                        margin-bottom: 20px;
+                    }
+                    .camp_btn{
+                        text-align: right;
+                        @include v.mq(sp) {
+                            text-align: center;
+                        }
+                        a{
+                            display: inline-block;
+                            font-size: 1.05rem;
+                            font-weight: bold;
+                            color: #000;
+                            background-color: #66CC00;
+                            border:none;
+                            padding: 7px 75px;
+                            border-radius: 8px;
+                            &:hover{
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+    // campaign_wrap
+}
+// #actiongreenpeace
+
+/*####################*/
+/*CTA2 私たちの活動を支援して気候変動に一緒に立ち向かいましょう！/
+/*####################*/
+#cta_general{
+    position: relative;
+    width: 100%;
+    height: 35.5vw;
+    background: url(../../images/climate_img_cta_general_01.jpg.webp) center top no-repeat;
+    background-size: cover;
+    @include v.mq(sp) {
+        width: 100%;
+        height: 80vw;
+        // background: url(../../images/climate_img_cta_general_01.jpg.webp) center top no-repeat;
+        // background-size: cover;
+    }
+    .cta_wrap{
+        @extend .main_w;
+        position: relative;
+        height: 100%;
+        .msg{
+            position: absolute;
+            top: calc(50% + 20px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+            font-size: min(2.8vw,36px);
+            font-weight: bold;
+            color: #fff;
+            @include v.mq(sp) {
+                top: 20px;
+                font-size:4.2vw;
+            }
+        }
+        a.cta_btn{
+            background-color: #66CC00;
+            border-radius: 8px;
+            color: #000;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 8px 64px;
+            position: absolute;
+            top:75%;
+            transform: translateY(-50%);
+            left: 50%;
+            transform: translateX(-50%);
+            @include v.mq(pad) {
+                font-size: 2.5vw;
+                padding: 10px 5.5vw;
+            }
+            @include v.mq(sp) {
+                display: block;
+                width: 80vw;
+                text-align: center;
+                font-size:1.6rem;
+                padding: 10px 20px;
+                top:60%;
+            }
+        }
+        .copyright{
+            position: absolute;
+            bottom: 10px;
+            left:20px;
+            padding: 8px 10px;
+            font-size: 0.8rem;
+            color: #fff;
+            line-height: 1;
+            padding: 3px 10px;
+            background-color: rgba(0,0,0,0.4);
+            border-radius: 20px;
+            @include v.mq(sp) {
+                bottom: 5px;
+                left:10px;
+                font-size: 0.7rem;
+            }
+        }
+    }
+}
+/*####################*/
+/*07気候変動に関する最新情報*/
+/*####################*/
+#latest_info{
+    background-color: #fff;
+    margin: 0;
+    padding: 90px 0 70px;
+    @include v.mq(sp) {
+        padding: 30px 0 70px;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        h2{
+            margin-bottom: 60px;
+        }
+    }
+    // topic_wrap
+    .latest_crousel_wrap{
+        position: relative;
+        .latest_arrow_next{
+            cursor: pointer;
+            position: absolute;
+            width: 38px;
+            height: 38px;
+            top: 20%;
+            // right: calc(50% - 190px);
+            // transform: translateX(50%);
+            right: 40px;
+            z-index: 990999;
+            background:url(images/climate_arrow_orange_right.svg) center 50% no-repeat;
+            background-size: contain;
+            @include v.mq(sp) {
+                display: none;
+            }
+        }
+        .latest_arrow_prev{
+            cursor: pointer;
+            position: absolute;
+            width: 38px;
+            height: 38px;
+            top: 20%;
+            // right: calc(50% + 190px);
+            // transform: translateX(50%);
+            left:40px;
+            z-index: 9999999;
+            background: url(images/climate_arrow_orange_left.png) center 50% no-repeat;
+            background-size: contain;
+            @include v.mq(sp) {
+                display: none;
+            }
+        }
+        .latest_crousel{
+            @include v.mq(sp) {
+                margin: 0 auto;
+                width: calc(100vw - 40px);
+            }
+            .item{
+                display: block;
+                text-decoration: none;
+                width: 346px;
+                margin: 0 15px;
+                @include v.mq(sp) {
+                    width: 100%;
+                    margin: 0 auto 40px;
+                    &:last-child{
+                        margin-bottom:0px;
+                    }
+                }
+                a.item_link{
+                    img.eyecatch{
+                        margin: 0 auto 10px;
+                        @include v.mq(sp) {
+                            display: block;
+                            margin: 0 auto 10px;
+                        }
+                    }
+                    h3{
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        color: #000;
+                        margin-bottom: 25px;
+                        @include v.mq(sp) {
+                            font-size: 1.05rem;
+                            margin-bottom: 20px;
+                        }
+                    }
+                }
+                
+                .cat_and_tag{
+                    color: #198700;
+                    @include v.mq(sp) {
+                        font-size: 1rem;
+                    }
+                    a{
+                        text-decoration: none;
+                        color: #198700;
+                    }
+                }
+                .auther{
+                    @include v.mq(sp) {
+                        display: inline-block;
+                    }
+                }
+                .date{
+                    @include v.mq(sp) {
+                        display: inline-block;
+                        &::before{
+                            content: "・";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/*####################*/
+/*CTA3 気候変動に関する最新情報を、グリーンピースが続々発信します。*/
+/*####################*/
+#cta_mailmagazine{
+    @extend .full_w;
+    padding: 0 0 85px;
+    .cta_content{
+        max-width: 742px;
+        margin: 0 auto;
+        padding: 45px 70px;
+        border-radius: 24px;
+        background-color: #F5F5F5;
+        text-align: center;
+        @include v.mq(sp) {
+            max-width: calc(100vw - 20px);
+            margin: 0 10px;
+            padding: 30px 20px;
+        }
+        p.cta_msg{
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            @include v.mq(sp) {
+                // font-size: 1.05rem;
+                font-size: 4vw;
+            }
+        }
+        a.cta_btn{
+            background-color: #66CC00;
+            border-radius: 8px;
+            color: #000;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 8px 64px;
+            @include v.mq(pad) {
+                font-size: 2.5vw;
+                padding: 10px 5.5vw;
+            }
+            @include v.mq(sp) {
+                display: block;
+                max-width: 100%;
+                width: 80vw;
+                font-size: 1.6rem;
+                padding: 10px 10px;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+/*####################*/
+/*07　blockを使った気候変動に関する最新情報カルーセル*/
+/*####################*/
+#related_post_carousel{
+    a{
+        &:hover{
+            opacity: 0.7;
+        }
+        h5{
+            //title
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 25px;
+            @include v.mq(sp) {
+                font-size: 1.05rem;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .cat_and_tag{
+        color: #198700;
+        @include v.mq(sp) {
+            font-size: 1rem;
+        }
+        a{
+            text-decoration: none;
+            color: #198700;
+        }
+    }
+    .auther{
+        @include v.mq(sp) {
+            display: inline-block;
+        }
+    }
+    .publication-date{
+        @include v.mq(sp) {
+            display: inline-block;
+            &::before{
+                content: "・";
+            }
+        }
+    }
+    .post-excerpt{
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+}
