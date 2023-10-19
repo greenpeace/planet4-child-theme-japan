@@ -1,0 +1,119 @@
+@charset "UTF-8";
+/* CSS Document */
+.fade_item_nomove {
+	opacity: 0;
+    &.isshow {
+        opacity: 1;
+		transition: .5s ease-in-out .25s;
+	}
+    &.isshow_delay1 {
+        opacity: 1;
+		transition: .5s ease-in-out .5s;
+	}
+    &.isshow_delay2 {
+        opacity: 1;
+		transition: .5s ease-in-out .75s;
+	}
+    &.isshow_delay3 {
+        opacity: 1;
+		transition: .5s ease-in-out 1s;
+	}
+    &.isshow_delay4 {
+        opacity: 1;
+		transition: .5s ease-in-out 1.25s;
+	}
+    &.isshow_delay5 {
+        opacity: 1;
+		transition: .5s ease-in-out 1.5s;
+	}
+	&.isshow_once {
+        opacity: 1;
+	}
+}
+
+/*上から下へ */
+.fade_item_top_to_bottom {
+	transform: translate3d(0, -20px, 0);
+	opacity: 0;
+    &.isshow {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        transition: 1s ease-in-out .5s;
+    }
+    &.isshow_delay1 {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+		transition: 1s ease-in-out 1s;
+	}
+    &.isshow_delay2 {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+		transition: 1s ease-in-out 1.5s;
+	}
+    &.isshow_delay3 {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+		transition: 1s ease-in-out 2.5s;
+	}
+}
+
+/* 下から上へ */
+.fade_item_bottom_to_top {
+	transform: translate3d(0, 20px, 0);
+	opacity: 0;
+	&.isshow {
+		transform: translate3d(0, 0, 0);
+        opacity: 1;
+		transition: 1s ease-in-out .5s;
+	}
+    &.isshow_delay1 {
+		transform: translate3d(0, 0, 0);
+        opacity: 1;
+		transition: 1s ease-in-out 1s;
+	}
+    &.isshow_delay2 {
+		transform: translate3d(0, 0, 0);
+        opacity: 1;
+		transition: 1s ease-in-out 1.5s;
+	}
+    &.isshow_delay3 {
+		transform: translate3d(0, 0, 0);
+        opacity: 1;
+		transition: 1s ease-in-out 2.5s;
+	}
+}
+
+/* 左から右へ */
+.fade_item_left_to_right {
+	transform: translate3d(-20px, 0, 0);
+	opacity: 0;
+	&.isshow {
+		transform: translate3d(0, 0, 0);
+        opacity: 1;
+		transition: 1s ease-in-out .5s;
+	}
+}
+
+
+/* 右から左へ */
+.fade_item_right_to_left {
+	transform: translate3d(20px, 0, 0);
+	opacity: 0;
+	&.isshow {
+		transform: translate3d(0, 0, 0);
+        opacity: 1;
+		transition: 1s ease-in-out .5s;
+	}
+}
+
+/* //拡大 */
+.fade_item_zoom {
+	transform: scale(.8);
+	opacity: 0;
+}
+
+.fade_item_zoom_fadeIn {
+	transform: scale(1);
+	transition: .5s ease-out .5s;
+	opacity: 1;
+}
