@@ -106,10 +106,25 @@ $color-primary:#EB5C32;
 $color-secondary:#395B99;
 $color-accent:#d75e96;
 
+/*####################*/
+/*汎用部品*/
+/*####################*/
 .ofi {
   -o-object-fit: cover;
   object-fit: cover; /* 他のブラウザ用(＝通常の指定) */
   -o-object-position: 50% 50%;
   object-position: 50% 50%; /* 他のブラウザ用(＝通常の指定) */
   font-family: 'object-fit: cover; object-position: 50% 50%;' /* IE・Edge対応 */
+}
+.nosp{
+  display:block;
+  @include mq(sp) {
+      display: none;
+  }
+}
+.nopc{
+  display:none;
+  @include mq(sp) {
+      display:block;
+  }
 }

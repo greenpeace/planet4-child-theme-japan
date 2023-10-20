@@ -85,27 +85,8 @@ section{
 /*汎用部品*/
 /*####################*/
 
-.nosp{
-  display:block;
-  @include v.mq(sp) {
-      display: none;
-  }
-}
-.nopc{
-  display:none;
-  @include v.mq(sp) {
-      display:block;
-  }
-}
 
 
-.ofi {
-  -o-object-fit: cover;
-  object-fit: cover; /* 他のブラウザ用(＝通常の指定) */
-  -o-object-position: 50% 50%;
-  object-position: 50% 50%; /* 他のブラウザ用(＝通常の指定) */
-  font-family: 'object-fit: cover; object-position: 50% 50%;' /* IE・Edge対応 */
-  }
 a.link_btn{
   border-radius: 6px;
   -webkit-border-radius: 6px;
