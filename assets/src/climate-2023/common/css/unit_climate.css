@@ -1546,6 +1546,10 @@ h2.cir_orange.num_07::before {
 /*####################*/
 /*07　blockを使った気候変動に関する最新情報カルーセル*/
 /*####################*/
+#related_post_carousel {
+  margin: 0 auto;
+  padding: 0 20px;
+}
 #related_post_carousel section {
   position: relative;
 }

@@ -1359,6 +1359,8 @@ h2{
 //PC
 #related_post_carousel{
     @extend .nosp;
+    margin: 0 auto;
+    padding: 0 20px;
     section{
         position: relative;
         //投稿１件
@@ -1367,7 +1369,6 @@ h2{
                 .content-covers-block-info{//実質的な投稿box
                     .content-covers-block-image{
                         //画像
-
                     }
                     //.content-covers-block-image
                     .content-covers-block-information{//テキスト情報wrap
@@ -1396,7 +1397,6 @@ h2{
                         //.post-excerpt
                     }
                     //.content-covers-block-information
-
                 }
                 //.content-covers-block-info
             }
