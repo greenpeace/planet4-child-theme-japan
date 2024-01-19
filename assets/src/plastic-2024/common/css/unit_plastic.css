@@ -1210,7 +1210,7 @@ regulation*/
 #actiongreenpeace {
   background-color: #fff;
   margin: 0;
-  padding: 90px 0 0px;
+  padding: 90px 0 0;
 }
 @media screen and (max-width: 768px) {
   #actiongreenpeace {
