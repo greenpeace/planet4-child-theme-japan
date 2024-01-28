@@ -1028,8 +1028,12 @@ a:active {
   /*    text-decoration: underline;*/
 }
 
+.strong {
+  font-weight: bold;
+}
+
 /*####################*/
-/*基本構造*/
+/* 基本構造 */
 /*####################*/
 article {
   position: relative;

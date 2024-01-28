@@ -45,7 +45,7 @@ $(function () {
             scrollTop: $(this).offset().top
         }, 1500, 'easeOutQuart');
     });
-    // 04 Reuse　スライダー
+    // 04 Reuse スライダー
     $('.reuse_slider').slick({
         lazyLoad: 'progressive',
         dots: true,
