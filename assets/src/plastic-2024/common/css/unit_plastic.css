@@ -224,7 +224,13 @@ h2.cir_orange.num_07::before {
 #top_banner {
   position: relative;
   margin: 0 auto;
+  padding: 0;
   background: url(../../images/climate_bg_topslider.jpg) bottom no-repeat #E5E8EC;
+}
+@media screen and (max-width: 768px) {
+  #top_banner {
+    margin: 60px auto 0;
+  }
 }
 #top_banner figure {
   position: relative;
@@ -241,10 +247,9 @@ h2.cir_orange.num_07::before {
 #top_banner figure .slider {
   position: relative;
   width: 100vw;
-  height: 54.4vw;
+  height: auto;
   margin-inline: auto;
   overflow: hidden; /* 画像がはみ出ないようにする */
-  background-color: #fff;
 }
 @media screen and (max-width: 768px) {
   #top_banner figure .slider {
@@ -481,7 +486,7 @@ h2.cir_orange.num_07::before {
 @media screen and (max-width: 768px) {
   #problem .items {
     grid-template-columns: 67px 1fr;
-    gap: 0px;
+    gap: 20px;
     margin-bottom: 20px;
   }
 }
@@ -629,7 +634,7 @@ regulation*/
 }
 @media screen and (max-width: 768px) {
   #regulation .country_wrap {
-    padding: 15px 0 0;
+    padding: 15px 0 30px;
   }
 }
 #regulation .country_wrap img.reg_img_sp {
@@ -686,6 +691,10 @@ regulation*/
 }
 #regulation .country_wrap .country_items_wrap .country_group .country p {
   margin: 0 0 0 1em;
+}
+#regulation .country_wrap .country_items_wrap .country_group .country p a.syutten {
+  margin: 0 0.5em;
+  color: #66CC00;
 }
 #regulation .reg_caution {
   margin: 0 auto 2em;
@@ -1210,7 +1219,7 @@ regulation*/
 #actiongreenpeace {
   background-color: #fff;
   margin: 0;
-  padding: 90px 0 0;
+  padding: 90px 0 0px;
 }
 @media screen and (max-width: 768px) {
   #actiongreenpeace {
@@ -1432,7 +1441,7 @@ regulation*/
 @media screen and (max-width: 768px) {
   #cta_general .cta_wrap .msg {
     top: 20px;
-    font-size: 4.1vw;
+    font-size: 4vw;
   }
 }
 #cta_general .cta_wrap a.cta_btn {

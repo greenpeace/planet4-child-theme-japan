@@ -129,7 +129,11 @@ h2{
 #top_banner{
     position: relative;
     margin: 0 auto;
+    padding: 0;
     background:url(../../images/climate_bg_topslider.jpg) bottom no-repeat #E5E8EC;
+    @include v.mq(sp) {
+        margin: 60px auto 0;
+    }
     figure{
         position: relative;
         margin-block-start: 0em;
@@ -143,10 +147,11 @@ h2{
         .slider {
             position: relative;
             width: 100vw;
-            height: 54.4vw;
+            // height: 54.4vw;
+            height: auto;
             margin-inline: auto;
             overflow: hidden; /* 画像がはみ出ないようにする */
-            background-color: #fff;
+            // background-color: #fff;
             @include v.mq(sp) {
                 width: 100vw;
                 height: 154vw;
@@ -361,7 +366,7 @@ h2{
         margin-bottom: 50px;
         @include v.mq(sp) {
             grid-template-columns: 67px 1fr;
-            gap:0px;
+            gap:20px;
             margin-bottom: 20px;
         }
         img.top_icon{
@@ -544,7 +549,8 @@ regulation*/
     .country_wrap{
         @extend .main_w;
         @include v.mq(sp) {
-            padding: 15px 0 0;
+            // padding: 15px 0 0;
+            padding: 15px 0 30px;
         }
         img.reg_img_sp{
             display: none;
@@ -598,6 +604,11 @@ regulation*/
                     // h3
                     p{
                         margin: 0 0 0 1em;
+                        a.syutten{
+                            margin: 0 0.5em;
+                            // color: #198700;
+                            color:#66CC00;
+                        }
                     }
 
                 }
@@ -1102,7 +1113,7 @@ regulation*/
 #actiongreenpeace{
     background-color: #fff;
     margin: 0;
-    padding: 90px 0 0;
+    padding: 90px 0 0px;
     @include v.mq(sp) {
         padding: 30px 0 35px;
     }
@@ -1303,7 +1314,7 @@ regulation*/
             color: #fff;
             @include v.mq(sp) {
                 top: 20px;
-                font-size:4.1vw;
+                font-size:4vw;
             }
         }
         a.cta_btn{
