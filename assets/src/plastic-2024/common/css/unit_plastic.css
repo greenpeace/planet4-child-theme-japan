@@ -86,7 +86,11 @@
 }
 
 /* CSS Document */
-/* ver.1.022 20240206*/
+/* ver.1.023 20240210-*/
+.nouse_class {
+  display: none;
+}
+
 .dummy_parts {
   width: 100vw;
   height: auto;

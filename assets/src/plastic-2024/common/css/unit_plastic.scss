@@ -1,7 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
-/* ver.1.022 20240206*/
+/* ver.1.023 20240210-*/
 @use "valiables" as v;
+.nouse_class{
+    display: none;
+}
 .dummy_parts{
     width: 100vw;
     height: auto;
