@@ -98,449 +98,169 @@
           <div
             class="gpj-flex gpj-shrink-0 gpj-w-full lg:gpj-w-3/4 lg:gpj-pl-[24px] gpj-flex-nowrap lg:[clip-path:inset(-100vw_-100vw_-100vw_0)]"
           >
-            <style>
-              astro-island,
-              astro-slot,
-              astro-static-slot {
-                display: contents;
-              }
-            </style>
-            <script>
-              (() => {
-                var i = t => {
-                  let e = async () => {
-                    await (
-                      await t()
-                    )();
-                  };
-                  'requestIdleCallback' in window
-                    ? window.requestIdleCallback(e)
-                    : setTimeout(e, 200);
-                };
-                (self.Astro || (self.Astro = {})).idle = i;
-                window.dispatchEvent(new Event('astro:idle'));
-              })();
-              (() => {
-                var v = Object.defineProperty;
-                var A = (c, s, a) =>
-                  s in c
-                    ? v(c, s, {
-                        enumerable: !0,
-                        configurable: !0,
-                        writable: !0,
-                        value: a,
-                      })
-                    : (c[s] = a);
-                var d = (c, s, a) => (
-                  A(c, typeof s != 'symbol' ? s + '' : s, a), a
-                );
-                var u;
-                {
-                  let c = {
-                      0: t => m(t),
-                      1: t => a(t),
-                      2: t => new RegExp(t),
-                      3: t => new Date(t),
-                      4: t => new Map(a(t)),
-                      5: t => new Set(a(t)),
-                      6: t => BigInt(t),
-                      7: t => new URL(t),
-                      8: t => new Uint8Array(t),
-                      9: t => new Uint16Array(t),
-                      10: t => new Uint32Array(t),
-                    },
-                    s = t => {
-                      let [e, n] = t;
-                      return e in c ? c[e](n) : void 0;
-                    },
-                    a = t => t.map(s),
-                    m = t =>
-                      typeof t != 'object' || t === null
-                        ? t
-                        : Object.fromEntries(
-                            Object.entries(t).map(([e, n]) => [e, s(n)])
-                          );
-                  customElements.get('astro-island') ||
-                    customElements.define(
-                      'astro-island',
-                      ((u = class extends HTMLElement {
-                        constructor() {
-                          super(...arguments);
-                          d(this, 'Component');
-                          d(this, 'hydrator');
-                          d(this, 'hydrate', async () => {
-                            var f;
-                            if (!this.hydrator || !this.isConnected) return;
-                            let e =
-                              (f = this.parentElement) == null
-                                ? void 0
-                                : f.closest('astro-island[ssr]');
-                            if (e) {
-                              e.addEventListener(
-                                'astro:hydrate',
-                                this.hydrate,
-                                { once: !0 }
-                              );
-                              return;
-                            }
-                            let n = this.querySelectorAll('astro-slot'),
-                              r = {},
-                              l = this.querySelectorAll(
-                                'template[data-astro-template]'
-                              );
-                            for (let o of l) {
-                              let i = o.closest(this.tagName);
-                              i != null &&
-                                i.isSameNode(this) &&
-                                ((r[
-                                  o.getAttribute('data-astro-template') ||
-                                    'default'
-                                ] = o.innerHTML),
-                                o.remove());
-                            }
-                            for (let o of n) {
-                              let i = o.closest(this.tagName);
-                              i != null &&
-                                i.isSameNode(this) &&
-                                (r[o.getAttribute('name') || 'default'] =
-                                  o.innerHTML);
-                            }
-                            let h;
-                            try {
-                              h = this.hasAttribute('props')
-                                ? m(JSON.parse(this.getAttribute('props')))
-                                : {};
-                            } catch (o) {
-                              let i =
-                                  this.getAttribute('component-url') ||
-                                  '<unknown>',
-                                b = this.getAttribute('component-export');
-                              throw (
-                                (b && (i += ` (export ${b})`),
-                                console.error(
-                                  `[hydrate] Error parsing props for component ${i}`,
-                                  this.getAttribute('props'),
-                                  o
-                                ),
-                                o)
-                              );
-                            }
-                            let p;
-                            await this.hydrator(this)(this.Component, h, r, {
-                              client: this.getAttribute('client'),
-                            }),
-                              this.removeAttribute('ssr'),
-                              this.dispatchEvent(
-                                new CustomEvent('astro:hydrate')
-                              );
-                          });
-                          d(this, 'unmount', () => {
-                            this.isConnected ||
-                              this.dispatchEvent(
-                                new CustomEvent('astro:unmount')
-                              );
-                          });
-                        }
-                        disconnectedCallback() {
-                          document.removeEventListener(
-                            'astro:after-swap',
-                            this.unmount
-                          ),
-                            document.addEventListener(
-                              'astro:after-swap',
-                              this.unmount,
-                              { once: !0 }
-                            );
-                        }
-                        connectedCallback() {
-                          if (
-                            !this.hasAttribute('await-children') ||
-                            document.readyState === 'interactive' ||
-                            document.readyState === 'complete'
-                          )
-                            this.childrenConnectedCallback();
-                          else {
-                            let e = () => {
-                                document.removeEventListener(
-                                  'DOMContentLoaded',
-                                  e
-                                ),
-                                  n.disconnect(),
-                                  this.childrenConnectedCallback();
-                              },
-                              n = new MutationObserver(() => {
-                                var r;
-                                ((r = this.lastChild) == null
-                                  ? void 0
-                                  : r.nodeType) === Node.COMMENT_NODE &&
-                                  this.lastChild.nodeValue === 'astro:end' &&
-                                  (this.lastChild.remove(), e());
-                              });
-                            n.observe(this, { childList: !0 }),
-                              document.addEventListener('DOMContentLoaded', e);
-                          }
-                        }
-                        async childrenConnectedCallback() {
-                          let e = this.getAttribute('before-hydration-url');
-                          e && (await import(e)), this.start();
-                        }
-                        async start() {
-                          let e = JSON.parse(this.getAttribute('opts')),
-                            n = this.getAttribute('client');
-                          if (Astro[n] === void 0) {
-                            window.addEventListener(
-                              `astro:${n}`,
-                              () => this.start(),
-                              { once: !0 }
-                            );
-                            return;
-                          }
-                          try {
-                            await Astro[n](
-                              async () => {
-                                let r = this.getAttribute('renderer-url'),
-                                  [l, { default: h }] = await Promise.all([
-                                    import(this.getAttribute('component-url')),
-                                    r ? import(r) : () => () => {},
-                                  ]),
-                                  p =
-                                    this.getAttribute('component-export') ||
-                                    'default';
-                                if (!p.includes('.')) this.Component = l[p];
-                                else {
-                                  this.Component = l;
-                                  for (let y of p.split('.'))
-                                    this.Component = this.Component[y];
-                                }
-                                return (this.hydrator = h), this.hydrate;
-                              },
-                              e,
-                              this
-                            );
-                          } catch (r) {
-                            console.error(
-                              `[astro-island] Error hydrating ${this.getAttribute('component-url')}`,
-                              r
-                            );
-                          }
-                        }
-                        attributeChangedCallback() {
-                          this.hydrate();
-                        }
-                      }),
-                      d(u, 'observedAttributes', ['props']),
-                      u)
-                    );
-                }
-              })();
-            </script>
-            <script>
-              window._$HY ||
-                (e => {
-                  let t = e =>
-                    e &&
-                    e.hasAttribute &&
-                    (e.hasAttribute('data-hk')
-                      ? e
-                      : t(e.host && e.host.nodeType ? e.host : e.parentNode));
-                  ['click', 'input'].forEach(o =>
-                    document.addEventListener(o, o => {
-                      let a =
-                          (o.composedPath && o.composedPath()[0]) || o.target,
-                        s = t(a);
-                      s && !e.completed.has(s) && e.events.push([s, o]);
-                    })
-                  );
-                })(
-                  (_$HY = {
-                    events: [],
-                    completed: new WeakSet(),
-                    r: {},
-                    fe() {},
-                  })
-                );
-            </script>
-            <!--xs--><astro-island
-              uid="2bGyLt"
-              data-solid-render-id="s7"
-              component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Carousel.COd3kU1v.js"
-              component-export="default"
-              renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.C3f1WkGc.js"
-              props='{"slidesSelector":[0,".embla-slides-b"],"paginationSelector":[0,".section-b-pagination"],"disableOnDesktop":[0,false]}'
-              ssr=""
-              client="idle"
-              opts='{"name":"Carousel","value":true}'
-              await-children=""
-              ><div data-hk="s70-0-0-0" class="gpj-w-full gpj-relative">
-                <div class="gpj-w-full gpj-will-change-transform">
-                  <div class="gpj-flex touch-pan-y gpj-gap-[1rem]">
-                    <astro-slot
-                      ><div
-                        class="embla-slides-b gpj-min-w-0 gpj-flex-grow-0 gpj-flex-shrink-0 gpj-basis-[100%]"
-                      >
-                        <div
-                          class="gpj-flex gpj-shrink-0 gpj-w-full gpj-max-w-xs gpj-mx-auto gpj-min-w-0 sm:gpj-max-w-7xl"
-                        >
-                          <a
-                            href="https://www.greenpeace.org/japan/campaigns/annual-report/2024/04/02/65835/"
-                            target="_blank"
-                            rel="noreferrer"
-                            class="gpj-w-full gpj-relative gpj-aspect-[2/3] sm:gpj-aspect-[16/9]"
-                          >
-                            <div
-                              class="gpj-absolute gpj-top-0 gpj-left-0 gpj-flex gpj-flex-wrap gpj-content-start gpj-w-full gpj-h-full sm:gpj-content-normal sm:gpj-flex-nowrap"
-                            >
-                              <div
-                                class="gpj-relative gpj-w-full gpj-overflow-hidden gpj-shadow-md gpj-h-80 sm:gpj-h-auto sm:gpj-w-1/2 gpj-rounded-md lg:gpj-w-3/5"
-                              >
-                                <img
-                                  src="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_Z19P6Rn.webp"
-                                  srcset="
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_ZATR9U.webp   640w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_1m0Fm3.webp   800w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_ZEiqLv.webp  1200w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_1qSCuP.webp  1400w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_Z1x6r1K.webp 1600w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_Z19P6Rn.webp 2000w
-                                  "
-                                  alt="【Climate &#38; Energy】"
-                                  loading="lazy"
-                                  class="gpj-object-cover gpj-object-center gpj-w-full gpj-h-full"
-                                  sizes="(max-width: 375px) 640px, (max-width: 640px) 800px, (max-width: 768px) 1200px, (max-width: 1024px) 1400px, (max-width: 1280px) 1600px, (max-width: 1536px) 2000px"
-                                  width="1920"
-                                  height="1281"
-                                  decoding="async"
-                                />
-                              </div>
-                              <div
-                                class="gpj-flex gpj-items-start gpj-w-full gpj-p-4 gpj-text-gray-600 sm:gpj-items-center sm:gpj-w-1/2 lg:gpj-w-2/5"
-                              >
-                                <h3
-                                  class="gpj-flex gpj-flex-col gpj-text-2xl gpj-font-bold"
-                                >
-                                  <span>【Climate &amp; Energy】</span>
-                                  <span>気候のことは暮らしのはなし</span>
-                                </h3>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                      </div>
-                      <div
-                        class="embla-slides-b gpj-min-w-0 gpj-flex-grow-0 gpj-flex-shrink-0 gpj-basis-[100%]"
-                      >
-                        <div
-                          class="gpj-flex gpj-shrink-0 gpj-w-full gpj-max-w-xs gpj-mx-auto gpj-min-w-0 sm:gpj-max-w-7xl"
-                        >
-                          <a
-                            href="https://www.greenpeace.org/japan/campaigns/annual-report/2024/04/02/65843/"
-                            target="_blank"
-                            rel="noreferrer"
-                            class="gpj-w-full gpj-relative gpj-aspect-[2/3] sm:gpj-aspect-[16/9]"
-                          >
-                            <div
-                              class="gpj-absolute gpj-top-0 gpj-left-0 gpj-flex gpj-flex-wrap gpj-content-start gpj-w-full gpj-h-full sm:gpj-content-normal sm:gpj-flex-nowrap"
-                            >
-                              <div
-                                class="gpj-relative gpj-w-full gpj-overflow-hidden gpj-shadow-md gpj-h-80 sm:gpj-h-auto sm:gpj-w-1/2 gpj-rounded-md lg:gpj-w-3/5"
-                              >
-                                <img
-                                  src="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Z1DXEaU.webp"
-                                  srcset="
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Z20bp32.webp  640w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Z2fQw4.webp   800w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_1L595l.webp  1200w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Z1cTUrf.webp 1400w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Sh8P6.webp   1600w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Z1DXEaU.webp 2000w
-                                  "
-                                  alt="【Good Life】"
-                                  loading="lazy"
-                                  class="gpj-object-cover gpj-object-center gpj-w-full gpj-h-full"
-                                  sizes="(max-width: 375px) 640px, (max-width: 640px) 800px, (max-width: 768px) 1200px, (max-width: 1024px) 1400px, (max-width: 1280px) 1600px, (max-width: 1536px) 2000px"
-                                  width="1920"
-                                  height="1280"
-                                  decoding="async"
-                                />
-                              </div>
-                              <div
-                                class="gpj-flex gpj-items-start gpj-w-full gpj-p-4 gpj-text-gray-600 sm:gpj-items-center sm:gpj-w-1/2 lg:gpj-w-2/5"
-                              >
-                                <h3
-                                  class="gpj-flex gpj-flex-col gpj-text-2xl gpj-font-bold"
-                                >
-                                  <span>【Good Life】</span>
-                                  <span
-                                    >使い捨てない豊かな生活へのチェンジ</span
-                                  >
-                                </h3>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                      </div>
-                      <div
-                        class="embla-slides-b gpj-min-w-0 gpj-flex-grow-0 gpj-flex-shrink-0 gpj-basis-[100%]"
-                      >
-                        <div
-                          class="gpj-flex gpj-shrink-0 gpj-w-full gpj-max-w-xs gpj-mx-auto gpj-min-w-0 sm:gpj-max-w-7xl"
-                        >
-                          <a
-                            href="https://www.greenpeace.org/japan/campaigns/annual-report/2024/04/02/65848/"
-                            target="_blank"
-                            rel="noreferrer"
-                            class="gpj-w-full gpj-relative gpj-aspect-[2/3] sm:gpj-aspect-[16/9]"
-                          >
-                            <div
-                              class="gpj-absolute gpj-top-0 gpj-left-0 gpj-flex gpj-flex-wrap gpj-content-start gpj-w-full gpj-h-full sm:gpj-content-normal sm:gpj-flex-nowrap"
-                            >
-                              <div
-                                class="gpj-relative gpj-w-full gpj-overflow-hidden gpj-shadow-md gpj-h-80 sm:gpj-h-auto sm:gpj-w-1/2 gpj-rounded-md lg:gpj-w-3/5"
-                              >
-                                <img
-                                  src="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_16uC7z.webp"
-                                  srcset="
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_1QlJjF.webp   640w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_Z1fTPXi.webp  800w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_ZyPy1e.webp  1200w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_1wlvg7.webp  1400w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_Z1rDygt.webp 1600w,
-                                    /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_16uC7z.webp  2000w
-                                  "
-                                  alt="【Global キャンペーン】"
-                                  loading="lazy"
-                                  class="gpj-object-cover gpj-object-center gpj-w-full gpj-h-full"
-                                  sizes="(max-width: 375px) 640px, (max-width: 640px) 800px, (max-width: 768px) 1200px, (max-width: 1024px) 1400px, (max-width: 1280px) 1600px, (max-width: 1536px) 2000px"
-                                  width="1920"
-                                  height="1280"
-                                  decoding="async"
-                                />
-                              </div>
-                              <div
-                                class="gpj-flex gpj-items-start gpj-w-full gpj-p-4 gpj-text-gray-600 sm:gpj-items-center sm:gpj-w-1/2 lg:gpj-w-2/5"
-                              >
-                                <h3
-                                  class="gpj-flex gpj-flex-col gpj-text-2xl gpj-font-bold"
-                                >
-                                  <span>【Global キャンペーン】</span>
-                                  <span>グリーンの輪は国境を超えて</span>
-                                </h3>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                      </div></astro-slot
+            <div class="gpj-w-full gpj-relative">
+              <div class="gpj-w-full gpj-will-change-transform">
+                <div class="gpj-flex touch-pan-y gpj-gap-[1rem]">
+                  <div
+                    class="embla-slides-b gpj-min-w-0 gpj-flex-grow-0 gpj-flex-shrink-0 gpj-basis-[100%]"
+                  >
+                    <div
+                      class="gpj-flex gpj-shrink-0 gpj-w-full gpj-max-w-xs gpj-mx-auto gpj-min-w-0 sm:gpj-max-w-7xl"
                     >
+                      <a
+                        href="https://www.greenpeace.org/japan/campaigns/annual-report/2024/04/02/65835/"
+                        target="_blank"
+                        rel="noreferrer"
+                        class="gpj-w-full gpj-relative gpj-aspect-[2/3] sm:gpj-aspect-[16/9]"
+                      >
+                        <div
+                          class="gpj-absolute gpj-top-0 gpj-left-0 gpj-flex gpj-flex-wrap gpj-content-start gpj-w-full gpj-h-full sm:gpj-content-normal sm:gpj-flex-nowrap"
+                        >
+                          <div
+                            class="gpj-relative gpj-w-full gpj-overflow-hidden gpj-shadow-md gpj-h-80 sm:gpj-h-auto sm:gpj-w-1/2 gpj-rounded-md lg:gpj-w-3/5"
+                          >
+                            <img
+                              src="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_Z19P6Rn.webp"
+                              srcset="
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_ZATR9U.webp   640w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_1m0Fm3.webp   800w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_ZEiqLv.webp  1200w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_1qSCuP.webp  1400w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_Z1x6r1K.webp 1600w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP1T5MIS.BfFKhFFE_Z19P6Rn.webp 2000w
+                              "
+                              alt="【Climate &#38; Energy】"
+                              loading="lazy"
+                              class="gpj-object-cover gpj-object-center gpj-w-full gpj-h-full"
+                              sizes="(max-width: 375px) 640px, (max-width: 640px) 800px, (max-width: 768px) 1200px, (max-width: 1024px) 1400px, (max-width: 1280px) 1600px, (max-width: 1536px) 2000px"
+                              width="1920"
+                              height="1281"
+                              decoding="async"
+                            />
+                          </div>
+                          <div
+                            class="gpj-flex gpj-items-start gpj-w-full gpj-p-4 gpj-text-gray-600 sm:gpj-items-center sm:gpj-w-1/2 lg:gpj-w-2/5"
+                          >
+                            <h3
+                              class="gpj-flex gpj-flex-col gpj-text-2xl gpj-font-bold"
+                            >
+                              <span>【Climate &amp; Energy】</span>
+                              <span>気候のことは暮らしのはなし</span>
+                            </h3>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    class="embla-slides-b gpj-min-w-0 gpj-flex-grow-0 gpj-flex-shrink-0 gpj-basis-[100%]"
+                  >
+                    <div
+                      class="gpj-flex gpj-shrink-0 gpj-w-full gpj-max-w-xs gpj-mx-auto gpj-min-w-0 sm:gpj-max-w-7xl"
+                    >
+                      <a
+                        href="https://www.greenpeace.org/japan/campaigns/annual-report/2024/04/02/65843/"
+                        target="_blank"
+                        rel="noreferrer"
+                        class="gpj-w-full gpj-relative gpj-aspect-[2/3] sm:gpj-aspect-[16/9]"
+                      >
+                        <div
+                          class="gpj-absolute gpj-top-0 gpj-left-0 gpj-flex gpj-flex-wrap gpj-content-start gpj-w-full gpj-h-full sm:gpj-content-normal sm:gpj-flex-nowrap"
+                        >
+                          <div
+                            class="gpj-relative gpj-w-full gpj-overflow-hidden gpj-shadow-md gpj-h-80 sm:gpj-h-auto sm:gpj-w-1/2 gpj-rounded-md lg:gpj-w-3/5"
+                          >
+                            <img
+                              src="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Z1DXEaU.webp"
+                              srcset="
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Z20bp32.webp  640w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Z2fQw4.webp   800w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_1L595l.webp  1200w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Z1cTUrf.webp 1400w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Sh8P6.webp   1600w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/shutterstock_1937522518.DHETeKa4_Z1DXEaU.webp 2000w
+                              "
+                              alt="【Good Life】"
+                              loading="lazy"
+                              class="gpj-object-cover gpj-object-center gpj-w-full gpj-h-full"
+                              sizes="(max-width: 375px) 640px, (max-width: 640px) 800px, (max-width: 768px) 1200px, (max-width: 1024px) 1400px, (max-width: 1280px) 1600px, (max-width: 1536px) 2000px"
+                              width="1920"
+                              height="1280"
+                              decoding="async"
+                            />
+                          </div>
+                          <div
+                            class="gpj-flex gpj-items-start gpj-w-full gpj-p-4 gpj-text-gray-600 sm:gpj-items-center sm:gpj-w-1/2 lg:gpj-w-2/5"
+                          >
+                            <h3
+                              class="gpj-flex gpj-flex-col gpj-text-2xl gpj-font-bold"
+                            >
+                              <span>【Good Life】</span>
+                              <span>使い捨てない豊かな生活へのチェンジ</span>
+                            </h3>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    class="embla-slides-b gpj-min-w-0 gpj-flex-grow-0 gpj-flex-shrink-0 gpj-basis-[100%]"
+                  >
+                    <div
+                      class="gpj-flex gpj-shrink-0 gpj-w-full gpj-max-w-xs gpj-mx-auto gpj-min-w-0 sm:gpj-max-w-7xl"
+                    >
+                      <a
+                        href="https://www.greenpeace.org/japan/campaigns/annual-report/2024/04/02/65848/"
+                        target="_blank"
+                        rel="noreferrer"
+                        class="gpj-w-full gpj-relative gpj-aspect-[2/3] sm:gpj-aspect-[16/9]"
+                      >
+                        <div
+                          class="gpj-absolute gpj-top-0 gpj-left-0 gpj-flex gpj-flex-wrap gpj-content-start gpj-w-full gpj-h-full sm:gpj-content-normal sm:gpj-flex-nowrap"
+                        >
+                          <div
+                            class="gpj-relative gpj-w-full gpj-overflow-hidden gpj-shadow-md gpj-h-80 sm:gpj-h-auto sm:gpj-w-1/2 gpj-rounded-md lg:gpj-w-3/5"
+                          >
+                            <img
+                              src="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_16uC7z.webp"
+                              srcset="
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_1QlJjF.webp   640w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_Z1fTPXi.webp  800w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_ZyPy1e.webp  1200w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_1wlvg7.webp  1400w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_Z1rDygt.webp 1600w,
+                                /japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/GP0STYDSE.DNRoh_cG_16uC7z.webp  2000w
+                              "
+                              alt="【Global キャンペーン】"
+                              loading="lazy"
+                              class="gpj-object-cover gpj-object-center gpj-w-full gpj-h-full"
+                              sizes="(max-width: 375px) 640px, (max-width: 640px) 800px, (max-width: 768px) 1200px, (max-width: 1024px) 1400px, (max-width: 1280px) 1600px, (max-width: 1536px) 2000px"
+                              width="1920"
+                              height="1280"
+                              decoding="async"
+                            />
+                          </div>
+                          <div
+                            class="gpj-flex gpj-items-start gpj-w-full gpj-p-4 gpj-text-gray-600 sm:gpj-items-center sm:gpj-w-1/2 lg:gpj-w-2/5"
+                          >
+                            <h3
+                              class="gpj-flex gpj-flex-col gpj-text-2xl gpj-font-bold"
+                            >
+                              <span>【Global キャンペーン】</span>
+                              <span>グリーンの輪は国境を超えて</span>
+                            </h3>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <!--$--><!--/--><!--$--><button
-                  data-hk="s70-0-0-2-0-0"
-                  class="lg:group-[.section-d]:gpj-hidden group-[.section-b]:gpj-hidden sm:group-[.section-b]:gpj-block gpj-absolute gpj-top-[50%] gpj-cursor-pointer gpj-mt-[-20px] gpj-z-10 gpj-bg-white gpj-text-[#074365] gpj-w-[40px] gpj-h-[40px] gpj-p-[8px] gpj-rounded-full gpj-shadow-[0_0_5px_2px_rgba(0,0,0,0.1)] gpj-bg-[url(&quot;/src/assets/chevron.svg&quot;)] gpj-bg-[length:18px_18px] gpj-bg-no-repeat gpj-bg-center next gpj-left-auto gpj-right-[-10px] md:gpj-right-[-20px]"
-                ></button
-                ><!--/--><!--$--><!--/-->
               </div>
-              <!--astro:end--></astro-island
-            >
+              <!--$--><!--/--><!--$--><button
+                class="lg:group-[.section-d]:gpj-hidden group-[.section-b]:gpj-hidden sm:group-[.section-b]:gpj-block gpj-absolute gpj-top-[50%] gpj-cursor-pointer gpj-mt-[-20px] gpj-z-10 gpj-bg-white gpj-text-[#074365] gpj-w-[40px] gpj-h-[40px] gpj-p-[8px] gpj-rounded-full gpj-shadow-[0_0_5px_2px_rgba(0,0,0,0.1)] gpj-bg-[url(&quot;/src/assets/chevron.svg&quot;)] gpj-bg-[length:18px_18px] gpj-bg-no-repeat gpj-bg-center next gpj-left-auto gpj-right-[-10px] md:gpj-right-[-20px]"
+              ></button
+              ><!--/--><!--$--><!--/-->
+            </div>
           </div>
         </div>
       </section>
@@ -560,6 +280,13 @@
               class="gpj-w-1/2 gpj-pr-4 gpj-mb-6 md:gpj-w-1/3 lg:gpj-w-1/5 lg:gpj-pl-4 lg:first:gpj-pl-0"
             >
               <div class="gpj-text-2xl gpj-font-bold gpj-whitespace-nowrap">
+                <style>
+                  astro-island,
+                  astro-slot,
+                  astro-static-slot {
+                    display: contents;
+                  }
+                </style>
                 <script>
                   (() => {
                     var l = (s, i, o) => {
@@ -582,13 +309,264 @@
                     (self.Astro || (self.Astro = {})).visible = l;
                     window.dispatchEvent(new Event('astro:visible'));
                   })();
+                  (() => {
+                    var v = Object.defineProperty;
+                    var A = (c, s, a) =>
+                      s in c
+                        ? v(c, s, {
+                            enumerable: !0,
+                            configurable: !0,
+                            writable: !0,
+                            value: a,
+                          })
+                        : (c[s] = a);
+                    var d = (c, s, a) => (
+                      A(c, typeof s != 'symbol' ? s + '' : s, a), a
+                    );
+                    var u;
+                    {
+                      let c = {
+                          0: t => m(t),
+                          1: t => a(t),
+                          2: t => new RegExp(t),
+                          3: t => new Date(t),
+                          4: t => new Map(a(t)),
+                          5: t => new Set(a(t)),
+                          6: t => BigInt(t),
+                          7: t => new URL(t),
+                          8: t => new Uint8Array(t),
+                          9: t => new Uint16Array(t),
+                          10: t => new Uint32Array(t),
+                        },
+                        s = t => {
+                          let [e, n] = t;
+                          return e in c ? c[e](n) : void 0;
+                        },
+                        a = t => t.map(s),
+                        m = t =>
+                          typeof t != 'object' || t === null
+                            ? t
+                            : Object.fromEntries(
+                                Object.entries(t).map(([e, n]) => [e, s(n)])
+                              );
+                      customElements.get('astro-island') ||
+                        customElements.define(
+                          'astro-island',
+                          ((u = class extends HTMLElement {
+                            constructor() {
+                              super(...arguments);
+                              d(this, 'Component');
+                              d(this, 'hydrator');
+                              d(this, 'hydrate', async () => {
+                                var f;
+                                if (!this.hydrator || !this.isConnected) return;
+                                let e =
+                                  (f = this.parentElement) == null
+                                    ? void 0
+                                    : f.closest('astro-island[ssr]');
+                                if (e) {
+                                  e.addEventListener(
+                                    'astro:hydrate',
+                                    this.hydrate,
+                                    { once: !0 }
+                                  );
+                                  return;
+                                }
+                                let n = this.querySelectorAll('astro-slot'),
+                                  r = {},
+                                  l = this.querySelectorAll(
+                                    'template[data-astro-template]'
+                                  );
+                                for (let o of l) {
+                                  let i = o.closest(this.tagName);
+                                  i != null &&
+                                    i.isSameNode(this) &&
+                                    ((r[
+                                      o.getAttribute('data-astro-template') ||
+                                        'default'
+                                    ] = o.innerHTML),
+                                    o.remove());
+                                }
+                                for (let o of n) {
+                                  let i = o.closest(this.tagName);
+                                  i != null &&
+                                    i.isSameNode(this) &&
+                                    (r[o.getAttribute('name') || 'default'] =
+                                      o.innerHTML);
+                                }
+                                let h;
+                                try {
+                                  h = this.hasAttribute('props')
+                                    ? m(JSON.parse(this.getAttribute('props')))
+                                    : {};
+                                } catch (o) {
+                                  let i =
+                                      this.getAttribute('component-url') ||
+                                      '<unknown>',
+                                    b = this.getAttribute('component-export');
+                                  throw (
+                                    (b && (i += ` (export ${b})`),
+                                    console.error(
+                                      `[hydrate] Error parsing props for component ${i}`,
+                                      this.getAttribute('props'),
+                                      o
+                                    ),
+                                    o)
+                                  );
+                                }
+                                let p;
+                                await this.hydrator(this)(
+                                  this.Component,
+                                  h,
+                                  r,
+                                  { client: this.getAttribute('client') }
+                                ),
+                                  this.removeAttribute('ssr'),
+                                  this.dispatchEvent(
+                                    new CustomEvent('astro:hydrate')
+                                  );
+                              });
+                              d(this, 'unmount', () => {
+                                this.isConnected ||
+                                  this.dispatchEvent(
+                                    new CustomEvent('astro:unmount')
+                                  );
+                              });
+                            }
+                            disconnectedCallback() {
+                              document.removeEventListener(
+                                'astro:after-swap',
+                                this.unmount
+                              ),
+                                document.addEventListener(
+                                  'astro:after-swap',
+                                  this.unmount,
+                                  { once: !0 }
+                                );
+                            }
+                            connectedCallback() {
+                              if (
+                                !this.hasAttribute('await-children') ||
+                                document.readyState === 'interactive' ||
+                                document.readyState === 'complete'
+                              )
+                                this.childrenConnectedCallback();
+                              else {
+                                let e = () => {
+                                    document.removeEventListener(
+                                      'DOMContentLoaded',
+                                      e
+                                    ),
+                                      n.disconnect(),
+                                      this.childrenConnectedCallback();
+                                  },
+                                  n = new MutationObserver(() => {
+                                    var r;
+                                    ((r = this.lastChild) == null
+                                      ? void 0
+                                      : r.nodeType) === Node.COMMENT_NODE &&
+                                      this.lastChild.nodeValue ===
+                                        'astro:end' &&
+                                      (this.lastChild.remove(), e());
+                                  });
+                                n.observe(this, { childList: !0 }),
+                                  document.addEventListener(
+                                    'DOMContentLoaded',
+                                    e
+                                  );
+                              }
+                            }
+                            async childrenConnectedCallback() {
+                              let e = this.getAttribute('before-hydration-url');
+                              e && (await import(e)), this.start();
+                            }
+                            async start() {
+                              let e = JSON.parse(this.getAttribute('opts')),
+                                n = this.getAttribute('client');
+                              if (Astro[n] === void 0) {
+                                window.addEventListener(
+                                  `astro:${n}`,
+                                  () => this.start(),
+                                  { once: !0 }
+                                );
+                                return;
+                              }
+                              try {
+                                await Astro[n](
+                                  async () => {
+                                    let r = this.getAttribute('renderer-url'),
+                                      [l, { default: h }] = await Promise.all([
+                                        import(
+                                          this.getAttribute('component-url')
+                                        ),
+                                        r ? import(r) : () => () => {},
+                                      ]),
+                                      p =
+                                        this.getAttribute('component-export') ||
+                                        'default';
+                                    if (!p.includes('.')) this.Component = l[p];
+                                    else {
+                                      this.Component = l;
+                                      for (let y of p.split('.'))
+                                        this.Component = this.Component[y];
+                                    }
+                                    return (this.hydrator = h), this.hydrate;
+                                  },
+                                  e,
+                                  this
+                                );
+                              } catch (r) {
+                                console.error(
+                                  `[astro-island] Error hydrating ${this.getAttribute('component-url')}`,
+                                  r
+                                );
+                              }
+                            }
+                            attributeChangedCallback() {
+                              this.hydrate();
+                            }
+                          }),
+                          d(u, 'observedAttributes', ['props']),
+                          u)
+                        );
+                    }
+                  })();
                 </script>
-                <astro-island
+                <script>
+                  window._$HY ||
+                    (e => {
+                      let t = e =>
+                        e &&
+                        e.hasAttribute &&
+                        (e.hasAttribute('data-hk')
+                          ? e
+                          : t(
+                              e.host && e.host.nodeType ? e.host : e.parentNode
+                            ));
+                      ['click', 'input'].forEach(o =>
+                        document.addEventListener(o, o => {
+                          let a =
+                              (o.composedPath && o.composedPath()[0]) ||
+                              o.target,
+                            s = t(a);
+                          s && !e.completed.has(s) && e.events.push([s, o]);
+                        })
+                      );
+                    })(
+                      (_$HY = {
+                        events: [],
+                        completed: new WeakSet(),
+                        r: {},
+                        fe() {},
+                      })
+                    );
+                </script>
+                <!--xs--><astro-island
                   uid="1tVf0p"
                   data-solid-render-id="s0"
-                  component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Counter.2n_t-udw.js"
+                  component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Counter.CwjnschB.js"
                   component-export="default"
-                  renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.C3f1WkGc.js"
+                  renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.BNoM1tLg.js"
                   props='{"string":[0,"6730人"]}'
                   ssr=""
                   client="visible"
@@ -607,9 +585,9 @@
                 <astro-island
                   uid="ahkWF"
                   data-solid-render-id="s1"
-                  component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Counter.2n_t-udw.js"
+                  component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Counter.CwjnschB.js"
                   component-export="default"
-                  renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.C3f1WkGc.js"
+                  renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.BNoM1tLg.js"
                   props='{"string":[0,"約5000人"]}'
                   ssr=""
                   client="visible"
@@ -629,9 +607,9 @@
                 <astro-island
                   uid="2hQ81R"
                   data-solid-render-id="s2"
-                  component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Counter.2n_t-udw.js"
+                  component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Counter.CwjnschB.js"
                   component-export="default"
-                  renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.C3f1WkGc.js"
+                  renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.BNoM1tLg.js"
                   props='{"string":[0,"120人"]}'
                   ssr=""
                   client="visible"
@@ -650,9 +628,9 @@
                 <astro-island
                   uid="Z1pz5Q4"
                   data-solid-render-id="s3"
-                  component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Counter.2n_t-udw.js"
+                  component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Counter.CwjnschB.js"
                   component-export="default"
-                  renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.C3f1WkGc.js"
+                  renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.BNoM1tLg.js"
                   props='{"string":[0,"2061003回"]}'
                   ssr=""
                   client="visible"
@@ -671,9 +649,9 @@
                 <astro-island
                   uid="Z18XNrx"
                   data-solid-render-id="s4"
-                  component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Counter.2n_t-udw.js"
+                  component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Counter.CwjnschB.js"
                   component-export="default"
-                  renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.C3f1WkGc.js"
+                  renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.BNoM1tLg.js"
                   props='{"string":[0,"2774件"]}'
                   ssr=""
                   client="visible"
@@ -705,18 +683,34 @@
             <div
               class="gpj-flex gpj-justify-start gpj-flex-row gpj-w-full gpj-flex-nowrap"
             >
+              <script>
+                (() => {
+                  var i = t => {
+                    let e = async () => {
+                      await (
+                        await t()
+                      )();
+                    };
+                    'requestIdleCallback' in window
+                      ? window.requestIdleCallback(e)
+                      : setTimeout(e, 200);
+                  };
+                  (self.Astro || (self.Astro = {})).idle = i;
+                  window.dispatchEvent(new Event('astro:idle'));
+                })();
+              </script>
               <astro-island
-                uid="ZeOExi"
-                data-solid-render-id="s6"
-                component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Carousel.COd3kU1v.js"
+                uid="mFYIC"
+                data-solid-render-id="s5"
+                component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/Carousel.B8JQBv3o.js"
                 component-export="default"
-                renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.C3f1WkGc.js"
+                renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.BNoM1tLg.js"
                 props='{"slidesSelector":[0,".embla-slides-d"],"disableOnDesktop":[0,true]}'
                 ssr=""
                 client="idle"
                 opts='{"name":"Carousel","value":true}'
                 await-children=""
-                ><div data-hk="s60-0-0-0" class="gpj-w-full gpj-relative">
+                ><div data-hk="s50-0-0-0" class="gpj-w-full gpj-relative">
                   <div class="gpj-w-full gpj-will-change-transform">
                     <div class="gpj-flex touch-pan-y gpj-gap-[1rem]">
                       <astro-slot
@@ -862,7 +856,7 @@
                     </div>
                   </div>
                   <!--$--><!--/--><!--$--><button
-                    data-hk="s60-0-0-2-0-0"
+                    data-hk="s50-0-0-2-0-0"
                     class="lg:group-[.section-d]:gpj-hidden group-[.section-b]:gpj-hidden sm:group-[.section-b]:gpj-block gpj-absolute gpj-top-[50%] gpj-cursor-pointer gpj-mt-[-20px] gpj-z-10 gpj-bg-white gpj-text-[#074365] gpj-w-[40px] gpj-h-[40px] gpj-p-[8px] gpj-rounded-full gpj-shadow-[0_0_5px_2px_rgba(0,0,0,0.1)] gpj-bg-[url(&quot;/src/assets/chevron.svg&quot;)] gpj-bg-[length:18px_18px] gpj-bg-no-repeat gpj-bg-center next gpj-left-auto gpj-right-[-10px] md:gpj-right-[-20px]"
                   ></button
                   ><!--/--><!--$--><!--/-->
@@ -882,7 +876,7 @@
           <div
             class="gpj-flex gpj-justify-center gpj-mb-6 gpj-flex-col lg:gpj-mb-0 lg:gpj-w-1/2 lg:gpj-pr-4"
           >
-            <h2 class="gpj-mb-5 gpj-text-3xl gpj-font-bold">
+            <h2 class="gpj-mb-5 gpj-text-white gpj-text-3xl gpj-font-bold">
               2023年次報告書<!--!$-->
             </h2>
             <p>
@@ -993,7 +987,7 @@
           class="gpj-container gpj-flex gpj-mx-auto gpj-relative gpj-flex-row gpj-flex-wrap gpj-px-4 lg:gpj-flex-no-wrap"
         >
           <div class="gpj-w-full lg:gpj-w-1/2">
-            <h2 class="gpj-mb-5 gpj-text-3xl gpj-font-bold">
+            <h2 class="gpj-mb-5 gpj-text-white gpj-text-3xl gpj-font-bold">
               グリーンピースを寄付でご支援ください。<!--!$-->
             </h2>
             <p class="gpj-mb-5 lg:gpj-mb-0">
@@ -1003,74 +997,44 @@
           </div>
           <div class="gpj-w-full lg:gpj-w-1/2">
             <div class="sm:gpj-px-20 lg:gpj-px-8 xl:gpj-px-20">
-              <astro-island
-                uid="Z1KidN8"
-                data-solid-render-id="s5"
-                component-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/DonationWidget.D7csAJuf.js"
-                component-export="default"
-                renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.C3f1WkGc.js"
-                props='{"content":[0,{"HEADING":[0,"グリーンピースを寄付でご支援ください。"],"SUB_HEADING":[0,"グリーンピースの活動はすべて、個人のご寄付のみに支えられています。あらゆる命と未来をまもるため、ぜひサポーターのひとりに加わっていただけませんか。 あなたのご寄付が、世界中で起こっている環境破壊を解決に導きます。"],"DONATION_WIDGET":[1,[[0,{"TAB":[0,"継続寄付"],"TITLE":[0,""],"DESCRIPTION":[0,"毎月の継続的なご支援"],"BUTTON":[0,"今すぐ寄付する"],"LINK_HREF":[0,"https://act.gp/48MEjtO"]}],[0,{"TAB":[0,"今回限りの寄付"],"TITLE":[0,""],"DESCRIPTION":[0,"まずは一回限りという方"],"BUTTON":[0,"今すぐ寄付する"],"LINK_HREF":[0,"https://act.gp/3v4LPSS"]}],[0,{"TAB":[1,[[0,"遺言、相続財産"],[0,"からのご寄付"]]],"TITLE":[0,"遺言、相続財産からのご寄付"],"DESCRIPTION":[0,"あなたが築き上げてこられたものを、将来世代のために"],"BUTTON":[0,"詳しくはこちら"],"LINK_HREF":[0,"https://act.gp/4c9fHy2"]}]]]}]}'
-                ssr=""
-                client="visible"
-                opts='{"name":"DonationWidget","value":true}'
-                await-children=""
-                ><div
-                  data-hk="s50-0-0-0"
-                  class="gpj-overflow-hidden gpj-bg-white gpj-rounded-md"
-                >
-                  <ul class="gpj-flex gpj-bg-gray-200 gpj-border-b-0">
-                    <li
-                      data-hk="s50-0-0-1-0"
-                      class="gpj-flex gpj-items-center gpj-justify-center gpj-px-2 gpj-py-2 gpj-font-bold gpj-leading-tight gpj-text-center gpj-text-gray-500 gpj-bg-transparent gpj-cursor-default focus:gpj-outline-none xs:gpj-px-4 gpj-bg-white"
-                    >
-                      <span data-hk="s50-0-0-1-1-0-1-0">継続寄付<!--!$--></span>
-                    </li>
-                    <li
-                      data-hk="s50-0-0-1-2"
-                      class="gpj-flex gpj-items-center gpj-justify-center gpj-px-2 gpj-py-2 gpj-font-bold gpj-leading-tight gpj-text-center gpj-text-gray-500 gpj-bg-transparent gpj-cursor-default focus:gpj-outline-none xs:gpj-px-4"
-                    >
-                      <span data-hk="s50-0-0-1-3-0-1-0"
-                        >今回限りの寄付<!--!$--></span
-                      >
-                    </li>
-                    <li
-                      data-hk="s50-0-0-1-4"
-                      class="gpj-flex gpj-items-center gpj-justify-center gpj-px-2 gpj-py-2 gpj-font-bold gpj-leading-tight gpj-text-center gpj-text-gray-500 gpj-bg-transparent gpj-cursor-default focus:gpj-outline-none xs:gpj-px-4"
-                    >
-                      <span data-hk="s50-0-0-1-5-0-1-0"
-                        >遺言、相続財産<br
-                          data-hk="s50-0-0-1-5-0-1-1-0-0"
-                        />からのご寄付<!--!$--></span
-                      >
-                    </li>
-                  </ul>
-                  <!--$-->
-                  <div
-                    data-hk="s50-0-0-2-0-0"
-                    class="gpj-m-0 gpj-text-gray-600"
+              <div class="gpj-overflow-hidden gpj-bg-white gpj-rounded-md">
+                <ul class="gpj-flex gpj-bg-gray-200 gpj-border-b-0">
+                  <li
+                    class="gpj-flex gpj-items-center gpj-justify-center gpj-px-2 gpj-py-2 gpj-font-bold gpj-leading-tight gpj-text-center gpj-text-gray-500 gpj-bg-transparent gpj-cursor-default focus:gpj-outline-none xs:gpj-px-4 gpj-bg-white"
                   >
-                    <div class="gpj-p-4 sm:gpj-p-8">
-                      <!--$--><!--/--><!--$-->
-                      <p data-hk="s50-0-0-2-0-1-0-1-0-0" class="gpj-mb-5">
-                        毎月の継続的なご支援
-                      </p>
-                      <!--/--><a
-                        href="https://act.gp/48MEjtO"
-                        target="_blank"
-                        rel="noreferrer"
-                        ><button
-                          type="button"
-                          class="gpj-w-full gpj-px-4 gpj-py-2 gpj-mb-5 gpj-text-white gpj-bg-[#f36b35] gpj-rounded-full"
-                        >
-                          今すぐ寄付する
-                        </button></a
+                    <span>継続寄付<!--!$--></span>
+                  </li>
+                  <li
+                    class="gpj-flex gpj-items-center gpj-justify-center gpj-px-2 gpj-py-2 gpj-font-bold gpj-leading-tight gpj-text-center gpj-text-gray-500 gpj-bg-transparent gpj-cursor-default focus:gpj-outline-none xs:gpj-px-4"
+                  >
+                    <span>今回限りの寄付<!--!$--></span>
+                  </li>
+                  <li
+                    class="gpj-flex gpj-items-center gpj-justify-center gpj-px-2 gpj-py-2 gpj-font-bold gpj-leading-tight gpj-text-center gpj-text-gray-500 gpj-bg-transparent gpj-cursor-default focus:gpj-outline-none xs:gpj-px-4"
+                  >
+                    <span>遺言、相続財産<br />からのご寄付<!--!$--></span>
+                  </li>
+                </ul>
+                <!--$-->
+                <div class="gpj-m-0 gpj-text-gray-600">
+                  <div class="gpj-p-4 sm:gpj-p-8">
+                    <!--$--><!--/--><!--$-->
+                    <p class="gpj-mb-5">毎月の継続的なご支援</p>
+                    <!--/--><a
+                      href="https://act.gp/48MEjtO"
+                      target="_blank"
+                      rel="noreferrer"
+                      ><button
+                        type="button"
+                        class="gpj-w-full gpj-px-4 gpj-py-2 gpj-mb-5 gpj-text-white gpj-bg-[#f36b35] gpj-rounded-full"
                       >
-                    </div>
+                        今すぐ寄付する
+                      </button></a
+                    >
                   </div>
-                  <!--!$--><!--/-->
                 </div>
-                <!--astro:end--></astro-island
-              >
+                <!--!$--><!--/-->
+              </div>
             </div>
           </div>
         </div>
