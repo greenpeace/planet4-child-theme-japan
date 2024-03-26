@@ -35,12 +35,10 @@ function deregister_parent_styles(){
 	}
 }
 
-add_filter('wp_kses_allowed_html', 'preserve_html_comments', 11, 1);
+add_filter('wp_kses_allowed_html', 'preserve_html_comments', 10, 2);
 
 function preserve_html_comments($allowedtags) {
-	if(is_page_template('page-templates/annual-report-2023.php')) {
-			$allowedtags['!--'] = array();
-	}
+	$allowedtags['!--'] = array();
 	return $allowedtags;
 }
 
