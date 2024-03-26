@@ -32,8 +32,6 @@ function deregister_parent_styles(){
 	if(is_page_template('page-templates/custom.php')) {
 		wp_dequeue_style('parent_style');
 		wp_deregister_style('parent_style');
-		// wp_dequeue_style('bootstrap');
-		// wp_deregister_style('bootstrap');
 	}
 }
 
