@@ -26,14 +26,6 @@ if($is_debug){
 
 }
 
-/**
- * Instantiate the GPNL child theme.
- */
-require_once __DIR__ . '/classes/class-p4jp-loader.php';
-P4JP_Theme_Loader::get_instance();
-
-
-
 add_action('wp_enqueue_scripts', 'deregister_parent_styles', 11);
 
 function deregister_parent_styles(){
