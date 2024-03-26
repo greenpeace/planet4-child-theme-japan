@@ -37,6 +37,15 @@ function deregister_parent_styles(){
 	}
 }
 
+function preserve_html_comments($allowedtags) {
+	if(is_page_template('page-templates/annual-report-2023.php')) {
+			$allowedtags['!--'] = array();
+			return $allowedtags;
+	}
+}
+
+add_filter('wp_kses_allowed_html', 'preserve_html_comments');
+
 add_action( 'cmb2_admin_init', 'cmb2_custom_page_settings_metaboxes' );
 /**
  * Define the metabox and field configurations.

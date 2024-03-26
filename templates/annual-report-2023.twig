@@ -107,25 +107,18 @@
             </style>
             <script>
               (() => {
-                var l = (s, i, o) => {
-                  let r = async () => {
-                      await (
-                        await s()
-                      )();
-                    },
-                    t = typeof i.value == 'object' ? i.value : void 0,
-                    c = { rootMargin: t == null ? void 0 : t.rootMargin },
-                    n = new IntersectionObserver(e => {
-                      for (let a of e)
-                        if (a.isIntersecting) {
-                          n.disconnect(), r();
-                          break;
-                        }
-                    }, c);
-                  for (let e of o.children) n.observe(e);
+                var i = t => {
+                  let e = async () => {
+                    await (
+                      await t()
+                    )();
+                  };
+                  'requestIdleCallback' in window
+                    ? window.requestIdleCallback(e)
+                    : setTimeout(e, 200);
                 };
-                (self.Astro || (self.Astro = {})).visible = l;
-                window.dispatchEvent(new Event('astro:visible'));
+                (self.Astro || (self.Astro = {})).idle = i;
+                window.dispatchEvent(new Event('astro:idle'));
               })();
               (() => {
                 var v = Object.defineProperty;
@@ -375,7 +368,7 @@
               renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.C3f1WkGc.js"
               props='{"slidesSelector":[0,".embla-slides-b"],"paginationSelector":[0,".section-b-pagination"],"disableOnDesktop":[0,false]}'
               ssr=""
-              client="visible"
+              client="idle"
               opts='{"name":"Carousel","value":true}'
               await-children=""
               ><div data-hk="s60-0-0-0" class="gpj-w-full gpj-relative">
@@ -567,6 +560,29 @@
               class="gpj-w-1/2 gpj-pr-4 gpj-mb-6 md:gpj-w-1/3 lg:gpj-w-1/5 lg:gpj-pl-4 lg:first:gpj-pl-0"
             >
               <div class="gpj-text-2xl gpj-font-bold gpj-whitespace-nowrap">
+                <script>
+                  (() => {
+                    var l = (s, i, o) => {
+                      let r = async () => {
+                          await (
+                            await s()
+                          )();
+                        },
+                        t = typeof i.value == 'object' ? i.value : void 0,
+                        c = { rootMargin: t == null ? void 0 : t.rootMargin },
+                        n = new IntersectionObserver(e => {
+                          for (let a of e)
+                            if (a.isIntersecting) {
+                              n.disconnect(), r();
+                              break;
+                            }
+                        }, c);
+                      for (let e of o.children) n.observe(e);
+                    };
+                    (self.Astro || (self.Astro = {})).visible = l;
+                    window.dispatchEvent(new Event('astro:visible'));
+                  })();
+                </script>
                 <astro-island
                   uid="1tVf0p"
                   data-solid-render-id="s0"
@@ -697,7 +713,7 @@
                 renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.C3f1WkGc.js"
                 props='{"slidesSelector":[0,".embla-slides-d"],"disableOnDesktop":[0,true]}'
                 ssr=""
-                client="visible"
+                client="idle"
                 opts='{"name":"Carousel","value":true}'
                 await-children=""
                 ><div data-hk="s70-0-0-0" class="gpj-w-full gpj-relative">
@@ -995,7 +1011,7 @@
                 renderer-url="/japan/wp-content/themes/planet4-child-theme-japan/assets/src/gpj-annual-report-2023/_astro/client.C3f1WkGc.js"
                 props='{"content":[0,{"HEADING":[0,"グリーンピースを寄付でご支援ください。"],"SUB_HEADING":[0,"グリーンピースの活動はすべて、個人のご寄付のみに支えられています。あらゆる命と未来をまもるため、ぜひサポーターのひとりに加わっていただけませんか。 あなたのご寄付が、世界中で起こっている環境破壊を解決に導きます。"],"DONATION_WIDGET":[1,[[0,{"TAB":[0,"継続寄付"],"TITLE":[0,""],"DESCRIPTION":[0,"毎月の継続的なご支援"],"BUTTON":[0,"今すぐ寄付する"],"LINK_HREF":[0,"https://act.gp/48MEjtO"]}],[0,{"TAB":[0,"今回限りの寄付"],"TITLE":[0,""],"DESCRIPTION":[0,"まずは一回限りという方"],"BUTTON":[0,"今すぐ寄付する"],"LINK_HREF":[0,"https://act.gp/3v4LPSS"]}],[0,{"TAB":[1,[[0,"遺言、相続財産"],[0,"からのご寄付"]]],"TITLE":[0,"遺言、相続財産からのご寄付"],"DESCRIPTION":[0,"あなたが築き上げてこられたものを、将来世代のために"],"BUTTON":[0,"詳しくはこちら"],"LINK_HREF":[0,"https://act.gp/4c9fHy2"]}]]]}]}'
                 ssr=""
-                client="visible"
+                client="idle"
                 opts='{"name":"DonationWidget","value":true}'
                 await-children=""
                 ><div
