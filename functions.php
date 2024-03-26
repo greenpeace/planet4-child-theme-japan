@@ -35,12 +35,15 @@ function deregister_parent_styles(){
 	}
 }
 
-add_filter('wp_kses_allowed_html', 'preserve_html_comments', 10, 2);
+add_action('after_setup_theme', function(){
 
-function preserve_html_comments($allowedtags) {
-	$allowedtags['!--'] = array();
-	return $allowedtags;
-}
+	add_filter('wp_kses_allowed_html', 'preserve_html_comments', 10);
+
+	function preserve_html_comments($allowedtags) {
+		$allowedtags['!--'] = [];
+		return $allowedtags;
+	}
+});
 
 
 add_action( 'cmb2_admin_init', 'cmb2_custom_page_settings_metaboxes' );
