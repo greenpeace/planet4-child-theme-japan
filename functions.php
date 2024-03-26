@@ -32,10 +32,10 @@ function deregister_parent_styles(){
 	if(is_page_template('page-templates/custom.php')) {
 		wp_dequeue_style('parent_style');
 		wp_deregister_style('parent_style');
-		// wp_dequeue_style('bootstrap');
-		// wp_deregister_style('bootstrap');
 	}
 }
+
+add_filter('wp_kses_allowed_html', 'preserve_html_comments', 11, 1);
 
 function preserve_html_comments($allowedtags) {
 	if(is_page_template('page-templates/annual-report-2023.php')) {
@@ -44,7 +44,6 @@ function preserve_html_comments($allowedtags) {
 	return $allowedtags;
 }
 
-add_filter('wp_kses_allowed_html', 'preserve_html_comments');
 
 add_action( 'cmb2_admin_init', 'cmb2_custom_page_settings_metaboxes' );
 /**
