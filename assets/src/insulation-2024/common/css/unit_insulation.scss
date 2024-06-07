@@ -1,0 +1,1398 @@
+@charset "utf-8";
+/* CSS Document */
+/* ver.1.022 20240206*/
+@use "valiables" as v;
+.dummy_parts{
+    width: 100vw;
+    height: auto;
+}
+.dummuy_header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 51px;
+    background-color: #fff;
+    z-index: 9999;
+    text-align: center;
+    
+    img{
+        width: 1200px;
+        height: 51px;
+        object-fit: cover;
+        margin: 0 auto;
+        @include v.mq(sp) {
+            width: 282px;
+            height: 50px;
+        }
+    }
+    @include v.mq(sp) {
+        height: 50px;
+    }
+}
+.dummuy_padding{
+    height: 51px;
+    @include v.mq(sp) {
+        height: 50px;
+    }
+}
+
+/*####################*/
+/*common parts*/
+/*####################*/
+h2{
+    &.cir_orange{
+        position: relative;
+        display: block;
+        max-width: 990px;
+        margin: 0 auto;
+        padding: 0 0 0 100px;
+        font-size: 2.3rem;
+        line-height: 1.2;
+        font-weight: bold;
+        @include v.mq(sp) {
+            padding: 0 0 0 60px;
+            font-size: 1.3rem;
+        }
+
+        &::before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 86px;
+            height: 86px;
+            @include v.mq(sp) {
+                width: 54px;
+                height: 54px;
+            }
+        }
+        &.num_01{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_01.svg) no-repeat;
+                background-size: contain;
+            }
+            color: #fff;
+        }
+        &.num_02{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_02.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 auto 40px;
+            color: #E96D00;
+        }
+        &.num_03{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_03.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 auto 40px;
+            color: #E96D00;
+        }
+        &.num_04{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_04.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 auto 40px;
+            color: #E96D00;
+        }
+        &.num_05{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_05.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 auto 40px;
+            color: #E96D00;
+        }
+        &.num_06{
+            &::before{
+                background: url(../../images/climate_num_cir_orange_06.svg) no-repeat;
+                background-size: contain;
+            }
+            margin: 0 auto 40px;
+            color: #E96D00;
+        }
+        // &.num_07{
+        //     &::before{
+        //         background: url(../../images/climate_num_cir_orange_07.svg) no-repeat;
+        //         background-size: contain;
+        //     }
+        //     margin: 0 0 40px;
+        //     color: #E96D00;
+        // }
+    }
+}
+
+/*####################*/
+/*top_banner*/
+/*####################*/
+#top_banner{
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    background:url(../../images/climate_bg_topslider.jpg) bottom no-repeat #E5E8EC;
+    @include v.mq(sp) {
+        margin: 60px auto 0;
+    }
+    figure{
+        position: relative;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin: 0;
+        // width: 100%;
+        // height: 54.4%;
+        // overflow: hidden;
+        .slider {
+            position: relative;
+            width: 100vw;
+            // height: 54.4vw;
+            height: auto;
+            margin-inline: auto;
+            overflow: hidden; /* 画像がはみ出ないようにする */
+            // background-color: #fff;
+            @include v.mq(sp) {
+                width: 100vw;
+                height: 154vw;
+            }
+            picture{
+                width: 100vw;
+                height: 54.4vw;
+                margin-inline: auto;
+                overflow: hidden;
+                @include v.mq(sp) {
+                    width: auto;
+                    height: 154vw;
+                }
+                .slide_img {
+                    width: 100%;
+                    @include v.mq(sp) {
+                        width: auto;
+                        height: 154vw;
+                    }
+                }
+            }
+            .copyright{
+                font-size: 0.8rem;
+                color: #fff;
+                line-height: 1;
+                position: absolute;
+                bottom: 10px;
+                left:20px;
+                padding: 3px 10px;
+                background-color: rgba(0,0,0,0.4);
+                border-radius: 20px;
+                @include v.mq(sp) {
+                    font-size: 0.7rem;
+                }
+            }
+          }
+        //slider
+          @keyframes zoomUp {
+            0% {
+              transform: scale(1);
+            }
+            100% {
+              transform: scale(1.15); /* 拡大率 */
+            }
+          }
+          .add-animation {
+            picture{
+                .slide_img {
+                    animation: zoomUp 10s linear 0s normal both;
+                }
+            }
+            // animation: zoomUp 10s linear 0s normal both;
+          }
+          //タイトル・コピー・ボタン
+          .title_wrap{
+            position: absolute;
+            max-width: 1280px;
+            left:0;
+            right: 0;
+            top:50%;
+            transform: translateY(-50%);
+            margin: 0 auto;
+            padding: 0 20px;
+            @include v.mq(sp) {
+                text-align: center;
+                // top:20%;
+                // transform: translateY(-20%);
+                top:50%;
+                transform: translateY(-50%);
+                padding: 0 0;
+            }
+            h1{
+                margin: 0 0 60px 0;
+                width: 690px;
+                @include v.mq(sp) {
+                    width: 72vw;
+                    margin: 0 auto 80px;
+                    transform: translateX(2vw);
+                }
+                img{
+                    width:100%
+                }
+            }
+            .lead{
+                margin: 0 0 30px 8px;
+                font-size: 1.6rem;
+                font-weight: bold;
+                color: #fff;
+                @include v.mq(sp) {
+                    // font-size: 3.5vw;
+                    font-size: max(3.5vw,1.2rem);
+                    margin: 0 10px 30px;
+                }
+            }
+            a.cta_btn{
+                display: inline-block;
+                font-size: 1.68rem;
+                font-weight: bold;
+                color: #000;
+                background-color: #FFE200;
+                border:none;
+                padding:8px 32px;
+                border-radius: 8px;
+                @include v.mq(sp) {
+                    font-size: 1.2rem;
+                    padding: 10px 5vw;
+                    border-radius: 6px;
+                }
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+
+          }
+            //title_wrap
+          
+
+    }
+    // figure
+    .scroll_up_btn{
+        position: absolute;
+        z-index: 1000;
+        left:0;
+        right: 0;
+        bottom:0px;
+        width: 100px;
+        margin: 0 auto;
+        transform: translateY(50%);
+        text-align: center;
+        cursor: pointer;
+        @include v.mq(sp) {
+            // display: none;
+        }
+        img.cir_btn{
+            cursor: pointer;
+        }
+      }
+}
+// #top_banner
+/*####################*/
+/*index*/
+/*####################*/
+#index{
+    position: relative;
+    margin:0 auto;
+    padding: 70px 0 60px;
+    @include v.mq(sp) {
+        padding: 50px 0 20px;
+    }
+    .scroll_up_btn{
+        position: absolute;
+        left:0;
+        right: 0;
+        top:0px;
+        width: 100px;
+        margin: 0 auto;
+        transform: translateY(-50%);
+        text-align: center;
+        cursor: pointer;
+        @include v.mq(sp) {
+            // display: none;
+        }
+        img.cir_btn{
+            cursor: pointer;
+        }
+    }
+    .index_list_wrap{
+        background-color: #FFF2CB;
+        max-width: 790px;
+        margin: 0 auto;
+        padding: 30px 60px 50px;
+        @include v.mq(sp) {
+            padding: 20px 20px 30px;
+        }
+        h2{
+            font-size: 18px;
+            margin: 0 0 32px;
+            @include v.mq(sp) {
+                text-align: center;
+                font-size: 16px;
+                margin: 0 0 24px;
+            }
+        }
+        ul.index_list{
+            list-style-type: none;
+            li{
+                margin: 0 0 30px;
+                padding:0 0 0 50px;
+                line-height: 35px;
+                font-size: 16px;
+                font-weight: bold;
+                @include v.mq(sp) {
+                    margin: 0 0 20px;
+                    padding:0 0 0 40px;
+                    font-size: 15px;
+                }
+                &:nth-child(1){
+                    background: url(../../images/climate_num_cir_orange_01.svg) no-repeat 0 50%;
+                    background-size: 35px;
+                    @include v.mq(sp) {
+                        background-size: 30px;
+                    }
+                }
+                &:nth-child(2){
+                    background: url(../../images/climate_num_cir_orange_02.svg) no-repeat 0 50%;
+                    background-size: 35px;
+                    @include v.mq(sp) {
+                        background-size: 30px;
+                    }
+                }
+                &:nth-child(3){
+                    background: url(../../images/climate_num_cir_orange_03.svg) no-repeat 0 50%;
+                    background-size: 35px;
+                    @include v.mq(sp) {
+                        background-size: 30px;
+                    }
+                }
+                &:nth-child(4){
+                    background: url(../../images/climate_num_cir_orange_04.svg) no-repeat 0 50%;
+                    background-size: 35px;
+                    @include v.mq(sp) {
+                        background-size: 30px;
+                    }
+                }
+                &:nth-child(5){
+                    background: url(../../images/climate_num_cir_orange_05.svg) no-repeat 0 50%;
+                    background-size: 35px;
+                    @include v.mq(sp) {
+                        background-size: 30px;
+                    }
+                }
+                &:nth-child(6){
+                    background: url(../../images/climate_num_cir_orange_06.svg) no-repeat 0 50%;
+                    background-size: 35px;
+                    @include v.mq(sp) {
+                        background-size: 30px;
+                    }
+                }
+                a{
+                    color: #000;
+                    text-decoration: none;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*####################*/
+/*01 「暑すぎる、寒すぎる」日本の学校 #toohot*/
+/*####################*/
+#toohot{
+    position: relative;
+    background:url(../../images/insulation_bg_toohot.jpg) top center no-repeat;
+    background-size:cover ;
+    padding: 90px 0 0;
+    @include v.mq(sp) {
+        background:url(../../images/insulation_bg_toohot_sp.jpg) top center no-repeat;
+        background-size: cover;
+        padding: 25px 0 0;
+    }
+    
+    .topic_wrap{
+        @extend .main_w;
+        font-size: 1.2rem;
+        margin-bottom: 60px;
+        @include v.mq(sp) {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        h2{
+            margin-bottom: 1em;
+        }
+        .thrmo_img{
+            background-color: #fff;
+            max-width: 792px;
+            width: auto;
+            margin: 0 auto 30px;
+            padding: 30px 30px 20px;
+            @include v.mq(sp) {
+                margin: 0 auto 20px;
+                padding: 15px 15px 20px;
+            }
+            img{
+                width: 100%;
+            }
+            .caption{
+                text-align: center;
+                font-size: 14px;
+                color: #292929;
+                @include v.mq(sp) {
+                    text-align: left;
+                    font-size: 12px;
+                }
+            }
+        }
+        .honbun{
+            max-width: 792px;
+            width: auto;
+            margin: 0 auto;
+            font-size: 20px;
+            color: #fff;
+            @include v.mq(sp) {
+                font-size: 16px;
+            }
+        }
+
+    }
+    // topic_wrap
+}
+// #toohot
+
+/*####################*/
+/*02 原因は温暖化と「断熱」がされていないこと causing*/
+/*####################*/
+#causing{
+    margin: 0;
+    padding: 120px 0 20px;
+    @include v.mq(sp) {
+        padding: 35px 0 0;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        font-size: 1.2rem;
+        margin-bottom: 60px;
+        @include v.mq(sp) {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        h2{
+            margin-bottom: 1em;
+            @include v.mq(sp) {
+                margin-bottom: 35px;
+            }
+        }
+        .cont_wrap{
+            max-width: 792px;
+            width: auto;
+            margin: 0 auto;
+            font-size: 20px;
+            @include v.mq(sp) {
+                font-size: 16px;
+            }
+            .honbun{
+                margin-bottom: 1em;
+            }
+
+        }
+        // cont_wrap
+        .img_wrap{
+            margin: 0 auto 1em;
+            &.wide{
+                margin: 2em auto 2em;
+                @include v.mq(sp) {
+                    margin: 1em auto 1em;
+                }
+            }
+            &.morewide{
+                margin: 60px auto 60px;
+                @include v.mq(sp) {
+                    margin: 2em auto 2em;
+                }
+            }
+            img{
+                display: block;
+                width: 100%;
+                margin: 0 auto 0.5em;
+            }
+            .caption{
+                font-size: 14px;
+                color: #292929;
+                @include v.mq(sp) {
+                    font-size: 12px;
+                }
+            }
+        }
+        .koe_wrap{
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            grid-template-rows: auto auto;
+            grid-column-gap: 30px;
+            grid-row-gap: 20px;
+            align-items: center;
+            grid-template-areas :
+            "a b"
+            "c c";
+            width: 100%;
+            margin: 2em auto;
+            padding: 30px 25px 25px;
+            background-color: #FFE8B5;
+            border-radius: 15px;
+            @include v.mq(sp) {
+                grid-template-columns: 68px 1fr;
+                grid-template-rows: auto auto;
+                grid-column-gap: 5vw;
+                grid-row-gap: 10px;
+                grid-template-areas :
+                "a a"
+                "b c";
+                margin: 2em auto 0;
+                padding: 20px 20px 0;
+            }
+            .fukidashi {
+                grid-area: b;
+                position: relative;
+                display: inline-block;
+                margin: 0 auto;
+                padding: 20px;
+                border-radius: 20px;
+                min-width: 120px;
+                max-width: 100%;
+                // color: #555;
+                font-size: 16px;
+                background: #fff;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: -30px;
+                    margin-top: -15px;
+                    border: 10px solid transparent;
+                    border-right: 20px solid #fff;
+                }
+                @include v.mq(sp) {
+                    grid-area: a;
+                    padding:15px 20px;
+                    &:before {
+
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: 110px;
+                        margin-top: 0px;
+                        margin-left: -15px;
+                        border: 10px solid transparent;
+                        border-left: 10px solid #fff;
+                        border-top: 10px solid #fff;
+                    }
+                }
+              
+                }
+                // fukidashi
+                img.koe_img{
+                    grid-area: a;
+                    @include v.mq(sp) {
+                        grid-area: b;
+                        width: 70px;
+                    }
+                }
+                // koe_img
+                .name{
+                    grid-area: c;
+                    text-align: right;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #292929;
+                
+                    @include v.mq(sp) {
+                        grid-area: c;
+                        font-size: 15px;
+                    }
+                }
+        }
+    }
+}
+// #causing
+/*####################*/
+/*03　断熱とは：断熱にはメリットがいっぱい
+about*/
+/*####################*/
+#about{
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 30px 0 40px;
+    @include v.mq(sp) {
+        
+        padding: 35px 0 0;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        font-size: 1.2rem;
+        margin-bottom: 60px;
+        @include v.mq(sp) {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        h2{
+            margin-bottom: 1em;
+            @include v.mq(sp) {
+                // margin-bottom: 35px;
+            }
+        }
+        .cont_wrap{
+            max-width: 792px;
+            width: auto;
+            margin: 0 auto;
+            font-size: 20px;
+            @include v.mq(sp) {
+                font-size: 16px;
+            }
+            .honbun{
+                margin-bottom: 1em;
+                .subtxt{
+                    font-size: 15px;
+                    color: #292929;
+                    @include v.mq(sp) {
+                        font-size: 13px;
+                    }
+                }
+            }
+            .img_wrap{
+                margin: 0 auto 1em;
+                &.wide{
+                    margin: 2em auto 2em;
+                    @include v.mq(sp) {
+                        margin: 1em auto 1em;
+                    }
+                }
+                &.morewide{
+                    margin: 60px auto 60px;
+                    @include v.mq(sp) {
+                        margin: 2em auto 2em;
+                    }
+                }
+                img{
+                    display: block;
+                    width: 100%;
+                    margin: 0 auto 0.5em;
+                }
+                .caption{
+                    font-size: 14px;
+                    color: #292929;
+                    @include v.mq(sp) {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        // cont_wrap
+    }
+    // topic_wrap
+}
+// about
+
+/*####################*/
+/*04 学校断熱に必要なこと need*/
+/*####################*/
+#need{
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 30px 0 40px;
+    @include v.mq(sp) {
+        
+        padding: 35px 0 0;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        font-size: 1.2rem;
+        margin-bottom: 60px;
+        @include v.mq(sp) {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        h2{
+            margin-bottom: 1em;
+            @include v.mq(sp) {
+                // margin-bottom: 35px;
+            }
+        }
+        .cont_wrap{
+            max-width: 792px;
+            width: auto;
+            margin: 0 auto;
+            font-size: 20px;
+            @include v.mq(sp) {
+                font-size: 16px;
+            }
+            .honbun{
+                margin-bottom: 1em;
+                .subtxt{
+                    font-size: 15px;
+                    color: #292929;
+                    @include v.mq(sp) {
+                        font-size: 13px;
+                    }
+                }
+            }
+            .img_wrap{
+                margin: 0 auto 1em;
+                &.wide{
+                    margin: 2em auto 2em;
+                    @include v.mq(sp) {
+                        margin: 1em auto 1em;
+                    }
+                }
+                &.morewide{
+                    margin: 60px auto 60px;
+                    @include v.mq(sp) {
+                        margin: 2em auto 2em;
+                    }
+                }
+                img{
+                    display: block;
+                    width: 100%;
+                    margin: 0 auto 0.5em;
+                }
+                .caption{
+                    font-size: 14px;
+                    color: #292929;
+                    @include v.mq(sp) {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        // cont_wrap
+    }
+    // topic_wrap
+}
+// #need
+/*####################*/
+/*05 学校の断熱改修を実現するには*/
+/*####################*/
+#realization{
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 30px 0 40px;
+    @include v.mq(sp) {
+        
+        padding: 35px 0 0;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        font-size: 1.2rem;
+        margin-bottom: 60px;
+        @include v.mq(sp) {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        h2{
+            margin-bottom: 1em;
+            @include v.mq(sp) {
+                // margin-bottom: 35px;
+            }
+        }
+        .cont_wrap{
+            max-width: 792px;
+            width: auto;
+            margin: 0 auto;
+            font-size: 20px;
+            @include v.mq(sp) {
+                font-size: 16px;
+            }
+            .honbun{
+                margin-bottom: 1em;
+                .subtxt{
+                    font-size: 15px;
+                    color: #292929;
+                    @include v.mq(sp) {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+        // cont_wrap
+    }
+    // topic_wrap
+}
+// #realization
+/*####################*/
+/*06私たちに今すぐできる６つのこと　 sixaction*/
+/*####################*/
+#sixaction{
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 30px 0 0px;
+    @include v.mq(sp) {
+        padding: 35px 0 0;
+    }
+    .topic_wrap{
+        @extend .main_w;
+        font-size: 1.2rem;
+        margin-bottom: 60px;
+        @include v.mq(sp) {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        h2{
+            margin-bottom: 1em;
+            @include v.mq(sp) {
+                margin-bottom: 35px;
+            }
+        }
+        .cont_wrap{
+            max-width: 792px;
+            width: auto;
+            margin: 0 auto;
+            font-size: 20px;
+            @include v.mq(sp) {
+                font-size: 16px;
+            }
+            /*タブボックス*/
+            #tab_box{
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+                gap:18px;
+                align-items: top;
+                border-bottom: solid 3px #66CC00;
+                margin: 0 auto;
+                padding: 0 0 0;
+                .tab{
+                    margin: 0 auto 10px;
+                    padding: 0 0;
+                    font-size: 16px;
+                    font-weight: bold;
+                    text-align: center;
+                    color: #fff;
+                    background-color: #66CC00;
+                    border: none;
+                    transition: all 0.3s;
+                    cursor: pointer;
+                    @include v.mq(sp) {
+                        font-size: 14px;
+                    }
+                    span{
+                        display: block;
+                        width: fit-content;
+                        height: 1em;
+                        line-height: 1em;
+                        margin: 10px auto;
+                        padding: 0 0 0 1.4em;
+                        background: url(../../images/arrow_cir_right.svg) left 50% no-repeat;
+                        background-size: contain;
+                    }
+                    &.active{
+                        margin: 0 auto 0;
+                    }
+                }
+            }
+            // tab_box
+            /*パネルボックス*/
+            #panel_box{
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto;
+                gap:18px;
+                align-items: top;
+                grid-template-areas :
+                "a"
+                "b"
+                "c"
+                "d"
+                "e"
+                "f"
+                ;
+                margin: 0 auto;
+                padding: 40px 0 0;
+                @include v.mq(sp) {
+                    padding: 20px 0 0;
+                }
+                /*######*/
+                /*先生*/
+                /*######*/
+                &.teacher{
+                    // 署名をする
+                    #syomei{
+                        grid-area: a;
+                        .number{
+                            &::before{
+                                content: '1';
+                            }
+                        }
+                    }
+                    //声を届ける
+                    #koe{
+                        grid-area: b;
+                        .number{
+                            &::before{
+                                content: '2';
+                            }
+                        }
+                    }
+                    //断熱の良さを子どもたちに伝える
+                    #tsutaeru{
+                        grid-area: c;
+                        .number{
+                            &::before{
+                                content: '3';
+                            }
+                        }
+                    }
+                    //自分たちで教室を断熱する
+                    #diy{
+                        grid-area: d;
+                        .number{
+                            &::before{
+                                content: '4';
+                            }
+                        }
+                    }
+                    //予算要望をする
+                    #yosan{
+                        grid-area: e;
+                        .number{
+                            &::before{
+                                content: '5';
+                            }
+                        }
+                    }
+                    //政策を提言する
+                    #teigen{
+                        grid-area: f;
+                        .number{
+                            &::before{
+                                content: '6';
+                            }
+                        }
+                        border-bottom: none;
+                    }
+                }
+                /*######*/
+                /*生徒*/
+                /*######*/
+                &.student{
+                    // 署名をする
+                    #syomei{
+                        grid-area: a;
+                        .number{
+                            &::before{
+                                content: '1';
+                            }
+                        }
+                    }
+                    //声を届ける
+                    #koe{
+                        grid-area: b;
+                        .number{
+                            &::before{
+                                content: '2';
+                            }
+                        }
+                    }
+                    //断熱の良さを子どもたちに伝える
+                    #tsutaeru{
+                        grid-area: f;
+                        .number{
+                            &::before{
+                                content: '6';
+                            }
+                        }
+                        border-bottom: none;
+                    }
+                    //自分たちで教室を断熱する
+                    #diy{
+                        grid-area: c;
+                        .number{
+                            &::before{
+                                content: '3';
+                            }
+                        }
+                    }
+                    //予算要望をする
+                    #yosan{
+                        grid-area: d;
+                        .number{
+                            &::before{
+                                content: '4';
+                            }
+                        }
+                    }
+                    //政策を提言する
+                    #teigen{
+                        grid-area: e;
+                        .number{
+                            &::before{
+                                content: '5';
+                            }
+                        }
+                    }
+                }
+                /*######*/
+                /*保護者*/
+                /*######*/
+                &.parent{
+                    // 署名をする
+                    #syomei{
+                        grid-area: a;
+                        .number{
+                            &::before{
+                                content: '1';
+                            }
+                        }
+                    }
+                    //声を届ける
+                    #koe{
+                        grid-area: b;
+                        .number{
+                            &::before{
+                                content: '2';
+                            }
+                        }
+                    }
+                    //断熱の良さを子どもたちに伝える
+                    #tsutaeru{
+                        grid-area: c;
+                        .number{
+                            &::before{
+                                content: '3';
+                            }
+                        }
+                    }
+                    //自分たちで教室を断熱する
+                    #diy{
+                        grid-area: d;
+                        .number{
+                            &::before{
+                                content: '4';
+                            }
+                        }
+                    }
+                    //予算要望をする
+                    #yosan{
+                        grid-area: e;
+                        .number{
+                            &::before{
+                                content: '5';
+                            }
+                        }
+                    }
+                    //政策を提言する
+                    #teigen{
+                        grid-area: f;
+                        .number{
+                            &::before{
+                                content: '6';
+                            }
+                        }
+                        border-bottom: none;
+                    }
+                }
+                /*######*/
+                /*誰でも*/
+                /*######*/
+                &.everyone{
+                    // 署名をする
+                    #syomei{
+                        grid-area: a;
+                        .number{
+                            &::before{
+                                content: '1';
+                            }
+                        }
+                    }
+                    //声を届ける
+                    #koe{
+                        grid-area: b;
+                        .number{
+                            &::before{
+                                content: '2';
+                            }
+                        }
+                    }
+                    //断熱の良さを子どもたちに伝える
+                    #tsutaeru{
+                        grid-area: c;
+                        .number{
+                            &::before{
+                                content: '3';
+                            }
+                        }
+                    }
+                    //自分たちで教室を断熱する
+                    #diy{
+                        grid-area: f;
+                        .number{
+                            &::before{
+                                content: '6';
+                            }
+                        }
+                        border-bottom: none;
+                    }
+                    //予算要望をする
+                    #yosan{
+                        grid-area: d;
+                        .number{
+                            &::before{
+                                content: '4';
+                            }
+                        }
+                    }
+                    //政策を提言する
+                    #teigen{
+                        grid-area: e;
+                        .number{
+                            &::before{
+                                content: '5';
+                            }
+                        }
+                    }
+                }
+                .panel{
+                    border-bottom: solid 1px #66CC00;
+                    margin: 0 0 30px;
+                    padding: 0 0 40px;
+                    @include v.mq(sp) {
+                        margin: 0 0 15px;
+                        padding: 0 0 25px;
+                    }
+                    .panel_grid{
+                        display: grid;
+                        grid-template-columns: 1fr 294px;
+                        grid-template-rows: auto auto;
+                        grid-column-gap: 10px;
+                        grid-row-gap: 10px;
+                        grid-template-areas :
+                        "a c"
+                        "b c";
+                        margin: 0 auto 0;
+                        @include v.mq(sp) {
+                            grid-template-columns: 1fr;
+                            grid-template-rows: auto auto auto;
+                            // grid-column-gap: 10px;
+                            grid-row-gap: 10px;
+                            grid-template-areas :
+                            "a"
+                            "b"
+                            "c"
+                            ;
+                        }
+                        .midashi{
+                            grid-area: a;
+                            display: grid;
+                            grid-template-columns: 42px 1fr;
+                            align-items: center;
+                            gap:10px;
+                            @include v.mq(sp) {
+                                grid-template-columns: 35px 1fr;
+                                margin-bottom: 10px;
+                            }
+                            .number{
+                                background-color: #66CC00;
+                                width: 42px;
+                                height: 42px;
+                                line-height: 42px;
+                                color: #fff;
+                                font-size: 24px;
+                                font-weight: bold;
+                                text-align: center;
+                                @include v.mq(sp) {
+                                    width: 35px;
+                                    height: 35px;
+                                    line-height: 35px;
+                                    font-size: 19px;
+                                }
+
+                            }
+                            h3{
+                                font-size: 26px;
+                                @include v.mq(sp) {
+                                    font-size: 20px;
+                                }
+                            }
+                        }
+                        .actionimg{
+                            grid-area: c;
+                            img{
+                                width: 100%;
+                            }
+                            @include v.mq(sp) {
+                                grid-area: b;
+                            }
+                        }
+                        .panel_text{
+                            grid-area: b;
+                            font-size: 16px;
+                            @include v.mq(sp) {
+                                grid-area: c;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                    // panel_grid
+                    .btn_box{
+                        text-align: center;
+                        padding: 40px 0 0;
+                        @include v.mq(sp) {
+                            padding: 30px 0 0;
+                        }
+                        a.btn_green{
+                            background-color: #66CC00;
+                            color: #292929;
+                            font-size: 22px;
+                            line-height: 1;
+                            font-weight: bold;
+                            text-decoration: none;
+                            padding: 10px 50px;
+                            @include v.mq(sp) {
+                                font-size: 20px;
+                                padding: 8px 45px;
+                            }
+                        }
+                    }
+                    // btn_box
+                    ul.link_box{
+                        list-style-type: none;
+                        text-align: left;
+                        padding: 40px 0 0;
+                        @include v.mq(sp) {
+                            padding: 30px 0 0;
+                        }
+                        li{
+                            a{
+                                display: inline-block;
+                                font-size: 16px;
+                                font-weight: bold;
+                                color: #004B00;
+                                text-decoration: underline;
+                                &:hover{
+                                    color: lighten(#004B00, 10%);
+                                }
+                                span{
+                                    font-size: 14px;
+                                    font-weight: normal;
+                                }
+                            }
+                        }
+                        
+                    }
+
+                }
+            }
+            // panel_box
+        }
+        // cont_wrap
+
+    }
+    // topic_wrap
+}
+// #sixaction
+/*####################*/
+/*こちらもご覧ください blog_link*/
+/*####################*/
+#blog_link{
+    max-width: 1200px;
+    border-top: solid 1px #66CC00;
+    margin: 0 auto 0;
+    padding: 40px 0 0;
+    h4{
+        text-align: center;
+        font-size: 16px;
+        margin: 0 0 15px;
+        @include v.mq(sp) {
+            font-size: 15px;
+            margin: 0 0 5px;
+        }
+    }
+    h3{
+        text-align: center;
+        font-size: 27px;
+        margin: 0 0 60px;
+        color: #66CC00;
+        @include v.mq(sp) {
+            font-size: 20px;
+            margin: 0 0 30px;
+        }
+    }
+    .topic_wrap{
+        @extend .main_w;
+        font-size: 1.2rem;
+        margin-bottom: 80px;
+        @include v.mq(sp) {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .cont_wrap{
+            max-width: 792px;
+            width: auto;
+            margin: 0 auto;
+            font-size: 20px;
+            @include v.mq(sp) {
+                font-size: 16px;
+            }
+            .blog_wrap{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 50px 25px;
+                @include v.mq(sp) {
+                    grid-template-columns: 1fr;
+                    grid-gap: 20px 0px;
+                }
+                a.link_to_blog{
+                    display: grid;
+                    grid-template-columns:147px 1fr;
+                    gap:10px;
+                    text-decoration: none;
+                    color: #292929;
+                    @include v.mq(sp) {
+                        grid-template-columns:90px 1fr;
+                    }
+                    img.blogthumb{
+                        width: 100%;
+                        border: solid 1px #999;
+                    }
+                    .blog_item{
+                        .blog_title{
+                            font-size: 16px;
+                            font-weight: bold;
+                            line-height: 1.5;
+                            margin: 0 0 10px;
+                            @include v.mq(sp) {
+                                font-size: 15px;
+                                line-height: 1.4;
+                                margin: 0 0 5px;
+                            }
+                        }
+                        .blog_author{
+                            font-size: 14px;
+                            @include v.mq(sp) {
+                                font-size: 13px;
+                            }
+                        }
+                        .blog_date{
+                            font-size: 14px;
+                            @include v.mq(sp) {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+            //
+        }
+        // cont_wrap
+    }
+    // topic_wrap
+}
+// #blog_link
