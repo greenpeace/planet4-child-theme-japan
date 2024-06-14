@@ -1064,7 +1064,7 @@ about*/
                         grid-area: c;
                         .number{
                             &::before{
-                                content: '3';
+                                content: '5';
                             }
                         }
                     }
@@ -1073,7 +1073,7 @@ about*/
                         grid-area: d;
                         .number{
                             &::before{
-                                content: '4';
+                                content: '6';
                             }
                         }
                     }
@@ -1082,7 +1082,7 @@ about*/
                         grid-area: e;
                         .number{
                             &::before{
-                                content: '5';
+                                content: '3';
                             }
                         }
                     }
@@ -1091,7 +1091,7 @@ about*/
                         grid-area: f;
                         .number{
                             &::before{
-                                content: '6';
+                                content: '4';
                             }
                         }
                         border-bottom: none;
