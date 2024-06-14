@@ -1167,26 +1167,26 @@ about*/
   grid-area: c;
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #tsutaeru .number::before {
-  content: "3";
+  content: "5";
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #diy {
   grid-area: d;
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #diy .number::before {
-  content: "4";
+  content: "6";
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #yosan {
   grid-area: e;
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #yosan .number::before {
-  content: "5";
+  content: "3";
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #teigen {
   grid-area: f;
   border-bottom: none;
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #teigen .number::before {
-  content: "6";
+  content: "4";
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.everyone #syomei {
   grid-area: a;
