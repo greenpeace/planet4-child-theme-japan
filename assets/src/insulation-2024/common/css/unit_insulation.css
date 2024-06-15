@@ -87,6 +87,11 @@
 
 /* CSS Document */
 /* ver.1.022 20240206*/
+/*TO ABOID GIT CONFLICT*/
+.ver_for_git {
+  opacity: 0.1;
+}
+
 .dummy_parts {
   width: 100vw;
   height: auto;
@@ -1164,25 +1169,25 @@ about*/
   content: "2";
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #tsutaeru {
-  grid-area: c;
+  grid-area: e;
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #tsutaeru .number::before {
   content: "5";
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #diy {
-  grid-area: d;
+  grid-area: f;
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #diy .number::before {
   content: "6";
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #yosan {
-  grid-area: e;
+  grid-area: c;
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #yosan .number::before {
   content: "3";
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #teigen {
-  grid-area: f;
+  grid-area: d;
   border-bottom: none;
 }
 #sixaction .topic_wrap .cont_wrap #panel_box.parent #teigen .number::before {

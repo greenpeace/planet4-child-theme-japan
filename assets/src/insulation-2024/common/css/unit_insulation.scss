@@ -2,6 +2,10 @@
 /* CSS Document */
 /* ver.1.022 20240206*/
 @use "valiables" as v;
+/*TO ABOID GIT CONFLICT*/
+.ver_for_git{
+    opacity: 0.1;
+}
 .dummy_parts{
     width: 100vw;
     height: auto;
@@ -1061,7 +1065,7 @@ about*/
                     }
                     //断熱の良さを子どもたちに伝える
                     #tsutaeru{
-                        grid-area: c;
+                        grid-area: e;
                         .number{
                             &::before{
                                 content: '5';
@@ -1070,7 +1074,7 @@ about*/
                     }
                     //自分たちで教室を断熱する
                     #diy{
-                        grid-area: d;
+                        grid-area: f;
                         .number{
                             &::before{
                                 content: '6';
@@ -1079,7 +1083,7 @@ about*/
                     }
                     //予算要望をする
                     #yosan{
-                        grid-area: e;
+                        grid-area: c;
                         .number{
                             &::before{
                                 content: '3';
@@ -1088,7 +1092,7 @@ about*/
                     }
                     //政策を提言する
                     #teigen{
-                        grid-area: f;
+                        grid-area: d;
                         .number{
                             &::before{
                                 content: '4';
