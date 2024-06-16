@@ -87,6 +87,11 @@
 
 /* CSS Document */
 /* ver.1.022 20240206*/
+/*TO ABOID GIT CONFLICT*/
+.ver_for_git {
+  opacity: 0.2;
+}
+
 .dummy_parts {
   width: 100vw;
   height: auto;
