@@ -7,13 +7,23 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP&display=swap');
 
+@font-face {
+  font-family: 'FOT-UD角ゴ_ラージ Pr6N';
+  src: url('/fonts/FOT-UDKakuGo-LargePr6N.woff2') format('woff2'),
+       url('/fonts/FOT-UDKakuGo-LargePr6N.woff') format('woff'),
+       url('/fonts/FOT-UDKakuGo-LargePr6N.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 html {
   font-size: v.$base_font_size;
 }
 body {
   text-align: left;
-  font-family: "Noto Sans JP","游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", 'Meiryo', "ＭＳ Ｐゴシック", sans-serif;
+  
+  font-family: 'FOT-UD角ゴ_ラージ Pr6N', sans-serif;
+  // font-family: "Noto Sans JP","游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", 'Meiryo', "ＭＳ Ｐゴシック", sans-serif;
   // font-family: 'メイリオ', 'Meiryo','ＭＳ ゴシック','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
   line-height: 1.7;
   background-color: #fff;
