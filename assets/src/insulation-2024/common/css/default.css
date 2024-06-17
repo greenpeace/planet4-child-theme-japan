@@ -991,13 +991,19 @@ table.nothwrap tr th {
   margin: 0 0.2em 0 0;
 }
 
+@font-face {
+  font-family: "FOT-UD角ゴ_ラージ Pr6N";
+  src: url("/fonts/FOT-UDKakuGo-LargePr6N.woff2") format("woff2"), url("/fonts/FOT-UDKakuGo-LargePr6N.woff") format("woff"), url("/fonts/FOT-UDKakuGo-LargePr6N.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 html {
   font-size: 15px;
 }
 
 body {
   text-align: left;
-  font-family: "Noto Sans JP", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", sans-serif;
+  font-family: "FOT-UD角ゴ_ラージ Pr6N", sans-serif;
   line-height: 1.7;
   background-color: #fff;
   color: #000;
